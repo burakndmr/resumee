@@ -21,7 +21,7 @@ export const HeroInfo: React.FC<HeroInfoProps> = () => {
       </div>
       <div className="text-center">
         <h3 className="text-xl font-semibold">
-          You don't need{" "}
+          You {"don't"} need{" "}
           <span className="text-primary underline font-bold">an account</span>
         </h3>
         <p className="mt-4 mb-6 max-w-xs">
