@@ -7,7 +7,7 @@ interface HeaderProps {}
 export const Header: React.FC<HeaderProps> = ({}) => {
   return (
     <header className=" pt-12">
-      <nav className="flex justify-between items-center">
+      <nav className="flex justify-between items-center ">
         <div className="font-extrabold text-4xl">
           <Link href="/">
             <a className="text-black  tracking-wide">RESUMEE</a>
@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
         </div>
         <Button>
           <Link href="/app">
-            <a className="text-white m-7 ">Get Started</a>
+            <a className="text-white m-7">Get Started</a>
           </Link>
         </Button>
       </nav>

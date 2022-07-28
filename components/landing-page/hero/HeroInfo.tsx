@@ -6,8 +6,8 @@ interface HeroInfoProps {}
 
 export const HeroInfo: React.FC<HeroInfoProps> = () => {
   return (
-    <div className="py-20 flex items-center justify-around font-montSerrat">
-      <div className="text-center">
+    <div className="font-montSerrat py-20 flex flex-col sm:flex-row items-center justify-around ">
+      <div className="text-center mb-7 sm:mb-0">
         <h3 className="text-xl font-semibold">
           Create a CV in{" "}
           <span className="text-primary underline font-bold">minutes</span>

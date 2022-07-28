@@ -35,17 +35,17 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
   return (
     <section className="py-28 bg-sectionBg text-center">
       <MainLayout>
-        <h3 className="tracking-widest font-bold text-2xl text-clearPurple">
+        <h3 className="tracking-widest font-bold text-xl sm:text-2xl text-clearPurple">
           OUR FEATURES
         </h3>
-        <h1 className="mb-20 font-bold text-4xl text-titleBlack leading-10">
+        <h1 className="mb-20 font-bold text-3xl mx-2 sm:text-4xl sm:mx-0  text-titleBlack leading-10 ">
           CREATE CV, RESUME AND BLA BLA
         </h1>
-        <div className="flex justify-evenly items-center">
+        <div className="flex flex-col sm:flex-row  justify-evenly items-center">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col justify-between items-center w-73 shadow-lg bg-white rounded-lg p-8 "
+              className="flex flex-col justify-between items-center w-73 mb-4 sm:mb-0 shadow-lg bg-white rounded-lg p-8 "
             >
               <div className="flex items-center justify-center bg-yellow text-white rounded-full">
                 {feature.icon}
