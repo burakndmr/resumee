@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
         </div>
         <Button>
           <Link href="/app">
-            <a className="text-white m-7">Get Started</a>
+            <a className="text-white m-7 hidden sm:inline">Get Started</a>
           </Link>
         </Button>
       </nav>
