@@ -1,5 +1,9 @@
+// REACT STUFF
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+
+// COMPONENTS
 import { Button } from "../button/Button";
 
 interface HeaderProps {}
@@ -10,7 +14,9 @@ export const Header: React.FC<HeaderProps> = ({}) => {
       <nav className="flex justify-between items-center ">
         <div className="font-extrabold text-4xl">
           <Link href="/">
-            <a className="text-black  tracking-wide">RESUMEE</a>
+            <a>
+              <Image src="/logo.svg" alt="logo" height={50} width={177} />
+            </a>
           </Link>
         </div>
         <Button>
