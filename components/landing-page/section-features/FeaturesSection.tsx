@@ -47,7 +47,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
               key={index}
               className="flex flex-col justify-between items-center w-73 mb-4 lg:mb-0 shadow-lg bg-white rounded-lg p-8 "
             >
-              <div className=" flex items-center justify-center bg-yellow text-white rounded-full w-24 h-24  mb-12">
+              <div className=" flex items-center justify-center bg-yellow text-white rounded-full w-24 h-24 mb-12 shadow-md">
                 <img src={feature.icon} alt={feature.title} />
               </div>
               <h3 className="font-semibold text-xl mb-4">{feature.title}</h3>

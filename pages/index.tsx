@@ -11,6 +11,7 @@ import { MainLayout } from "../components/landing-page/layout/MainLayout";
 import { Header } from "../components/landing-page/header/Header";
 import { FeaturesSection } from "../components/landing-page/section-features/FeaturesSection";
 import { Hero } from "../components/landing-page/hero/Hero";
+import { FeaturesInfoSection } from "../components/landing-page/section-features-info/FeaturesInfoSection";
 
 const Home: NextPage = () => {
   return (
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
         <Hero />
       </MainLayout>
       <FeaturesSection />
+      <FeaturesInfoSection />
     </div>
   );
 };
