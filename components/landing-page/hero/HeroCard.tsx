@@ -9,8 +9,8 @@ interface HeroCardProps {}
 
 export const HeroCard: React.FC<HeroCardProps> = ({}) => {
   return (
-    <div className="w-full bg-cardGray flex flex-col sm:flex-row sm:gap-5 justify-between items-center p-8 lg:py-3 rounded-2xl mt-11 lg:mt-0 lg:mb-8 xl:mb-0 drop-shadow-lg md:col-span-2 lg:col-span-1">
-      <p className="sm:w-2/3 text-2xl mb-2 sm:mb-0 font-semibold flex-1 text-center sm:text-start">
+    <div className="w-full bg-cardGray flex flex-col sm:flex-row sm:gap-5 justify-between items-center p-8 py-5 sm:py-8 lg:py-3 rounded-2xl mt-5 md:mt-11 lg:mt-0 lg:mb-8 xl:mb-0 drop-shadow-lg md:col-span-2 lg:col-span-1">
+      <p className="sm:w-2/3 text-[#333] leading-5 text-lg sm:text-2xl mb-4 sm:mb-0 font-semibold flex-1 text-center sm:text-start">
         Lets create a new CV with our CV Builder
       </p>
       <Button>

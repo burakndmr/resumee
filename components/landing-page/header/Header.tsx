@@ -6,7 +6,7 @@ interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
   return (
-    <header className=" pt-12">
+    <header className="pt-5 md:pt-12">
       <nav className="flex justify-between items-center ">
         <div className="font-extrabold text-4xl">
           <Link href="/">
