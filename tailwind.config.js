@@ -24,6 +24,7 @@ module.exports = {
     extend: {
       spacing: {
         73: "18.75rem",
+        hero: "calc(100vh-60px)",
       },
     },
   },
