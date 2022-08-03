@@ -1,10 +1,14 @@
 // IMPORT REACT STUFF
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
 // IMPORT TYPES
 import type { NextPage } from "next";
+
+// IMPORT PACKAGES
+import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
 
 // IMPORT COMPONENTS
 import { MainLayout } from "../components/landing-page/layout/MainLayout";
@@ -14,6 +18,16 @@ import { Hero } from "../components/landing-page/hero/Hero";
 import { FeaturesInfoSection } from "../components/landing-page/section-features-info/FeaturesInfoSection";
 
 const Home: NextPage = () => {
+  const [featuresSectionRef, featuresSectionInView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  const [heroRef, heroInView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
   return (
     <div>
       <Head>
@@ -29,7 +43,10 @@ const Home: NextPage = () => {
         <Hero />
       </MainLayout>
       <FeaturesSection />
-      <FeaturesInfoSection />
+      <FeaturesInfoSection
+      // refs={featuresInfoSectionRef}
+      // view={featuresInfoSectionInView}
+      />
     </div>
   );
 };

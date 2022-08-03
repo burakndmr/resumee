@@ -5,5 +5,14 @@
 @layer base {
   html {
     @apply scroll-smooth;
+   
   }
+  html,
+body {
+	@apply h-full;
+}
+
+#__next {
+	@apply flex flex-col min-h-full;
+}
 }

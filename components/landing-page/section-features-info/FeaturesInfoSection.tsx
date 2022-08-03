@@ -1,5 +1,5 @@
 // IMPORT REACT STUFF
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 // IMPORT LAYOUT
@@ -35,47 +35,9 @@ export const FeaturesInfoSection: React.FC<FeaturesInfoSectionProps> = () => {
 
   return (
     <MainLayout>
-      <section className="py-14 lg:py-20">
+      <section className="py-14 lg:py-20 ">
         {features.map((feature, index) => (
           <Feature feature={feature} index={index} key={index} />
-          // <div
-          //   className="mb-12 lg:mb-16 grid md:grid-cols-2 gap-5 xl:gap-40 lg:place-items-center"
-          //   key={index}
-          // >
-          //   <div
-          //     className={` ${
-          //       (index + 1) % 2 == 0 ? "md:order-first" : "md:order-last"
-          //     }`}
-          //   >
-          //     <h3
-          //       className={`font-medium text-lg mb-2 text-center  text-primary ${
-          //         (index + 1) % 2 == 0 ? "lg:text-start" : "lg:text-end"
-          //       }`}
-          //     >
-          //       {feature.smallTitle}
-          //     </h3>
-          //     <h2
-          //       className={`font-bold text-4xl mb-6 text-center text-titleBlack ${
-          //         (index + 1) % 2 == 0 ? "lg:text-start" : "lg:text-end"
-          //       }`}
-          //     >
-          //       {feature.title}
-          //     </h2>
-          //     <p
-          //       className={`font-normal mb-6 text-center lg:text-start text-textGray ${
-          //         (index + 1) % 2 == 0 ? "lg:text-start" : "lg:text-end"
-          //       }`}
-          //     >
-          //       {feature.description}
-          //     </p>
-          //   </div>
-          //   <Image
-          //     src={feature.image}
-          //     alt={feature.title}
-          //     height={395}
-          //     width={580}
-          //   />
-          // </div>
         ))}
       </section>
     </MainLayout>

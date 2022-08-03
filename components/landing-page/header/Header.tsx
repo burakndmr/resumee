@@ -1,30 +1,63 @@
 // REACT STUFF
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// COMPONENTS
-import { Button } from "../button/Button";
+// IMPORT PACKAGES
+import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
 
 interface HeaderProps {}
 
-export const Header: React.FC<HeaderProps> = ({}) => {
+export const Header: React.FC<HeaderProps> = () => {
+  const animation = useAnimation();
+
+  const [headerRef, headerInView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (headerInView) {
+      animation.start({
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 1,
+          ease: "easeInOut",
+        },
+      });
+    } else {
+      animation.start({
+        opacity: 0,
+        y: -10,
+        transition: {
+          duration: 1,
+          ease: "easeInOut",
+        },
+      });
+    }
+  }, [headerInView]);
+
   return (
-    <header className="pt-5 md:pt-12">
+    <motion.header
+      ref={headerRef}
+      animate={animation}
+      className="pt-5 md:pt-12"
+    >
       <nav className="flex justify-between items-center ">
-        <div className="font-extrabold text-4xl">
+        <motion.div
+          ref={headerRef}
+          animate={animation}
+          className="font-extrabold opacity-0 text-4xl"
+        >
           <Link href="/">
             <a>
               <Image src="/logo.svg" alt="logo" height={50} width={177} />
             </a>
           </Link>
-        </div>
-        <Button>
-          <Link href="/app">
-            <a className="text-white m-7 hidden sm:inline">Get Started</a>
-          </Link>
-        </Button>
+        </motion.div>
       </nav>
-    </header>
+    </motion.header>
   );
 };

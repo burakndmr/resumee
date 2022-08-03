@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+//IMPORT PACKAGES
+import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
 
 // IMPORT LAYOUT
 import { MainLayout } from "../layout/MainLayout";
@@ -32,16 +36,86 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
       icon: "./landingPage/saveAndDownloadLogo.svg",
     },
   ];
+
+  const animation = useAnimation();
+  const titleAnimation = useAnimation();
+
+  const [ref, InView] = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
+
+  const [titleRef, titleInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (InView) {
+      animation.start({
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      });
+    } else {
+      animation.start({
+        opacity: 0,
+        y: 20,
+        transition: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      });
+    }
+  }, [InView]);
+
+  useEffect(() => {
+    if (titleInView) {
+      titleAnimation.start({
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      });
+    } else {
+      titleAnimation.start({
+        opacity: 0,
+        y: 20,
+        transition: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      });
+    }
+  }, [titleInView]);
+
   return (
     <section className="py-28 bg-sectionBg text-center">
       <MainLayout>
-        <h3 className="tracking-widest font-bold text-xl sm:text-2xl text-clearPurple">
+        <motion.h3
+          animate={titleAnimation}
+          ref={titleRef}
+          className="tracking-widest font-bold text-xl sm:text-2xl text-clearPurple"
+        >
           OUR FEATURES
-        </h3>
-        <h1 className="mb-20 font-bold text-3xl mx-2 sm:text-4xl sm:mx-0  text-titleBlack leading-10 ">
+        </motion.h3>
+        <motion.h1
+          animate={titleAnimation}
+          ref={titleRef}
+          className="mb-20 font-bold text-3xl mx-2 sm:text-4xl sm:mx-0  text-titleBlack leading-10 "
+        >
           CREATE CV, RESUME AND BLA BLA
-        </h1>
-        <div className="flex flex-col  md:flex-row md:flex-wrap gap-4 justify-evenly items-center">
+        </motion.h1>
+        <motion.div
+          animate={animation}
+          ref={ref}
+          className="flex flex-col  md:flex-row md:flex-wrap gap-4 justify-evenly items-center"
+        >
           {features.map((feature, index) => (
             <div
               key={index}
@@ -56,7 +130,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
               </p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </MainLayout>
     </section>
   );
