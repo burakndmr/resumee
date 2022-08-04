@@ -73,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({}) => {
 
   return (
     <section>
-      <div className="grid md:grid-cols-2 lg:gap-x-4 h-[calc(100vh-150px)] sm:h-auto">
+      <div className="grid md:grid-cols-2 lg:gap-x-16 h-[calc(100vh-150px)] sm:h-auto">
         <motion.h1
           animate={h1Animation}
           ref={h1Ref}

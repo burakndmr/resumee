@@ -16,6 +16,7 @@ import { Header } from "../components/landing-page/header/Header";
 import { FeaturesSection } from "../components/landing-page/section-features/FeaturesSection";
 import { Hero } from "../components/landing-page/hero/Hero";
 import { FeaturesInfoSection } from "../components/landing-page/section-features-info/FeaturesInfoSection";
+import { Footer } from "../components/landing-page/footer/Footer";
 
 const Home: NextPage = () => {
   const [featuresSectionRef, featuresSectionInView] = useInView({
@@ -43,10 +44,8 @@ const Home: NextPage = () => {
         <Hero />
       </MainLayout>
       <FeaturesSection />
-      <FeaturesInfoSection
-      // refs={featuresInfoSectionRef}
-      // view={featuresInfoSectionInView}
-      />
+      <FeaturesInfoSection />
+      <Footer />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Image from "next/image";
 
 //IMPORT PACKAGES
 import { useInView } from "react-intersection-observer";
@@ -21,19 +22,19 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
       title: "Fast CV Builder",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nisi fuga vel! Ea alias corporis voluptas corrupti, excepturi dolorem deleniti!",
-      icon: "./landingPage/lightningLogo.svg",
+      icon: "/landingPage/lightningLogo.svg",
     },
     {
       title: "Fast CV Builder",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nisi fuga vel! Ea alias corporis voluptas corrupti, excepturi dolorem deleniti!",
-      icon: "./landingPage/notAccountLogo.svg",
+      icon: "/landingPage/notAccountLogo.svg",
     },
     {
       title: "Fast CV Builder",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nisi fuga vel! Ea alias corporis voluptas corrupti, excepturi dolorem deleniti!",
-      icon: "./landingPage/saveAndDownloadLogo.svg",
+      icon: "/landingPage/saveAndDownloadLogo.svg",
     },
   ];
 
@@ -122,7 +123,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
               className="flex flex-col justify-between items-center w-73 mb-4 lg:mb-0 shadow-lg bg-white rounded-lg p-8 "
             >
               <div className=" flex items-center justify-center bg-yellow text-white rounded-full w-24 h-24 mb-12 shadow-md">
-                <img src={feature.icon} alt={feature.title} />
+                <Image
+                  src={feature.icon}
+                  alt={feature.title}
+                  height={45}
+                  width={45}
+                />
               </div>
               <h3 className="font-semibold text-xl mb-4">{feature.title}</h3>
               <p className="text-sm font-normal text-textGray">

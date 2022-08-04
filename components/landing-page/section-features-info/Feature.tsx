@@ -42,7 +42,7 @@ export const Feature: React.FC<FeatureProps> = ({ feature, index }) => {
         opacity: 0,
         x: 10,
         transition: {
-          duration: 1.3,
+          duration: 1.5,
           ease: "easeInOut",
         },
       });
@@ -51,7 +51,7 @@ export const Feature: React.FC<FeatureProps> = ({ feature, index }) => {
         opacity: 0,
         x: -10,
         transition: {
-          duration: 1.3,
+          duration: 1.5,
           ease: "easeOut",
         },
       });
