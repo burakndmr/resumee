@@ -19,16 +19,6 @@ import { FeaturesInfoSection } from "../components/landing-page/section-features
 import { Footer } from "../components/landing-page/footer/Footer";
 
 const Home: NextPage = () => {
-  const [featuresSectionRef, featuresSectionInView] = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
-
-  const [heroRef, heroInView] = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
-
   return (
     <div>
       <Head>

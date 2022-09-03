@@ -1,28 +1,47 @@
-import React, { createContext, useContext, useState, useReducer } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useReducer,
+  useEffect,
+} from "react";
 
 import resumeReducer from "../Reducers/resumeReducer";
 // IMPORT TYPES
-import { resumeType, InitialStateType } from "../lib/types";
+import { Resume } from "../lib/types";
 
-const MainContext = createContext<{
-  state: resumeType;
+interface InitialType {
+  state: Resume[];
   dispatch: React.Dispatch<any>;
-}>({
-  state: { id: 0, name: "", email: "", phone: "" },
+}
+
+const InitialState = {
+  state: [],
   dispatch: () => {},
-});
+};
+
+const MainContext = createContext<InitialType>(InitialState);
 
 export const MainProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const initialState: resumeType = {
-    id: 0,
-    name: "",
-    email: "",
-    phone: "",
-  };
+  const initialState: Resume[] | null = [];
 
   const [state, dispatch] = useReducer(resumeReducer, initialState);
+
+  useEffect(() => {
+    const resumes = localStorage.getItem("resumes");
+    if (resumes) {
+      dispatch({
+        type: "GET_RESUMES",
+        payload: JSON.parse(resumes),
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("resumes", JSON.stringify(state));
+  }, [state]);
 
   return (
     <MainContext.Provider value={{ state, dispatch }}>
@@ -34,68 +53,5 @@ export const MainProvider: React.FC<{ children: React.ReactNode }> = ({
 // create useContext hook
 export const useMainContext = () => {
   const context = useContext(MainContext);
-
   return context;
 };
-
-// interface Resume {
-//   name: string;
-//   email: string;
-//   phone: string;
-//   address: string;
-//   summary: string;
-//   education: Education[];
-//   experience: Experience[];
-//   skills: Skill[];
-//   languages: Language[];
-//   interests: Interest[];
-//   references: Reference[];
-
-// }
-
-// interface Education {
-//   institution: string;
-//   area: string;
-//   studyType: string;
-//   startDate: string;
-//   endDate: string;
-//   gpa: string;
-//   courses: string[];
-// }
-
-// interface Experience {
-//   company: string;
-//   position: string;
-//   website: string;
-//   startDate: string;
-//   endDate: string;
-//   summary: string;
-//   highlights: string[];
-// }
-
-// interface Skill {
-//   name: string;
-//   level: string;
-//   keywords: string[];
-// }
-
-// interface Language {
-//   name: string;
-//   level: string;
-// }
-
-// interface Interest {
-//   name: string;
-//   keywords: string[];
-// }
-
-// interface Reference {
-//   name: string;
-//   reference: string;
-// }
-
-// const ResumeContext = createContext<Resume | null>(null);
-
-// export const ResumeProvider = ResumeContext.Provider;
-// export const useResume = () => useContext(ResumeContext);
-// export default ResumeContext;

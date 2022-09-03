@@ -9,6 +9,8 @@ import { motion, useAnimation } from "framer-motion";
 // IMPORT COMPONENTS
 import { Button } from "../button/Button";
 
+import { useMainContext } from "../../../context/MainContext";
+
 interface HeroCardProps {}
 
 export const HeroCard: React.FC<HeroCardProps> = ({}) => {
@@ -50,9 +52,10 @@ export const HeroCard: React.FC<HeroCardProps> = ({}) => {
       <p className="sm:w-2/3 text-[#333] leading-5 text-lg sm:text-2xl mb-4 sm:mb-0 font-semibold flex-1 text-center sm:text-start">
         Lets create a new CV with our CV Builder
       </p>
+
       <Button>
-        <Link href="/app">
-          <a className="text-white p-5 ">Quick Start</a>
+        <Link href="/app/dashboard">
+          <a className="text-white text-lg font-semibold p-5">Create CV</a>
         </Link>
       </Button>
     </motion.div>
