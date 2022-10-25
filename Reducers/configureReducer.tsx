@@ -1,15 +1,15 @@
 import { Config } from "../lib/types";
 
 export default function configureReducer(
-  state: Config[],
+  configureState: Config[],
   action: any
 ): Config[] {
-  console.log("CONFIG_REDUCER", state);
+  console.log("CONFIG_REDUCER", configureState);
   switch (action.type) {
     case "SET_SELECTED_RESUME":
       return action.payload;
 
     default:
-      return state;
+      return configureState;
   }
 }

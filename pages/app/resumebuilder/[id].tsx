@@ -1,9 +1,10 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, useEffect } from "react";
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 
 import uniqid from "uniqid";
 
-import { Resume } from "../../../lib/types";
+import { Config, Resume } from "../../../lib/types";
 
 import { useMainContext } from "../../../context/MainContext";
 
@@ -11,10 +12,22 @@ import { useFormik, Formik, Form, Field } from "formik";
 
 import Link from "next/link";
 import Router from "next/router";
+import { useConfigureContext } from "../../../context/ConfigureContext";
 
 const App: NextPage = () => {
+  const router = useRouter();
+
   const { state, dispatch } = useMainContext();
 
+  const { configureState } = useConfigureContext();
+
+  const configureArray = [];
+  configureState.map((el) => configureArray.push(el));
+
+  // const SelectedId = configureArray.filter(
+  //   (config: Config) => config.selectedResume === router.query.id
+  // );
+  // console.log("SELECTED ID", SelectedId);
   const formik = useFormik({
     initialValues: {
       resumeInfo: {
@@ -71,6 +84,9 @@ const App: NextPage = () => {
         ],
       },
     },
+
+    // For if context or localStorage has value, initial value is change
+    // enableReinitialize: true,
 
     onSubmit: (values) => {
       const resumeLenght = state.length;

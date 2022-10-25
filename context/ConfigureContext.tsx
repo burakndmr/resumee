@@ -6,13 +6,13 @@ import configureReducer from "../Reducers/configureReducer";
 import { Config } from "../lib/types";
 
 interface InitialType {
-  state: Config[];
-  dispatch: React.Dispatch<any>;
+  configureState: Config[];
+  configureDispatch: React.Dispatch<any>;
 }
 
 const InitialState = {
-  state: [],
-  dispatch: () => {},
+  configureState: [],
+  configureDispatch: () => {},
 };
 
 const ConfigureContext = createContext<InitialType>(InitialState);
@@ -26,12 +26,15 @@ export const ConfigureProvider: React.FC<{ children: React.ReactNode }> = ({
     },
   ];
 
-  const [state, dispatch] = useReducer(configureReducer, initialState);
+  const [configureState, configureDispatch] = useReducer(
+    configureReducer,
+    initialState
+  );
 
   useEffect(() => {
     const selectedResume = localStorage.getItem("resumeConfig");
     if (selectedResume) {
-      dispatch({
+      configureDispatch({
         type: "SET_SELECTED_RESUME",
         payload: JSON.parse(selectedResume),
       });
@@ -39,12 +42,18 @@ export const ConfigureProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("resumeConfig", JSON.stringify(state));
-  }, [state]);
+    localStorage.setItem("resumeConfig", JSON.stringify(configureState));
+  }, [configureState]);
 
   return (
-    <ConfigureContext.Provider value={{ state, dispatch }}>
+    <ConfigureContext.Provider value={{ configureState, configureDispatch }}>
       {children}
     </ConfigureContext.Provider>
   );
+};
+
+// create useContext hook
+export const useConfigureContext = () => {
+  const context = useContext(ConfigureContext);
+  return context;
 };
