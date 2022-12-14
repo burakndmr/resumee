@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import createResumeReducer from "../slices/createResume/createResumeSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    createResume: createResumeReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

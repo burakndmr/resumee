@@ -1,5 +1,6 @@
 export interface Resume {
-  resumeInfo: ResumeInfo;
+  id: string;
+  resumeName: string
   mainInfo: MainInfo;
   profileInfo: ProfileInfo;
   educationInfo: EducationInfo;
@@ -8,11 +9,6 @@ export interface Resume {
 
 export interface Config {
   selectedResume: string;
-}
-
-export interface ResumeInfo {
-  resumeName: string;
-  id: string;
 }
 
 export interface MainInfo {
