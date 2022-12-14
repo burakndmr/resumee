@@ -1,0 +1,15 @@
+{
+  "files.exclude": {
+    ".next": true,
+    "node_modules": true,
+    ".eslintrc.json": true,
+    ".gitignore": true,
+    "package-lock.json": true,
+    "postcss.config.js": true,
+    "README.md": true,
+    "public": true,
+    "styles": true,
+    "next-env.d.ts": true,
+    "next.config.js": true
+  }
+}
