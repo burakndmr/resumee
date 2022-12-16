@@ -3,7 +3,7 @@ import { Resume } from "../../lib/types";
 
 const initialState: Resume[] = [];
 
-const createResumeSlice = createSlice({
+const resumeActionSlice = createSlice({
   name: "createResume",
   initialState,
   reducers: {
@@ -22,14 +22,19 @@ const createResumeSlice = createSlice({
     },
     updateResume: (state, action: PayloadAction<Resume>) => {
       const { id } = action.payload;
-      const existingResume = state.find((resume) => resume.id === id);
 
-      if (existingResume) {
-        console.log("RESUME", state[Number(id)]);
-        console.log(
-          "RESUMEEE",
-          state.find((resume) => resume.id === id)
-        );
+      const selectedResume = state.find((resume) => resume.id === id);
+      if (selectedResume) {
+        return state.map((resume) => {
+          if (resume.id === id) {
+            return {
+              ...resume,
+              ...action.payload,
+            };
+          } else {
+            return resume;
+          }
+        });
       }
     },
     deleteResume: (state, action: PayloadAction<string>) => {
@@ -41,6 +46,6 @@ const createResumeSlice = createSlice({
 export const selectAllResumes = (state: any) => state.createResume;
 
 export const { addResume, deleteResume, updateResume } =
-  createResumeSlice.actions;
+  resumeActionSlice.actions;
 
-export default createResumeSlice.reducer;
+export default resumeActionSlice.reducer;

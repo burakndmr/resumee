@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     fontFamily: {
@@ -16,7 +17,7 @@ module.exports = {
       sectionBg: "#FFF3EE",
       white: "#fff",
       cardGray: "#F9F9F9",
-      yellow: "#FFE600",
+      imageYellow: "#FFE600",
       textGray: "#676767",
       clearPurple: "#FF9D9E",
       titleBlack: "#2E2E2E",
@@ -28,5 +29,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };

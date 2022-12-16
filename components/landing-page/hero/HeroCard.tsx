@@ -9,8 +9,6 @@ import { motion, useAnimation } from "framer-motion";
 // IMPORT COMPONENTS
 import { Button } from "../button/Button";
 
-import { useMainContext } from "../../../context/MainContext";
-
 interface HeroCardProps {}
 
 export const HeroCard: React.FC<HeroCardProps> = ({}) => {

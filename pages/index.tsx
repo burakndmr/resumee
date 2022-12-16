@@ -1,15 +1,16 @@
 // IMPORT REACT STUFF
+// ------------------ NEXT - REACT ------------------
 import { useEffect, useState } from "react";
 import Head from "next/head";
 
-// IMPORT TYPES
+// ------------------ TYPESCRIPT ------------------
 import type { NextPage } from "next";
 
-// IMPORT PACKAGES
+// ------------------ REACT INTERSECTION OBSERVER - FRAMER MOTION ------------------
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 
-// IMPORT COMPONENTS
+// ------------------ COMPONENTS ------------------
 import { MainLayout } from "../components/landing-page/layout/MainLayout";
 import { Header } from "../components/landing-page/header/Header";
 import { FeaturesSection } from "../components/landing-page/section-features/FeaturesSection";

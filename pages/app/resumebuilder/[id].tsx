@@ -1,45 +1,30 @@
-import React, { Dispatch, useEffect, useState } from "react";
+// ------------------ NEXT - REACT ------------------
+import React, { useEffect, useState } from "react";
+
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-
-import uniqid from "uniqid";
-
-import { Config, Resume } from "../../../lib/types";
-
-import { useMainContext } from "../../../context/MainContext";
-
-import { useFormik, Formik, Form, Field } from "formik";
-
 import Link from "next/link";
 import Router from "next/router";
-import { useConfigureContext } from "../../../context/ConfigureContext";
+
+// ------------------ TYPESCRIPT ------------------
+import { Config, Resume } from "../../../lib/types";
+
+// ----------------- FLOWBITE -----------------
+import { Alert, Progress } from "flowbite-react";
+
+// ------------------ FORMIK ------------------
+import { useFormik, Formik, Form, Field } from "formik";
 
 // ------------------ REDUX ------------------
-
 import { useSelector, useDispatch } from "react-redux";
-
 import {
   addResume,
   selectAllResumes,
   updateResume,
-} from "../../../slices/createResume/createResumeSlice";
+} from "../../../slices/resumeActions/resumeActionSlice";
 
 const App: NextPage = () => {
-  const router = useRouter();
-
-  console.log("router", router.query);
-
-  // const { state, dispatch } = useMainContext();
-
-  const { configureState } = useConfigureContext();
-
-  const configureArray = [];
-  configureState.map((el) => configureArray.push(el));
-
-  const dispatch = useDispatch();
-
-  const resumes = useSelector(selectAllResumes);
-
+  // Initial Values for the form
   const initialValue = {
     id: "",
     resumeName: "resume1",
@@ -94,114 +79,33 @@ const App: NextPage = () => {
     },
   };
 
-  const defaultValue = {
-    id: "",
-    resumeName: "resume1",
-    mainInfo: {
-      sectionName: "mainInfo",
-      name: "BURAKKKKKK",
-      phone: "123123123",
-      city: "",
-      jobTitle: "",
-      email: "",
-      links: [
-        {
-          name: "LinkedIn",
-          url: "",
-        },
-        {
-          name: "Github",
-          url: "",
-        },
-      ],
-    },
-    profileInfo: {
-      sectionName: "profileInfo",
-      profileDescription: "",
-    },
-    educationInfo: {
-      sectionName: "profileInfo",
-      educations: [
-        {
-          schoolName: "",
-          degree: "",
-          fieldOfStudy: "",
-          startDate: "",
-          endDate: "",
-          schoolCity: "",
-          schoolCountry: "",
-        },
-      ],
-    },
-    Skills: {
-      sectionName: "Skills",
-      skills: [
-        {
-          skillName: "skill1",
-          skillLevel: "",
-        },
-        {
-          skillName: "skill2",
-          skillLevel: "",
-        },
-      ],
-    },
-  };
+  // For initial form values
+  const [initialState, setInitialState] = useState(initialValue);
 
-  if (router.query.id === "newResume") {
-    console.log("NEW RESUME");
-  } else {
-    console.log("OLD RESUME");
-  }
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+  const resumes = useSelector(selectAllResumes);
+
+  const isNewResume: Boolean = router.query.id === "newResume";
 
   const selectedResumeArr = resumes.filter(
     (resume: Resume) => resume.id === router.query.id
   );
 
-  const selectedResume = selectedResumeArr[0];
-
-  const [initialState, setInitialState] = useState(initialValue);
-
-  console.log("initialState", initialState);
-
   useEffect(() => {
-    if (router.query.id == "newResume") {
+    if (isNewResume) {
       setInitialState(initialValue);
     } else {
-      setInitialState(selectedResume);
-
-      console.log("selected", selectedResume);
+      setInitialState(selectedResumeArr[0]);
     }
   }, []);
 
-  // const SelectedId = configureArray.filter(
-  //   (config: Config) => config.selectedResume === router.query.id
-  // );
-  // console.log("SELECTED ID", SelectedId);
   const formik = useFormik({
     initialValues: initialState,
     enableReinitialize: true,
-    // For if context or localStorage has value, initial value is change
-    // enableReinitialize: true,
-
     onSubmit: (values) => {
-      // if (resumeLenght > 0) {
-      //   dispatch({
-      //     type: "SET_RESUME",
-      //     payload: values,
-      //   });
-      // } else {
-      //   dispatch({
-      //     type: "SET_RESUME",
-      //     payload: [],
-      //   });
-      // dispatch({
-      //   type: "SET_RESUME",
-      //   payload: values,
-      // });
-
-      // }
-      if (router.query.id === "newResume") {
+      if (isNewResume) {
         dispatch(addResume(values));
       } else {
         dispatch(updateResume(values));
@@ -233,14 +137,6 @@ const App: NextPage = () => {
           YAZDIR
         </button>
       </form>
-      {/* {
-        <div>
-          {Array.isArray(state) &&
-            state.map((el: Resume, i: Number) => (
-              <div key={i.toString()}>{el.mainInfo.name}</div>
-            ))}
-        </div>
-      } */}
     </>
   );
 };

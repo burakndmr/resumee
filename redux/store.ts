@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import createResumeReducer from "../slices/createResume/createResumeSlice";
+import createResumeReducer from "../slices/resumeActions/resumeActionSlice";
 
 export const store = configureStore({
   reducer: {

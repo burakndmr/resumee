@@ -7,7 +7,6 @@ import Link from "next/link";
 import { MainLayout } from "../layout/MainLayout";
 
 // IMPORT COMPONENTS
-//
 
 interface FooterProps {}
 
