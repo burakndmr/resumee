@@ -33,13 +33,11 @@ const Index: React.FC<indexProps> = ({}) => {
       <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 mt-6 grid-flow-row-dense">
         <h1 className="font-bold text-4xl md:col-start-1">Dashboard</h1>
         <hr className="my-4 md:col-span-4 xl:col-span-6" />
-        <Button extraCss="md:col-span-1 md:col-start-4  xl:col-start-6">
-          <Link href="/app/resumebuilder/newResume">
-            <a className="text-white text-lg font-semibold p-5 whitespace-nowrap ">
-              Create Resume
-            </a>
-          </Link>
-        </Button>
+        <Link href="/app/resumebuilder/newResume">
+          <a className="text-white text-lg font-semibold whitespace-nowrap w-full md:col-span-1 md:col-start-4 xl:col-start-6">
+            <Button extraCss=" w-full  p-5">Create Resume</Button>
+          </a>
+        </Link>
       </div>
       <div>
         <ul>
