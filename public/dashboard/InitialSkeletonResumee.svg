@@ -1,0 +1,24 @@
+<svg width="350" height="513" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_4" height="156.875" width="350.625" y="-1.50003" x="0.86957" stroke="#fb5012" fill="#fb5012"/>
+  <ellipse stroke-width="6" ry="50" rx="50.9375" id="svg_1" cy="76.62497" cx="69.0625" stroke="#000" fill="#fff"/>
+  <rect id="svg_6" height="7.5" width="108.75" y="183.49997" x="15" stroke="#000" fill="#141414"/>
+  <rect id="svg_7" height="73.75" width="128.125" y="202.24997" x="15" stroke="#000" fill="#424242"/>
+  <rect id="svg_19" height="9.375" width="109.375" y="285.94314" x="15.90909" stroke="#000" fill="#141414"/>
+  <rect stroke="#000" id="svg_20" height="15.7386" width="118.46586" y="38.67179" x="150.45379" fill="#141414"/>
+  <rect stroke="#000" id="svg_21" height="7.55683" width="90.2842" y="65.03528" x="151.36288" fill="#424242"/>
+  <rect stroke="#000" id="svg_8" height="33.01122" width="123.01129" y="78.67158" x="151.36288" fill="#424242"/>
+  <rect id="svg_9" height="80" width="125.625" y="303.49997" x="16.25" stroke="#000" fill="#424242"/>
+  <rect id="svg_10" height="320.625" width="3.125" y="173.49997" x="163.75" stroke="#000" fill="#fff"/>
+  <rect id="svg_11" height="8.75" width="121.875" y="183.16482" x="180.02718" stroke="#000" fill="#141414"/>
+  <rect stroke="#000" id="svg_12" height="6.25" width="97.61776" y="202.87497" x="181.25" fill="#424242"/>
+  <rect stroke="#000" id="svg_13" height="13.125" width="97.77174" y="216.62497" x="181.25" fill="#424242"/>
+  <rect id="svg_14" height="48.125" width="98.75" y="236.62497" x="180.625" stroke="#000" fill="#424242"/>
+  <rect id="svg_15" height="10.625" width="125" y="309.74997" x="180" stroke="#000" fill="#141414"/>
+  <rect id="svg_16" height="51.875" width="98.125" y="331.62497" x="180.625" stroke="#000" fill="#424242"/>
+  <path id="svg_17" d="m181.25,394.74997l128.75,0l0,11.25l-128.75,0l0,-11.25z" opacity="undefined" stroke="#000" fill="#141414"/>
+  <rect id="svg_18" height="46.25" width="106.25" y="419.74997" x="180.625" stroke="#000" fill="#424242"/>
+ </g>
+</svg>

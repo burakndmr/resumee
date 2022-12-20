@@ -17,13 +17,25 @@ export const Resumee: React.FC<ResumeeProps> = ({ resume }) => {
   const dispatch = useDispatch();
 
   return (
-    <li key={resume.id}>
+    <div key={resume.id} className="flex justify-center sm:justify-start gap-3">
       <Link href={`resumebuilder/${resume.id}`}>
-        <a>{resume.mainInfo.name}</a>
+        <a className="h-[200px] sm:h-52 md:h-60 w-36 md:w-44 sm:h-40 relative">
+          <Image
+            src="/dashboard/InitialSkeletonResumee.svg"
+            // layout="intrinsic"
+            // width={120}
+            // height={176}
+            layout="fill" // required
+            objectFit="scale-down"
+          />
+        </a>
       </Link>
-      <button onClick={() => dispatch(deleteResume(resume.id))}>
-        DELETE_RESUME
-      </button>
-    </li>
+      <div>
+        <p>{resume.mainInfo.name}</p>
+        <button onClick={() => dispatch(deleteResume(resume.id))}>
+          DELETE_RESUME
+        </button>
+      </div>
+    </div>
   );
 };

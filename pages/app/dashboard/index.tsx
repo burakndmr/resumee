@@ -34,21 +34,21 @@ const Index: React.FC<indexProps> = ({}) => {
         <h1 className="font-bold text-4xl md:col-start-1">Dashboard</h1>
         <hr className="my-4 md:col-span-4 xl:col-span-6" />
         <Link href="/app/resumebuilder/newResume">
-          <a className="text-white text-lg font-semibold whitespace-nowrap w-full md:col-span-1 md:col-start-4 xl:col-start-6">
-            <Button extraCss=" w-full  p-5">Create Resume</Button>
+          <a className="text-white text-lg font-semibold whitespace-nowrap w-full md:col-span-1 md:col-start-4 xl:col-start-6 mb-5 md:mb-0">
+            <Button extraCss=" w-full p-5 ">Create Resume</Button>
           </a>
         </Link>
       </div>
-      <div>
-        <ul>
-          {resumes.length > 0 ? (
-            resumes.map((resume: Resume) => (
+      <div className="h-96">
+        {resumes.length > 0 ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {resumes.map((resume: Resume) => (
               <Resumee key={resume.id} resume={resume} />
-            ))
-          ) : (
-            <NoResume />
-          )}
-        </ul>
+            ))}
+          </div>
+        ) : (
+          <NoResume />
+        )}
       </div>
     </MainLayout>
   );
