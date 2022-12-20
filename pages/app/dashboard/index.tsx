@@ -1,5 +1,6 @@
 // ------------------ NEXT ------------------
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 // ------------------ TYPESCRIPT ------------------
 import { Resume } from "../../../lib/types";
@@ -27,6 +28,16 @@ const Index: React.FC<indexProps> = ({}) => {
 
   console.log("resumes", resumes);
 
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setLoad(true);
+    } else {
+      setLoad(false);
+    }
+  }, []);
+
   return (
     <MainLayout>
       <Header />
@@ -40,7 +51,9 @@ const Index: React.FC<indexProps> = ({}) => {
         </Link>
       </div>
       <div className="h-96">
-        {resumes.length > 0 ? (
+        {!load ? (
+          <p>LOADING</p>
+        ) : resumes.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {resumes.map((resume: Resume) => (
               <Resumee key={resume.id} resume={resume} />
