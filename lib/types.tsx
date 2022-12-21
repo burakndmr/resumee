@@ -2,9 +2,11 @@ export interface Resume {
   id: string;
   resumeName: string
   mainInfo: MainInfo;
-  profileInfo: ProfileInfo;
-  educationInfo: EducationInfo;
-  Skills: Skills;
+  profileInfo?: ProfileInfo;
+  educationInfo?: EducationInfo;
+  Skills?: Skills;
+  Languages?: Languages;
+  Projects?: Projects;
 }
 
 export interface Config {
@@ -54,4 +56,25 @@ export interface Skills {
 export interface Skill {
   skillName: string;
   skillLevel: string;
+}
+
+export interface Languages {
+  sectionName: string;
+  languages: Language[];
+}
+
+export interface Language {
+  languageName: string;
+  languageLevel: string;
+}
+
+export interface Projects {
+  sectionName: string;
+  projects: Project[];
+}
+
+export interface Project {
+  projectName: string;
+  projectDescription: string;
+  projectLink: string;
 }
