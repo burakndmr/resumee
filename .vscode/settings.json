@@ -5,7 +5,6 @@
     "package-lock.json": true,
     "postcss.config.js": true,
     "README.md": true,
-    "styles": true,
     "node_modules": true
   }
 }

@@ -13,12 +13,13 @@ import { Config, Resume } from "../../../lib/types";
 import { Alert, Card } from "flowbite-react";
 
 // ------------------ CUSTOM COMPS ------------------
-import { Progress } from "../../../components/resumeCreator/cvBuilder/Progress";
+import { Progress } from "../../../components/resumeCreator/cvBuilder/progress/Progress";
 
 import { BuilderLayout } from "../../../components/resumeCreator/cvBuilder/layout/CvBuilderLayout";
 
 // ------------------ FORMIK ------------------
-import { useFormik, Formik, Form, Field } from "formik";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 // ------------------ REDUX ------------------
 import { useSelector, useDispatch } from "react-redux";
@@ -95,8 +96,17 @@ const App: NextPage = () => {
     (resume: Resume) => resume.id === router.query.id
   );
 
-  const formik = useFormik({
+  const formSchema = Yup.object().shape({
+    mainInfo: Yup.object().shape({
+      name: Yup.string().required("Please enter your name"),
+      phone: Yup.string().required("Required"),
+      email: Yup.string().email("Invalid email").required("Required"),
+    }),
+  });
+
+  const formik = useFormik<Resume>({
     initialValues: isNewResume ? initialValue : selectedResumeArr[0],
+    validationSchema: formSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
       if (isNewResume) {
@@ -107,7 +117,7 @@ const App: NextPage = () => {
     },
   });
 
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(20);
 
   return (
     <>
@@ -121,24 +131,36 @@ const App: NextPage = () => {
               Tell us a little about yourself
             </h1>
             <Card>
-              <h1>{formik?.values?.mainInfo?.name}</h1>
               <form onSubmit={formik.handleSubmit}>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                   <div>
                     <label htmlFor="name">Name</label>
                     <input
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className={
+                        formik.errors.mainInfo?.name &&
+                        formik.touched.mainInfo?.name
+                          ? "input-error"
+                          : "input-normal"
+                      }
                       id="name"
                       name="mainInfo.name"
                       type="text"
                       onChange={formik.handleChange}
                       value={formik.values.mainInfo.name}
                     />
+                    <div>
+                      {formik.errors.mainInfo?.name &&
+                      formik.touched.mainInfo?.name ? (
+                        <p className="text-sm text-red-600">
+                          {formik.errors.mainInfo?.name}
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
                   <div>
                     <label htmlFor="phone">Name</label>
                     <input
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="input-normal"
                       id="phone"
                       name="mainInfo.phone"
                       type="text"
@@ -146,9 +168,37 @@ const App: NextPage = () => {
                       value={formik.values.mainInfo.phone}
                     />
                   </div>
+                  <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                      className={
+                        formik.errors.mainInfo?.email &&
+                        formik.touched.mainInfo?.email
+                          ? "input-error"
+                          : "input-normal"
+                      }
+                      id="email"
+                      name="mainInfo.email"
+                      type="text"
+                      onChange={formik.handleChange}
+                      value={formik.values.mainInfo.email}
+                    />
+                    <div>
+                      {formik.errors.mainInfo?.email &&
+                      formik.touched.mainInfo?.email ? (
+                        <p className="text-sm text-red-600">
+                          {formik.errors.mainInfo?.email}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
                 </div>
                 <button
-                  onClick={() => Router.push("/app/dashboard")}
+                  onClick={() => {
+                    formik.isValidating
+                      ? () => Router.push("/app/dashboard")
+                      : () => console.log("not valid");
+                  }}
                   type="submit"
                 >
                   YAZDIR
