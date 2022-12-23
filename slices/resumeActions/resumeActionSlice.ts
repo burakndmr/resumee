@@ -16,6 +16,11 @@ const resumeActionSlice = createSlice({
           payload: {
             ...resume,
             id: nanoid(),
+            createInfo: {
+              ...resume.createInfo,
+              date: new Date().toISOString(),
+              isUpdated: false,
+            },
           },
         };
       },
@@ -30,6 +35,11 @@ const resumeActionSlice = createSlice({
             return {
               ...resume,
               ...action.payload,
+              createInfo: {
+                ...resume.createInfo,
+                isUpdated: true,
+                date: new Date().toISOString(),
+              },
             };
           } else {
             return resume;

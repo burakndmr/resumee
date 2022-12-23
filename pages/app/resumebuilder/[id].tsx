@@ -7,7 +7,7 @@ import Link from "next/link";
 import Router from "next/router";
 
 // ------------------ TYPESCRIPT ------------------
-import { Config, Resume } from "../../../lib/types";
+import { Resume } from "../../../lib/types";
 
 // ----------------- FLOWBITE -----------------
 import { Alert, Card } from "flowbite-react";
