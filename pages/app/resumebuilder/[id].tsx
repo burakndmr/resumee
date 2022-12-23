@@ -109,11 +109,9 @@ const App: NextPage = () => {
     validationSchema: formSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      if (isNewResume) {
-        dispatch(addResume(values));
-      } else {
-        dispatch(updateResume(values));
-      }
+      isNewResume
+        ? dispatch(addResume(values))
+        : dispatch(updateResume(values));
     },
   });
 
@@ -194,12 +192,16 @@ const App: NextPage = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() => {
-                    formik.isValidating
-                      ? () => Router.push("/app/dashboard")
-                      : () => console.log("not valid");
-                  }}
                   type="submit"
+                  onClick={
+                    isNewResume
+                      ? formik.dirty && formik.isValid
+                        ? () => Router.push("/app/dashboard")
+                        : () => console.log("not ready")
+                      : formik.isValid
+                      ? () => Router.push("/app/dashboard")
+                      : () => console.log("not ready")
+                  }
                 >
                   YAZDIR
                 </button>
