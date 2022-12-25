@@ -134,27 +134,9 @@ const App: NextPage = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl my-6 md:my-9 lg:my-12 text-center font-bold font-sans">
               Tell us a little about yourself
             </h1>
-            <Card>
-              <form onSubmit={formik.handleSubmit}>
-                <Flowbite
-                  theme={{
-                    theme: {
-                      tab: {
-                        tablist: {
-                          tabitem: {
-                            styles: {
-                              underline: {
-                                active: {
-                                  on: "text-primary border-b-2 border-primary",
-                                },
-                              },
-                            },
-                          },
-                        },
-                      },
-                    },
-                  }}
-                >
+            
+              <Card>
+                <form onSubmit={formik.handleSubmit}>
                   <Tabs.Group aria-label="Tabs" style="underline">
                     <Tabs.Item title="Main Info">
                       <div className="grid gap-6 md:grid-cols-2 justify-items-stretch">
@@ -296,6 +278,63 @@ const App: NextPage = () => {
                         />
                       </div>
                     </Tabs.Item>
+                    <Tabs.Item title="Another Info">
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="sectionName"
+                        >
+                          Education
+                        </label>
+                        <input
+                          className="input-normal"
+                          id="sectionName"
+                          name="educationInfo.sectionName"
+                          type="text"
+                          placeholder="School Name"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.sectionName}
+                        />
+                      </div>
+                    </Tabs.Item>
+                    <Tabs.Item title="Another Info">
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="sectionName"
+                        >
+                          Education
+                        </label>
+                        <input
+                          className="input-normal"
+                          id="sectionName"
+                          name="educationInfo.sectionName"
+                          type="text"
+                          placeholder="School Name"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.sectionName}
+                        />
+                      </div>
+                    </Tabs.Item>
+                    <Tabs.Item title="Another Info">
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="sectionName"
+                        >
+                          Education
+                        </label>
+                        <input
+                          className="input-normal"
+                          id="sectionName"
+                          name="educationInfo.sectionName"
+                          type="text"
+                          placeholder="School Name"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.sectionName}
+                        />
+                      </div>
+                    </Tabs.Item>
                   </Tabs.Group>
                   <button
                     type="submit"
@@ -312,9 +351,9 @@ const App: NextPage = () => {
                   >
                     Next
                   </button>
-                </Flowbite>
-              </form>
-            </Card>
+                </form>
+              </Card>
+            
           </div>
         </BuilderLayout>
       )}
