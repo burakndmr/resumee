@@ -18,6 +18,10 @@ import { Button } from "../../../components/landing-page/button/Button";
 
 import { BuilderLayout } from "../../../components/resumeCreator/cvBuilder/layout/CvBuilderLayout";
 
+// --------------- TABS COMPONENTS ---------------
+import { TabPanel, useTabs } from "react-headless-tabs";
+import { TabSelector } from "../../../components/resumeCreator/cvBuilder/Tabs/TabSelector";
+
 // ------------------ FORMIK ------------------
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -123,6 +127,8 @@ const App: NextPage = () => {
 
   const [progress, setProgress] = useState(20);
 
+  const [selectedTab, setSelectedTab] = useTabs(["Main Info", "Another Info"]);
+
   return (
     <>
       {formik.values?.mainInfo?.name === undefined ? (
@@ -134,10 +140,13 @@ const App: NextPage = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl my-6 md:my-9 lg:my-12 text-center font-bold font-sans">
               Tell us a little about yourself
             </h1>
-            
-              <Card>
-                <form onSubmit={formik.handleSubmit}>
-                  <Tabs.Group aria-label="Tabs" style="underline">
+
+            <Card>
+              <form
+                onSubmit={formik.handleSubmit}
+                className="w-[700px] overflow-hidden"
+              >
+                {/* <Tabs.Group aria-label="Tabs" style="underline">
                     <Tabs.Item title="Main Info">
                       <div className="grid gap-6 md:grid-cols-2 justify-items-stretch">
                         <div className="row-start-2 row-end-3 md:row-start-1 md:row-end-2">
@@ -278,82 +287,211 @@ const App: NextPage = () => {
                         />
                       </div>
                     </Tabs.Item>
-                    <Tabs.Item title="Another Info">
+                    <Tabs.Item title="Another Info"> */}
+                <div className="border-b-[1px] border-gray-200 ">
+                  <TabSelector
+                    isActive={selectedTab === "Main Info"}
+                    onClick={() => setSelectedTab("Main Info")}
+                  >
+                    Main Info
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Another Info"}
+                    onClick={() => setSelectedTab("Another Info")}
+                  >
+                    Another Info
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Another Info"}
+                    onClick={() => setSelectedTab("Another Info")}
+                  >
+                    Another Info
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Another Info"}
+                    onClick={() => setSelectedTab("Another Info")}
+                  >
+                    Another Info
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Another Info"}
+                    onClick={() => setSelectedTab("Another Info")}
+                  >
+                    Another Info
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Another Info"}
+                    onClick={() => setSelectedTab("Another Info")}
+                  >
+                    Another Info
+                  </TabSelector>
+                </div>
+                <TabPanel hidden={selectedTab != "Main Info"}>
+                  <div className="grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    <div className="row-start-2 row-end-3 md:row-start-1 md:row-end-2">
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="name"
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        className={
+                          formik.errors.mainInfo?.name &&
+                          formik.touched.mainInfo?.name
+                            ? "input-error"
+                            : "input-normal"
+                        }
+                        id="name"
+                        name="mainInfo.name"
+                        type="text"
+                        placeholder="John Doe"
+                        onChange={formik.handleChange}
+                        value={formik.values.mainInfo.name}
+                      />
                       <div>
-                        <label
-                          className="text-md font-semibold text-gray-900"
-                          htmlFor="sectionName"
-                        >
-                          Education
-                        </label>
-                        <input
-                          className="input-normal"
-                          id="sectionName"
-                          name="educationInfo.sectionName"
-                          type="text"
-                          placeholder="School Name"
-                          onChange={formik.handleChange}
-                          value={formik.values.educationInfo?.sectionName}
-                        />
+                        {formik.errors.mainInfo?.name &&
+                        formik.touched.mainInfo?.name ? (
+                          <p className="text-sm text-red-600">
+                            {formik.errors.mainInfo?.name}
+                          </p>
+                        ) : null}
                       </div>
-                    </Tabs.Item>
-                    <Tabs.Item title="Another Info">
+                    </div>
+                    <div className="md:row-span-2 flex items-center justify-center">
+                      <div className="flex items-center text-center cursor-pointer justify-center bg-primaryClick rounded-full h-32 w-32">
+                        <p className="text-xs text-white">
+                          Add Photo <br /> (coming soon)
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="jobTitle"
+                      >
+                        Job Title
+                      </label>
+                      <input
+                        className="input-normal"
+                        id="jobTitle"
+                        name="mainInfo.jobTitle"
+                        type="text"
+                        placeholder="Frontend Developer"
+                        onChange={formik.handleChange}
+                        value={formik.values.mainInfo.jobTitle}
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="email"
+                      >
+                        Email
+                      </label>
+                      <input
+                        className={
+                          formik.errors.mainInfo?.email &&
+                          formik.touched.mainInfo?.email
+                            ? "input-error"
+                            : "input-normal"
+                        }
+                        id="email"
+                        name="mainInfo.email"
+                        type="text"
+                        placeholder="johndoe@resumee.com"
+                        onChange={formik.handleChange}
+                        value={formik.values.mainInfo.email}
+                      />
                       <div>
-                        <label
-                          className="text-md font-semibold text-gray-900"
-                          htmlFor="sectionName"
-                        >
-                          Education
-                        </label>
-                        <input
-                          className="input-normal"
-                          id="sectionName"
-                          name="educationInfo.sectionName"
-                          type="text"
-                          placeholder="School Name"
-                          onChange={formik.handleChange}
-                          value={formik.values.educationInfo?.sectionName}
-                        />
+                        {formik.errors.mainInfo?.email &&
+                        formik.touched.mainInfo?.email ? (
+                          <p className="text-sm text-red-600">
+                            {formik.errors.mainInfo?.email}
+                          </p>
+                        ) : null}
                       </div>
-                    </Tabs.Item>
-                    <Tabs.Item title="Another Info">
+                    </div>
+
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="phone"
+                      >
+                        Phone
+                      </label>
+                      <input
+                        className={
+                          formik.errors.mainInfo?.email &&
+                          formik.touched.mainInfo?.email
+                            ? "input-error"
+                            : "input-normal"
+                        }
+                        id="phone"
+                        name="mainInfo.phone"
+                        type="text"
+                        placeholder="555 555 55 55"
+                        onChange={formik.handleChange}
+                        value={formik.values.mainInfo.phone}
+                      />
                       <div>
-                        <label
-                          className="text-md font-semibold text-gray-900"
-                          htmlFor="sectionName"
-                        >
-                          Education
-                        </label>
-                        <input
-                          className="input-normal"
-                          id="sectionName"
-                          name="educationInfo.sectionName"
-                          type="text"
-                          placeholder="School Name"
-                          onChange={formik.handleChange}
-                          value={formik.values.educationInfo?.sectionName}
-                        />
+                        {formik.errors.mainInfo?.phone &&
+                        formik.touched.mainInfo?.phone ? (
+                          <p className="text-sm text-red-600">
+                            {formik.errors.mainInfo?.phone}
+                          </p>
+                        ) : null}
                       </div>
-                    </Tabs.Item>
-                  </Tabs.Group>
-                  <button
-                    type="submit"
-                    className="primary-btn w-full p-5 md:w-auto"
-                    onClick={
-                      isNewResume
-                        ? formik.dirty && formik.isValid
-                          ? () => Router.push("/app/dashboard")
-                          : () => console.log("not ready")
-                        : formik.isValid
+                    </div>
+                    <div className="md:justify-self-end md:col-start-2 md:col-end-3"></div>
+                  </div>
+                </TabPanel>
+                <TabPanel hidden={selectedTab != "Another Info"}>
+                  <div>
+                    <label
+                      className="text-md font-semibold text-gray-900"
+                      htmlFor="sectionName"
+                    >
+                      Education
+                    </label>
+                    <input
+                      className="input-normal"
+                      id="sectionName"
+                      name="educationInfo.sectionName"
+                      type="text"
+                      placeholder="School Name"
+                      onChange={formik.handleChange}
+                      value={formik.values.educationInfo?.sectionName}
+                    />
+                  </div>
+                </TabPanel>
+
+                {/* </Tabs.Item>
+                    <Tabs.Item title="Another Info"> */}
+
+                {/* </Tabs.Item>
+                    <Tabs.Item title="Another Info"> */}
+
+                {/* </Tabs.Item>
+                  </Tabs.Group> */}
+                <button
+                  type="submit"
+                  className="primary-btn w-full p-5 md:w-auto"
+                  onClick={
+                    isNewResume
+                      ? formik.dirty && formik.isValid
                         ? () => Router.push("/app/dashboard")
                         : () => console.log("not ready")
-                    }
-                  >
-                    Next
-                  </button>
-                </form>
-              </Card>
-            
+                      : formik.isValid
+                      ? () => Router.push("/app/dashboard")
+                      : () => console.log("not ready")
+                  }
+                >
+                  Next
+                </button>
+              </form>
+            </Card>
           </div>
         </BuilderLayout>
       )}
