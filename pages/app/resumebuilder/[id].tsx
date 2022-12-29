@@ -127,7 +127,11 @@ const App: NextPage = () => {
 
   const [progress, setProgress] = useState(20);
 
-  const [selectedTab, setSelectedTab] = useTabs(["Main Info", "Another Info"]);
+  const [selectedTab, setSelectedTab] = useTabs([
+    "Main Info",
+    "Another Info",
+    "Bnother Info",
+  ]);
 
   return (
     <>
@@ -142,10 +146,7 @@ const App: NextPage = () => {
             </h1>
 
             <Card>
-              <form
-                onSubmit={formik.handleSubmit}
-                className="w-[700px] overflow-hidden"
-              >
+              <form onSubmit={formik.handleSubmit}>
                 {/* <Tabs.Group aria-label="Tabs" style="underline">
                     <Tabs.Item title="Main Info">
                       <div className="grid gap-6 md:grid-cols-2 justify-items-stretch">
@@ -288,42 +289,26 @@ const App: NextPage = () => {
                       </div>
                     </Tabs.Item>
                     <Tabs.Item title="Another Info"> */}
-                <div className="border-b-[1px] border-gray-200 ">
+                <div className="w-full border-b-[1px] border-gray-200 flex w-full overflow-x-auto">
                   <TabSelector
                     isActive={selectedTab === "Main Info"}
                     onClick={() => setSelectedTab("Main Info")}
                   >
                     Main Info
                   </TabSelector>
+
                   <TabSelector
                     isActive={selectedTab === "Another Info"}
                     onClick={() => setSelectedTab("Another Info")}
                   >
                     Another Info
                   </TabSelector>
+
                   <TabSelector
-                    isActive={selectedTab === "Another Info"}
-                    onClick={() => setSelectedTab("Another Info")}
+                    isActive={selectedTab === "Bnother Info"}
+                    onClick={() => setSelectedTab("Bnother Info")}
                   >
-                    Another Info
-                  </TabSelector>
-                  <TabSelector
-                    isActive={selectedTab === "Another Info"}
-                    onClick={() => setSelectedTab("Another Info")}
-                  >
-                    Another Info
-                  </TabSelector>
-                  <TabSelector
-                    isActive={selectedTab === "Another Info"}
-                    onClick={() => setSelectedTab("Another Info")}
-                  >
-                    Another Info
-                  </TabSelector>
-                  <TabSelector
-                    isActive={selectedTab === "Another Info"}
-                    onClick={() => setSelectedTab("Another Info")}
-                  >
-                    Another Info
+                    Bnother Info
                   </TabSelector>
                 </div>
                 <TabPanel hidden={selectedTab != "Main Info"}>
