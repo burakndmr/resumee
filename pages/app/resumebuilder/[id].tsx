@@ -122,6 +122,7 @@ const App: NextPage = () => {
       isNewResume
         ? dispatch(addResume(values))
         : dispatch(updateResume(values));
+        // TODO => CREATE RESUMEE'YE BASTIĞINDA DİREKT BOŞ BİR OBJE AÇ VE ONUN ID'SİNİ URL'E EKLE 
     },
   });
 
@@ -147,149 +148,7 @@ const App: NextPage = () => {
 
             <Card>
               <form onSubmit={formik.handleSubmit}>
-                {/* <Tabs.Group aria-label="Tabs" style="underline">
-                    <Tabs.Item title="Main Info">
-                      <div className="grid gap-6 md:grid-cols-2 justify-items-stretch">
-                        <div className="row-start-2 row-end-3 md:row-start-1 md:row-end-2">
-                          <label
-                            className="text-md font-semibold text-gray-900"
-                            htmlFor="name"
-                          >
-                            Full Name
-                          </label>
-                          <input
-                            className={
-                              formik.errors.mainInfo?.name &&
-                              formik.touched.mainInfo?.name
-                                ? "input-error"
-                                : "input-normal"
-                            }
-                            id="name"
-                            name="mainInfo.name"
-                            type="text"
-                            placeholder="John Doe"
-                            onChange={formik.handleChange}
-                            value={formik.values.mainInfo.name}
-                          />
-                          <div>
-                            {formik.errors.mainInfo?.name &&
-                            formik.touched.mainInfo?.name ? (
-                              <p className="text-sm text-red-600">
-                                {formik.errors.mainInfo?.name}
-                              </p>
-                            ) : null}
-                          </div>
-                        </div>
-                        <div className="md:row-span-2 flex items-center justify-center">
-                          <div className="flex items-center text-center cursor-pointer justify-center bg-primaryClick rounded-full h-32 w-32">
-                            <p className="text-xs text-white">
-                              Add Photo <br /> (coming soon)
-                            </p>
-                          </div>
-                        </div>
-                        <div>
-                          <label
-                            className="text-md font-semibold text-gray-900"
-                            htmlFor="jobTitle"
-                          >
-                            Job Title
-                          </label>
-                          <input
-                            className="input-normal"
-                            id="jobTitle"
-                            name="mainInfo.jobTitle"
-                            type="text"
-                            placeholder="Frontend Developer"
-                            onChange={formik.handleChange}
-                            value={formik.values.mainInfo.jobTitle}
-                          />
-                        </div>
-
-                        <div>
-                          <label
-                            className="text-md font-semibold text-gray-900"
-                            htmlFor="email"
-                          >
-                            Email
-                          </label>
-                          <input
-                            className={
-                              formik.errors.mainInfo?.email &&
-                              formik.touched.mainInfo?.email
-                                ? "input-error"
-                                : "input-normal"
-                            }
-                            id="email"
-                            name="mainInfo.email"
-                            type="text"
-                            placeholder="johndoe@resumee.com"
-                            onChange={formik.handleChange}
-                            value={formik.values.mainInfo.email}
-                          />
-                          <div>
-                            {formik.errors.mainInfo?.email &&
-                            formik.touched.mainInfo?.email ? (
-                              <p className="text-sm text-red-600">
-                                {formik.errors.mainInfo?.email}
-                              </p>
-                            ) : null}
-                          </div>
-                        </div>
-
-                        <div>
-                          <label
-                            className="text-md font-semibold text-gray-900"
-                            htmlFor="phone"
-                          >
-                            Phone
-                          </label>
-                          <input
-                            className={
-                              formik.errors.mainInfo?.email &&
-                              formik.touched.mainInfo?.email
-                                ? "input-error"
-                                : "input-normal"
-                            }
-                            id="phone"
-                            name="mainInfo.phone"
-                            type="text"
-                            placeholder="555 555 55 55"
-                            onChange={formik.handleChange}
-                            value={formik.values.mainInfo.phone}
-                          />
-                          <div>
-                            {formik.errors.mainInfo?.phone &&
-                            formik.touched.mainInfo?.phone ? (
-                              <p className="text-sm text-red-600">
-                                {formik.errors.mainInfo?.phone}
-                              </p>
-                            ) : null}
-                          </div>
-                        </div>
-                        <div className="md:justify-self-end md:col-start-2 md:col-end-3"></div>
-                      </div>
-                    </Tabs.Item>
-                    <Tabs.Item title="Another Info">
-                      <div>
-                        <label
-                          className="text-md font-semibold text-gray-900"
-                          htmlFor="sectionName"
-                        >
-                          Education
-                        </label>
-                        <input
-                          className="input-normal"
-                          id="sectionName"
-                          name="educationInfo.sectionName"
-                          type="text"
-                          placeholder="School Name"
-                          onChange={formik.handleChange}
-                          value={formik.values.educationInfo?.sectionName}
-                        />
-                      </div>
-                    </Tabs.Item>
-                    <Tabs.Item title="Another Info"> */}
-                <div className="w-full border-b-[1px] border-gray-200 flex w-full overflow-x-auto">
+                <div className="w-full border-b-[1px] border-gray-200 flex w-full overflow-x-auto mb-4">
                   <TabSelector
                     isActive={selectedTab === "Main Info"}
                     onClick={() => setSelectedTab("Main Info")}
