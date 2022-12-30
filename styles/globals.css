@@ -22,5 +22,9 @@
 }
 
 .primary-btn {
-  @apply text-white w-full rounded-xl font-semibold text-xl bg-primary py-2 hover:bg-primaryClick active:bg-primaryActive;
+  @apply text-white w-full rounded-xl font-semibold text-xl bg-primary border-2 border-primary py-2 hover:bg-primaryClick active:bg-primaryActive;
+}
+
+.secondary-btn {
+  @apply text-primary w-full rounded-xl font-light text-lg bg-white border-2 border-primary py-2 hover:text-white hover:bg-primary active:bg-primaryClick;
 }

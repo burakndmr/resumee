@@ -88,7 +88,7 @@ const App: NextPage = () => {
             </h1>
 
             <Card>
-              <form onSubmit={formik.handleSubmit}>
+              <form className="flex flex-col" onSubmit={formik.handleSubmit}>
                 <div className="w-full border-b-[1px] border-gray-200 flex w-full overflow-x-auto mb-4">
                   <TabSelector
                     isActive={selectedTab === "Main Info"}
@@ -251,17 +251,30 @@ const App: NextPage = () => {
                     />
                   </div>
                 </TabPanel>
-                <button
-                  type="submit"
-                  className="primary-btn w-full p-5 md:w-auto"
-                  onClick={
-                    formik.dirty && formik.isValid
-                      ? () => Router.push("/app/dashboard")
-                      : () => console.log("not ready")
-                  }
-                >
-                  Next
-                </button>
+                <div className="flex items-center justify-between">
+                  <button
+                    type="button"
+                    className="secondary-btn hidden md:inline-block w-full p-5 md:w-auto"
+                    onClick={() => {
+                      selectedTab === "Main Info"
+                        ? Router.push("/app/dashboard")
+                        : setSelectedTab("Main Info");
+                    }}
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
+                    className="primary-btn w-full p-5 md:w-auto "
+                    onClick={
+                      formik.dirty && formik.isValid
+                        ? () => Router.push("/app/dashboard")
+                        : () => console.log("not ready")
+                    }
+                  >
+                    Next
+                  </button>
+                </div>
               </form>
             </Card>
           </div>
