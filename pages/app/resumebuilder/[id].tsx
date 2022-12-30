@@ -10,7 +10,7 @@ import Router from "next/router";
 import { Resume } from "../../../lib/types";
 
 // ----------------- FLOWBITE -----------------
-import { Alert, Card, Tabs, Flowbite } from "flowbite-react";
+import { Alert, Card, Tabs, Flowbite, Spinner } from "flowbite-react";
 
 // ------------------ CUSTOM COMPS ------------------
 import { Progress } from "../../../components/resumeCreator/cvBuilder/progress/Progress";
@@ -76,10 +76,12 @@ const App: NextPage = () => {
   return (
     <>
       {formik.values?.mainInfo?.name === undefined ? (
-        <p>LOADING</p>
+        <div className="h-full w-full flex items-center justify-center">
+          <Spinner color="warning" size="xl" />
+        </div>
       ) : (
         <BuilderLayout>
-          <div className="pt-10 md:pt-14 lg:pt-28">
+          <div className="pt-10 md:pt-14 lg:pt-28 pb-3">
             <Progress progress={progress} />
             <h1 className="text-4xl md:text-5xl lg:text-6xl my-6 md:my-9 lg:my-12 text-center font-bold font-sans">
               Tell us a little about yourself

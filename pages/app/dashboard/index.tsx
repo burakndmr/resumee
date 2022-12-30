@@ -19,6 +19,7 @@ import { Header } from "../../../components/landing-page/header/Header";
 import { MainLayout } from "../../../components/landing-page/layout/MainLayout";
 import { NoResume } from "../../../components/resumeCreator/dashboard/NoResume";
 import { Resumee } from "../../../components/resumeCreator/dashboard/Resumee";
+import { Spinner } from "flowbite-react";
 
 interface indexProps {}
 
@@ -104,42 +105,51 @@ const Index: React.FC<indexProps> = ({}) => {
     if (resumeCreated) {
       setTimeout(() => {
         router.push(`/app/resumebuilder/${lastCreatedResume?.id}`);
-      }, 1000);
+      }, 500);
     }
   }, [resumeCreated]);
 
   return (
     <MainLayout>
-      <Header />
-      <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 mt-6 grid-flow-row-dense">
-        <h1 className="font-bold text-4xl md:col-start-1">Dashboard</h1>
-        <hr className="my-4 md:col-span-4 xl:col-span-6" />
-        <div
-          onClick={() => dispatch(addResume(initialValue))}
-          className="text-white text-lg font-semibold whitespace-nowrap w-full md:col-span-1 md:col-start-4 xl:col-start-6 mb-5 md:mb-0"
-        >
-          <button
-            onClick={() => setResumeCreated(true)}
-            className="primary-btn w-full p-5"
-          >
-            {!resumeCreated ? "Create Resume" : "Loading"}
-          </button>
+      {resumeCreated ? (
+        <div className="h-screen w-full flex justify-center items-center">
+          <Spinner color="warning" size="xl" />
         </div>
-       
-      </div>
-      <div className="h-96">
-        {!load ? (
-          <p>LOADING</p>
-        ) : resumes.length > 0 ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {resumes.map((resume: Resume) => (
-              <Resumee key={resume.id} resume={resume} />
-            ))}
+      ) : (
+        <>
+          <Header />
+          <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 mt-6 grid-flow-row-dense">
+            <h1 className="font-bold text-4xl md:col-start-1">Dashboard</h1>
+            <hr className="my-4 md:col-span-4 xl:col-span-6" />
+            <div
+              onClick={() => dispatch(addResume(initialValue))}
+              className="text-white text-lg font-semibold whitespace-nowrap w-full md:col-span-1 md:col-start-4 xl:col-start-6 mb-5 md:mb-0"
+            >
+              <button
+                onClick={() => setResumeCreated(true)}
+                className="primary-btn w-full p-5"
+              >
+                Create Resume
+              </button>
+            </div>
           </div>
-        ) : (
-          <NoResume />
-        )}
-      </div>
+          <div
+            className={!load ? "h-96 flex items-center justify-center" : "h-96"}
+          >
+            {!load ? (
+              <Spinner color="warning" size="xl" />
+            ) : resumes.length > 0 ? (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {resumes.map((resume: Resume) => (
+                  <Resumee key={resume.id} resume={resume} />
+                ))}
+              </div>
+            ) : (
+              <NoResume />
+            )}
+          </div>
+        </>
+      )}
     </MainLayout>
   );
 };
