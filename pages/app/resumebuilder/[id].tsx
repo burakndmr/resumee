@@ -14,7 +14,6 @@ import { Alert, Card, Tabs, Flowbite } from "flowbite-react";
 
 // ------------------ CUSTOM COMPS ------------------
 import { Progress } from "../../../components/resumeCreator/cvBuilder/progress/Progress";
-import { Button } from "../../../components/landing-page/button/Button";
 
 import { BuilderLayout } from "../../../components/resumeCreator/cvBuilder/layout/CvBuilderLayout";
 
@@ -40,63 +39,6 @@ const App: NextPage = () => {
   const dispatch = useDispatch();
   const resumes = useSelector(selectAllResumes);
 
-  const isNewResume: Boolean = router.query.id === "newResume";
-
-  // Initial Values for the form
-  const initialValue = {
-    id: "",
-    resumeName: "resume1",
-    mainInfo: {
-      sectionName: "mainInfo",
-      name: "",
-      phone: "",
-      city: "",
-      jobTitle: "",
-      email: "",
-      links: [
-        {
-          name: "LinkedIn",
-          url: "",
-        },
-        {
-          name: "Github",
-          url: "",
-        },
-      ],
-    },
-    profileInfo: {
-      sectionName: "",
-      profileDescription: "",
-    },
-    educationInfo: {
-      sectionName: "profileInfo",
-      educations: [
-        {
-          schoolName: "",
-          degree: "",
-          fieldOfStudy: "",
-          startDate: "",
-          endDate: "",
-          schoolCity: "",
-          schoolCountry: "",
-        },
-      ],
-    },
-    Skills: {
-      sectionName: "Skills",
-      skills: [
-        {
-          skillName: "skill1",
-          skillLevel: "",
-        },
-        {
-          skillName: "skill2",
-          skillLevel: "",
-        },
-      ],
-    },
-  };
-
   const selectedResumeArr = resumes.filter(
     (resume: Resume) => resume.id === router.query.id
   );
@@ -115,14 +57,11 @@ const App: NextPage = () => {
   });
 
   const formik = useFormik<Resume>({
-    initialValues: isNewResume ? initialValue : selectedResumeArr[0],
+    initialValues: selectedResumeArr[0],
     validationSchema: formSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      isNewResume
-        ? dispatch(addResume(values))
-        : dispatch(updateResume(values));
-        // TODO => CREATE RESUMEE'YE BASTIĞINDA DİREKT BOŞ BİR OBJE AÇ VE ONUN ID'SİNİ URL'E EKLE 
+      dispatch(updateResume(values));
     },
   });
 
@@ -310,24 +249,11 @@ const App: NextPage = () => {
                     />
                   </div>
                 </TabPanel>
-
-                {/* </Tabs.Item>
-                    <Tabs.Item title="Another Info"> */}
-
-                {/* </Tabs.Item>
-                    <Tabs.Item title="Another Info"> */}
-
-                {/* </Tabs.Item>
-                  </Tabs.Group> */}
                 <button
                   type="submit"
                   className="primary-btn w-full p-5 md:w-auto"
                   onClick={
-                    isNewResume
-                      ? formik.dirty && formik.isValid
-                        ? () => Router.push("/app/dashboard")
-                        : () => console.log("not ready")
-                      : formik.isValid
+                    formik.dirty && formik.isValid
                       ? () => Router.push("/app/dashboard")
                       : () => console.log("not ready")
                   }
