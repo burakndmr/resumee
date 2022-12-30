@@ -67,11 +67,26 @@ const App: NextPage = () => {
 
   const [progress, setProgress] = useState(20);
 
-  const [selectedTab, setSelectedTab] = useTabs([
-    "Main Info",
-    "Another Info",
-    "Bnother Info",
-  ]);
+  const allTabs = ["Main Info", "Another Info", "Bnother Info"];
+
+  const [currTab, setCurrTab] = useState(0);
+
+  const [selectedTab, setSelectedTab] = useTabs(allTabs);
+
+  const incrementTab = () => {
+    if (currTab < allTabs.length - 1) {
+      setCurrTab((prev) => prev + 1);
+    }
+  };
+
+  const decrementTab = () => {
+    if (currTab > 0) {
+      setCurrTab((prev) => prev - 1);
+    }
+  };
+  useEffect(() => {
+    setSelectedTab(allTabs[currTab]);
+  }, [currTab]);
 
   return (
     <>
@@ -258,7 +273,7 @@ const App: NextPage = () => {
                     onClick={() => {
                       selectedTab === "Main Info"
                         ? Router.push("/app/dashboard")
-                        : setSelectedTab("Main Info");
+                        : decrementTab();
                     }}
                   >
                     Back
@@ -266,11 +281,12 @@ const App: NextPage = () => {
                   <button
                     type="submit"
                     className="primary-btn w-full p-5 md:w-auto "
-                    onClick={
+                    onClick={() => {
+                      incrementTab();
                       formik.dirty && formik.isValid
                         ? () => Router.push("/app/dashboard")
-                        : () => console.log("not ready")
-                    }
+                        : () => console.log("not ready");
+                    }}
                   >
                     Next
                   </button>
