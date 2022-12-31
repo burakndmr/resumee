@@ -37,7 +37,13 @@ export interface ProfileInfo {
 
 export interface EducationInfo {
   sectionName: string;
-  educations: Education[];
+  schoolName: string;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: string;
+  endDate: string;
+  schoolCity: string;
+  schoolCountry: string;
 }
 
 export interface Education {

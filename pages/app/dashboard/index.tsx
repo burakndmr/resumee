@@ -72,17 +72,13 @@ const Index: React.FC<indexProps> = ({}) => {
     },
     educationInfo: {
       sectionName: "profileInfo",
-      educations: [
-        {
-          schoolName: "",
-          degree: "",
-          fieldOfStudy: "",
-          startDate: "",
-          endDate: "",
-          schoolCity: "",
-          schoolCountry: "",
-        },
-      ],
+      schoolName: "",
+      degree: "",
+      fieldOfStudy: "",
+      startDate: "",
+      endDate: "",
+      schoolCity: "",
+      schoolCountry: "",
     },
     Skills: {
       sectionName: "Skills",
