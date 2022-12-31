@@ -53,6 +53,7 @@ const App: NextPage = () => {
     }),
     educationInfo: Yup.object().shape({
       sectionName: Yup.string(),
+      schoolName: Yup.string(),
     }),
   });
 
@@ -67,7 +68,7 @@ const App: NextPage = () => {
 
   const [progress, setProgress] = useState(20);
 
-  const allTabs = ["Main Info", "Another Info", "Bnother Info"];
+  const allTabs = ["Basic Info", "Education Info", "Bnother Info"];
 
   const [currTab, setCurrTab] = useState(0);
 
@@ -103,31 +104,43 @@ const App: NextPage = () => {
             </h1>
 
             <Card>
-              <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+              <form
+                className="flex flex-col justify-between min-h-[384px]"
+                onSubmit={formik.handleSubmit}
+              >
                 <div className="w-full border-b-[1px] border-gray-200 flex w-full overflow-x-auto mb-4">
                   <TabSelector
-                    isActive={selectedTab === "Main Info"}
-                    onClick={() => setSelectedTab("Main Info")}
+                    isActive={selectedTab === "Basic Info"}
+                    onClick={() => {
+                      setSelectedTab("Basic Info");
+                      setCurrTab(0);
+                    }}
                   >
-                    Main Info
+                    Basic Info
                   </TabSelector>
 
                   <TabSelector
-                    isActive={selectedTab === "Another Info"}
-                    onClick={() => setSelectedTab("Another Info")}
+                    isActive={selectedTab === "Education Info"}
+                    onClick={() => {
+                      setSelectedTab("Education Info");
+                      setCurrTab(1);
+                    }}
                   >
-                    Another Info
+                    Education Info
                   </TabSelector>
 
                   <TabSelector
                     isActive={selectedTab === "Bnother Info"}
-                    onClick={() => setSelectedTab("Bnother Info")}
+                    onClick={() => {
+                      setSelectedTab("Bnother Info");
+                      setCurrTab(2);
+                    }}
                   >
                     Bnother Info
                   </TabSelector>
                 </div>
-                <TabPanel hidden={selectedTab != "Main Info"}>
-                  <div className="grid gap-6 md:grid-cols-2 justify-items-stretch">
+                <TabPanel hidden={selectedTab != "Basic Info"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                     <div className="row-start-2 row-end-3 md:row-start-1 md:row-end-2">
                       <label
                         className="text-md font-semibold text-gray-900"
@@ -247,23 +260,68 @@ const App: NextPage = () => {
                     <div className="md:justify-self-end md:col-start-2 md:col-end-3"></div>
                   </div>
                 </TabPanel>
-                <TabPanel hidden={selectedTab != "Another Info"}>
-                  <div>
-                    <label
-                      className="text-md font-semibold text-gray-900"
-                      htmlFor="sectionName"
-                    >
-                      Education
-                    </label>
-                    <input
-                      className="input-normal"
-                      id="sectionName"
-                      name="educationInfo.sectionName"
-                      type="text"
-                      placeholder="School Name"
-                      onChange={formik.handleChange}
-                      value={formik.values.educationInfo?.sectionName}
-                    />
+                <TabPanel hidden={selectedTab != "Education Info"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="schoolName"
+                      >
+                        School Name
+                      </label>
+                      <input
+                        className="input-normal"
+                        id="schoolName"
+                        name="educationInfo.schoolName"
+                        onChange={formik.handleChange}
+                        value={formik.values.educationInfo?.schoolName}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="schoolCountry"
+                      >
+                        School Country
+                      </label>
+                      <input
+                        className="input-normal"
+                        id="schoolCountry"
+                        name="educationInfo.schoolCountry"
+                        onChange={formik.handleChange}
+                        value={formik.values.educationInfo?.schoolCountry}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="schoolStart"
+                      >
+                        Start Date
+                      </label>
+                      <input
+                        className="input-normal"
+                        id="schoolStart"
+                        name="educationInfo.startDate"
+                        onChange={formik.handleChange}
+                        value={formik.values.educationInfo?.startDate}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="schoolEnd"
+                      >
+                        End Date
+                      </label>
+                      <input
+                        className="input-normal"
+                        id="schoolEnd"
+                        name="educationInfo.endDate"
+                        onChange={formik.handleChange}
+                        value={formik.values.educationInfo?.endDate}
+                      />
+                    </div>
                   </div>
                 </TabPanel>
                 <div className="flex items-center justify-between">
