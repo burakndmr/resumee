@@ -80,7 +80,16 @@ const App: NextPage = () => {
 
   const [progress, setProgress] = useState(20);
 
-  const allTabs = ["Basic Info", "Education Info", "Experience Info"];
+  const allTabs = [
+    "Basic Info",
+    "Education Info",
+    "Experience Info",
+    "Social Media",
+    "Skills",
+    "Projects",
+    "Languages",
+    "Preview",
+  ];
 
   const [currTab, setCurrTab] = useState(0);
 
@@ -149,6 +158,52 @@ const App: NextPage = () => {
                     }}
                   >
                     Experience Info
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Social Media"}
+                    onClick={() => {
+                      setSelectedTab("Social Media");
+                      setCurrTab(3);
+                    }}
+                  >
+                    Social Media
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Skills"}
+                    onClick={() => {
+                      setSelectedTab("Skills");
+                      setCurrTab(4);
+                    }}
+                  >
+                    Skills
+                  </TabSelector>
+
+                  <TabSelector
+                    isActive={selectedTab === "Projects"}
+                    onClick={() => {
+                      setSelectedTab("Projects");
+                      setCurrTab(5);
+                    }}
+                  >
+                    Projects
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Languages"}
+                    onClick={() => {
+                      setSelectedTab("Languages");
+                      setCurrTab(6);
+                    }}
+                  >
+                    Languages
+                  </TabSelector>
+                  <TabSelector
+                    isActive={selectedTab === "Preview"}
+                    onClick={() => {
+                      setSelectedTab("Preview");
+                      setCurrTab(7);
+                    }}
+                  >
+                    Preview
                   </TabSelector>
                 </div>
                 <TabPanel hidden={selectedTab != "Basic Info"}>
@@ -649,6 +704,31 @@ const App: NextPage = () => {
                         value={formik.values.ExperienceInfo?.jobDescription}
                       />
                     </div>
+                  </div>
+                </TabPanel>
+                <TabPanel hidden={selectedTab != "Social Media"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    SOCIAL MEDIA
+                  </div>
+                </TabPanel>
+                <TabPanel hidden={selectedTab != "Skills"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    SKILLS
+                  </div>
+                </TabPanel>
+                <TabPanel hidden={selectedTab != "Projects"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    PROJECTS
+                  </div>
+                </TabPanel>
+                <TabPanel hidden={selectedTab != "Languages"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    LANGUAGES
+                  </div>
+                </TabPanel>
+                <TabPanel hidden={selectedTab != "Preview"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    PREVIEW
                   </div>
                 </TabPanel>
                 <div className="flex items-center justify-between">
