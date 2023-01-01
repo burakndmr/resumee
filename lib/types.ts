@@ -5,6 +5,7 @@ export interface Resume {
   mainInfo: MainInfo;
   profileInfo?: ProfileInfo;
   educationInfo?: EducationInfo;
+  ExperienceInfo?: ExperienceInfo;
   Skills?: Skills;
   Languages?: Languages;
   Projects?: Projects;
@@ -44,6 +45,15 @@ export interface EducationInfo {
   endDate: Date;
   schoolCity: string;
   schoolCountry: string;
+}
+
+export interface ExperienceInfo {
+  sectionName: string;
+  companyName: string;
+  position: string;
+  startDate: Date;
+  endDate: Date;
+  jobDescription: string;
 }
 
 export interface Date {

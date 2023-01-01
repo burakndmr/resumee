@@ -88,6 +88,22 @@ const Index: React.FC<indexProps> = ({}) => {
       schoolCity: "",
       schoolCountry: "",
     },
+    experienceInfo: {
+      sectionName: "experienceInfo",
+      companyName: "",
+      jobTitle: "",
+      startDate: {
+        day: "",
+        month: "",
+        year: "",
+      },
+      endDate: {
+        day: "",
+        month: "",
+        year: "",
+      },
+      jobDescription: "",
+    },
     Skills: {
       sectionName: "Skills",
       skills: [

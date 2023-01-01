@@ -33,6 +33,18 @@ import {
   updateResume,
 } from "../../../slices/resumeActions/resumeActionSlice";
 
+// TODO => Add placeholder for each input
+// TODO => Add validation for each input
+// TODO => fix bug => focus color on input
+// TODO => Add dynamic progress bar
+// TODO => Add Social Media Links section
+// TODO => Add Skills Section
+// TODO => Add Projects Section
+// TODO => Add Languages Section
+// TODO => Make a resume preview section
+// TODO => Make a resume download section
+// TODO => Make three resume templates
+
 const App: NextPage = () => {
   const router = useRouter();
 
@@ -68,7 +80,7 @@ const App: NextPage = () => {
 
   const [progress, setProgress] = useState(20);
 
-  const allTabs = ["Basic Info", "Education Info", "Bnother Info"];
+  const allTabs = ["Basic Info", "Education Info", "Experience Info"];
 
   const [currTab, setCurrTab] = useState(0);
 
@@ -130,13 +142,13 @@ const App: NextPage = () => {
                   </TabSelector>
 
                   <TabSelector
-                    isActive={selectedTab === "Bnother Info"}
+                    isActive={selectedTab === "Experience Info"}
                     onClick={() => {
-                      setSelectedTab("Bnother Info");
+                      setSelectedTab("Experience Info");
                       setCurrTab(2);
                     }}
                   >
-                    Bnother Info
+                    Experience Info
                   </TabSelector>
                 </div>
                 <TabPanel hidden={selectedTab != "Basic Info"}>
@@ -365,21 +377,6 @@ const App: NextPage = () => {
                           )}
                         </select>
                       </div>
-                      {/* <div>
-                      <label
-                        className="text-md font-semibold text-gray-900"
-                        htmlFor="schoolEnd"
-                      >
-                        End Date
-                      </label>
-                      <input
-                        className="input-normal"
-                        id="schoolEnd"
-                        name="educationInfo.endDate"
-                        onChange={formik.handleChange}
-                        value={formik.values.educationInfo?.endDate}
-                      />
-                    </div> */}
                     </div>
                     <div className="grid gap-6 md:grid-cols-3 justify-items-stretch mb-3 md:mb-0">
                       <p className="text-xl font-semibold col-span-3">
@@ -454,6 +451,203 @@ const App: NextPage = () => {
                           )}
                         </select>
                       </div>
+                    </div>
+                  </div>
+                </TabPanel>
+                <TabPanel hidden={selectedTab != "Experience Info"}>
+                  <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="schoolName"
+                      >
+                        Company Name
+                      </label>
+                      <input
+                        className="input-normal"
+                        id="companyName"
+                        name="ExperienceInfo.companyName"
+                        onChange={formik.handleChange}
+                        value={formik.values.ExperienceInfo?.companyName}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        className="text-md font-semibold text-gray-900"
+                        htmlFor="schoolCountry"
+                      >
+                        Job Position
+                      </label>
+                      <input
+                        className="input-normal"
+                        id="schoolCountry"
+                        name="ExperienceInfo.schoolCountry"
+                        onChange={formik.handleChange}
+                        value={formik.values.ExperienceInfo?.position}
+                      />
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-3 justify-items-stretch">
+                      <p className="text-xl font-semibold col-span-3">
+                        Start Date
+                      </p>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="jobStartDay"
+                        >
+                          Day
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="jobStartDay"
+                          name="ExperienceInfo.startDate.day"
+                          onChange={formik.handleChange}
+                          value={formik.values.ExperienceInfo?.startDate?.day}
+                        >
+                          {Array.from({ length: 31 }, (v, k) => k + 1).map(
+                            (day) => (
+                              <option key={day} value={day}>
+                                {day}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="jobStartMonth"
+                        >
+                          Month
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="jobStartMonth"
+                          name="ExperienceInfo.startDate.month"
+                          onChange={formik.handleChange}
+                          value={formik.values.ExperienceInfo?.startDate?.month}
+                        >
+                          {Array.from({ length: 12 }, (v, k) => k + 1).map(
+                            (month) => (
+                              <option key={month} value={month}>
+                                {month}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="jobStartYear"
+                        >
+                          Year
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="jobStartYear"
+                          name="ExperienceInfo.startDate.year"
+                          onChange={formik.handleChange}
+                          value={formik.values.ExperienceInfo?.startDate?.year}
+                        >
+                          {Array.from({ length: 50 }, (v, k) => k + 1980).map(
+                            (year) => (
+                              <option key={year} value={year}>
+                                {year}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-3 justify-items-stretch mb-3 md:mb-0">
+                      <p className="text-xl font-semibold col-span-3">
+                        End Date
+                      </p>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="jobEndDay"
+                        >
+                          Day
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="jobEndDay"
+                          name="ExperienceInfo.endDate.day"
+                          onChange={formik.handleChange}
+                          value={formik.values.ExperienceInfo?.endDate?.day}
+                        >
+                          {Array.from({ length: 31 }, (v, k) => k + 1).map(
+                            (day) => (
+                              <option key={day} value={day}>
+                                {day}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="jobEndMonth"
+                        >
+                          Month
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="jobEndMonth"
+                          name="ExperienceInfo.endDate.month"
+                          onChange={formik.handleChange}
+                          value={formik.values.ExperienceInfo?.endDate?.month}
+                        >
+                          {Array.from({ length: 12 }, (v, k) => k + 1).map(
+                            (month) => (
+                              <option key={month} value={month}>
+                                {month}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="jobEndYear"
+                        >
+                          Year
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="jobEndYear"
+                          name="ExperienceInfo.endDate.year"
+                          onChange={formik.handleChange}
+                          value={formik.values.ExperienceInfo?.endDate?.year}
+                        >
+                          {Array.from({ length: 50 }, (v, k) => k + 1980).map(
+                            (year) => (
+                              <option key={year} value={year}>
+                                {year}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="md:col-span-2 justify-items-stretch mb-3">
+                      <label
+                        htmlFor="jobDesc"
+                        className="text-md font-semibold text-gray-900"
+                      >
+                        Job Description
+                      </label>
+                      <textarea
+                        className="input-normal"
+                        id="jobDesc"
+                        name="ExperienceInfo.jobDescription"
+                        onChange={formik.handleChange}
+                        value={formik.values.ExperienceInfo?.jobDescription}
+                      />
                     </div>
                   </div>
                 </TabPanel>
