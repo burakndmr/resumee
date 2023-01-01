@@ -1,6 +1,6 @@
 export interface Resume {
   id: string;
-  resumeName: string
+  resumeName: string;
   createInfo: CreateInfo;
   mainInfo: MainInfo;
   profileInfo?: ProfileInfo;
@@ -40,10 +40,16 @@ export interface EducationInfo {
   schoolName: string;
   degree: string;
   fieldOfStudy: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   schoolCity: string;
   schoolCountry: string;
+}
+
+export interface Date {
+  day: string;
+  month: string;
+  year: string;
 }
 
 export interface Education {

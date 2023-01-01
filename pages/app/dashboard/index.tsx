@@ -75,8 +75,16 @@ const Index: React.FC<indexProps> = ({}) => {
       schoolName: "",
       degree: "",
       fieldOfStudy: "",
-      startDate: "",
-      endDate: "",
+      startDate: {
+        day: "",
+        month: "",
+        year: "",
+      },
+      endDate: {
+        day: "",
+        month: "",
+        year: "",
+      },
       schoolCity: "",
       schoolCountry: "",
     },

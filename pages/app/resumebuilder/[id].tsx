@@ -292,22 +292,80 @@ const App: NextPage = () => {
                         value={formik.values.educationInfo?.schoolCountry}
                       />
                     </div>
-                    <div>
-                      <label
-                        className="text-md font-semibold text-gray-900"
-                        htmlFor="schoolStart"
-                      >
+                    <div className="grid gap-6 md:grid-cols-3 justify-items-stretch">
+                      <p className="text-xl font-semibold col-span-3">
                         Start Date
-                      </label>
-                      <input
-                        className="input-normal"
-                        id="schoolStart"
-                        name="educationInfo.startDate"
-                        onChange={formik.handleChange}
-                        value={formik.values.educationInfo?.startDate}
-                      />
-                    </div>
-                    <div>
+                      </p>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="schoolStartDay"
+                        >
+                          Day
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="schoolStartDay"
+                          name="educationInfo.startDate.day"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.startDate?.day}
+                        >
+                          {Array.from({ length: 31 }, (v, k) => k + 1).map(
+                            (day) => (
+                              <option key={day} value={day}>
+                                {day}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="schoolStartMonth"
+                        >
+                          Month
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="schoolStartMonth"
+                          name="educationInfo.startDate.month"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.startDate?.month}
+                        >
+                          {Array.from({ length: 12 }, (v, k) => k + 1).map(
+                            (month) => (
+                              <option key={month} value={month}>
+                                {month}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="schoolStartYear"
+                        >
+                          Year
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="schoolStartYear"
+                          name="educationInfo.startDate.year"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.startDate?.year}
+                        >
+                          {Array.from({ length: 50 }, (v, k) => k + 1980).map(
+                            (year) => (
+                              <option key={year} value={year}>
+                                {year}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      {/* <div>
                       <label
                         className="text-md font-semibold text-gray-900"
                         htmlFor="schoolEnd"
@@ -321,6 +379,81 @@ const App: NextPage = () => {
                         onChange={formik.handleChange}
                         value={formik.values.educationInfo?.endDate}
                       />
+                    </div> */}
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-3 justify-items-stretch mb-3 md:mb-0">
+                      <p className="text-xl font-semibold col-span-3">
+                        End Date
+                      </p>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="schoolEndDay"
+                        >
+                          Day
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="schoolEndDay"
+                          name="educationInfo.endDate.day"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.endDate?.day}
+                        >
+                          {Array.from({ length: 31 }, (v, k) => k + 1).map(
+                            (day) => (
+                              <option key={day} value={day}>
+                                {day}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="schoolEndMonth"
+                        >
+                          Month
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="schoolEndMonth"
+                          name="educationInfo.endDate.month"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.endDate?.month}
+                        >
+                          {Array.from({ length: 12 }, (v, k) => k + 1).map(
+                            (month) => (
+                              <option key={month} value={month}>
+                                {month}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          className="text-md font-semibold text-gray-900"
+                          htmlFor="schoolEndYear"
+                        >
+                          Year
+                        </label>
+                        <select
+                          className="input-normal"
+                          id="schoolEndYear"
+                          name="educationInfo.endDate.year"
+                          onChange={formik.handleChange}
+                          value={formik.values.educationInfo?.endDate?.year}
+                        >
+                          {Array.from({ length: 50 }, (v, k) => k + 1980).map(
+                            (year) => (
+                              <option key={year} value={year}>
+                                {year}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </TabPanel>
