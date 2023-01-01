@@ -33,6 +33,9 @@ import {
   updateResume,
 } from "../../../slices/resumeActions/resumeActionSlice";
 
+// ------------------ ICONS ------------------
+import { FiTrash2 } from "react-icons/fi";
+
 // TODO => Add placeholder for each input
 // TODO => Add validation for each input
 // TODO => fix bug => focus color on input
@@ -127,7 +130,7 @@ const App: NextPage = () => {
             <Card>
               <FormikProvider value={formik}>
                 <form
-                  className="flex flex-col justify-between min-h-[384px]"
+                  className="flex-1 h-full flex flex-col justify-between min-h-[384px]"
                   onSubmit={formik.handleSubmit}
                 >
                   <div className="w-full border-b-[1px] border-gray-200 flex w-full overflow-x-auto mb-4">
@@ -207,7 +210,10 @@ const App: NextPage = () => {
                       Preview
                     </TabSelector>
                   </div>
-                  <TabPanel hidden={selectedTab != "Basic Info"}>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Basic Info"}
+                  >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       <div className="row-start-2 row-end-3 md:row-start-1 md:row-end-2">
                         <label
@@ -328,7 +334,10 @@ const App: NextPage = () => {
                       <div className="md:justify-self-end md:col-start-2 md:col-end-3"></div>
                     </div>
                   </TabPanel>
-                  <TabPanel hidden={selectedTab != "Education Info"}>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Education Info"}
+                  >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       <div>
                         <label
@@ -512,7 +521,10 @@ const App: NextPage = () => {
                       </div>
                     </div>
                   </TabPanel>
-                  <TabPanel hidden={selectedTab != "Experience Info"}>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Experience Info"}
+                  >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       <div>
                         <label
@@ -713,89 +725,105 @@ const App: NextPage = () => {
                       </div>
                     </div>
                   </TabPanel>
-                  <TabPanel hidden={selectedTab != "Social Media"}>
-                    <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
-                      <FieldArray
-                        name="mainInfo.links"
-                        render={(arrayHelpers) => (
-                          <div>
-                            {formik.values.mainInfo.links.map((link, index) => (
-                              <div key={index}>
-                                <div>
-                                  <label
-                                    className="text-md font-semibold text-gray-900"
-                                    htmlFor={`linkName${index}`}
-                                  >
-                                    Link Name
-                                  </label>
-                                  <input
-                                    className="input-normal"
-                                    id={`linkName${index}`}
-                                    name={`mainInfo.links[${index}].name`}
-                                    onChange={formik.handleChange}
-                                    value={
-                                      formik.values.mainInfo.links[index].name
-                                    }
-                                    type="text"
-                                  />
-                                </div>
-                                <div>
-                                  <label
-                                    className="text-md font-semibold text-gray-900"
-                                    htmlFor={`linkUrl${index}`}
-                                  >
-                                    Link Url
-                                  </label>
-                                  <input
-                                    className="input-normal"
-                                    id={`linkUrl${index}`}
-                                    name={`mainInfo.links[${index}].url`}
-                                    onChange={formik.handleChange}
-                                    value={
-                                      formik.values.mainInfo.links[index].url
-                                    }
-                                    type="text"
-                                  />
-                                </div>
-                                <button
-                                  type="button"
-                                  onClick={() => arrayHelpers.remove(index)}
-                                >
-                                  SİL
-                                </button>
-                              </div>
-                            ))}
-                            <button
-                              type="submit"
-                              onClick={() =>
-                                {
-                                  arrayHelpers.push({ name: "", url: "" })
-                                }
-                              }
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Social Media"}
+                  >
+                    <FieldArray
+                      name="mainInfo.links"
+                      render={(arrayHelpers) => (
+                        <div>
+                          {formik.values.mainInfo.links.map((link, index) => (
+                            <div
+                              className="grid sm:grid-cols-5 md:grid-cols-9 gap-6 mb-6"
+                              key={index}
                             >
-                              EKLE
-                            </button>
-                          </div>
-                        )}
-                      />
-                    </div>
+                              <div className="sm:col-span-2 md:col-span-4">
+                                <label
+                                  className="text-md font-semibold text-gray-900"
+                                  htmlFor={`linkName${index}`}
+                                >
+                                  Link Name
+                                </label>
+                                <input
+                                  className="input-normal"
+                                  id={`linkName${index}`}
+                                  name={`mainInfo.links[${index}].name`}
+                                  onChange={formik.handleChange}
+                                  value={
+                                    formik.values.mainInfo.links[index].name
+                                  }
+                                  type="text"
+                                />
+                              </div>
+                              <div className="sm:col-span-2 md:col-span-4">
+                                <label
+                                  className="text-md font-semibold text-gray-900"
+                                  htmlFor={`linkUrl${index}`}
+                                >
+                                  Link Url
+                                </label>
+                                <input
+                                  className="input-normal"
+                                  id={`linkUrl${index}`}
+                                  name={`mainInfo.links[${index}].url`}
+                                  onChange={formik.handleChange}
+                                  value={
+                                    formik.values.mainInfo.links[index].url
+                                  }
+                                  type="text"
+                                />
+                              </div>
+                              <button
+                                className="bg-red-600 h-[42px] w-full sm:w-12 hover:bg-red-700 active:bg-red-800 rounded-md flex items-center justify-center self-end justify-self-center"
+                                type="button"
+                                disabled={
+                                  formik.values.mainInfo.links.length < 2
+                                }
+                                onClick={() => arrayHelpers.remove(index)}
+                              >
+                                <FiTrash2 stroke="#fff" size={24} />
+                              </button>
+                            </div>
+                          ))}
+                          <button
+                            className="secondary-btn mb-4"
+                            type="submit"
+                            onClick={() => {
+                              arrayHelpers.push({ name: "", url: "" });
+                            }}
+                          >
+                            EKLE
+                          </button>
+                        </div>
+                      )}
+                    />
                   </TabPanel>
-                  <TabPanel hidden={selectedTab != "Skills"}>
+                  <TabPanel className="flex-1" hidden={selectedTab != "Skills"}>
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       SKILLS
                     </div>
                   </TabPanel>
-                  <TabPanel hidden={selectedTab != "Projects"}>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Projects"}
+                  >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       PROJECTS
                     </div>
                   </TabPanel>
-                  <TabPanel hidden={selectedTab != "Languages"}>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Languages"}
+                  >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       LANGUAGES
                     </div>
                   </TabPanel>
-                  <TabPanel hidden={selectedTab != "Preview"}>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Preview"}
+                  >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       PREVIEW
                     </div>
