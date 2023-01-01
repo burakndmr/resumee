@@ -57,11 +57,7 @@ const Index: React.FC<indexProps> = ({}) => {
       email: "",
       links: [
         {
-          name: "LinkedIn",
-          url: "",
-        },
-        {
-          name: "Github",
+          name: "",
           url: "",
         },
       ],
