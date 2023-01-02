@@ -41,11 +41,11 @@ import { FiTrash2 } from "react-icons/fi";
 // TODO => fix bug => focus color on input
 // TODO => Add dynamic progress bar
 // TODO => Add Projects Section
-// TODO => Make a resume preview section
 // TODO => Make a resume download section
 // TODO => Make three resume templates
 // TODO => Hidden scroll bar
 
+// ** => Make a resume Template section
 // ** => Add Skills Section
 // ** => Add Languages Section
 // ** => Add Social Media Links section
@@ -92,7 +92,7 @@ const App: NextPage = () => {
     "Social Media",
     "Skills&Languages",
     "Projects",
-    "Preview",
+    "Template",
   ];
 
   const [currTab, setCurrTab] = useState(0);
@@ -193,13 +193,13 @@ const App: NextPage = () => {
                       Projects
                     </TabSelector>
                     <TabSelector
-                      isActive={selectedTab === "Preview"}
+                      isActive={selectedTab === "Template"}
                       onClick={() => {
-                        setSelectedTab("Preview");
+                        setSelectedTab("Template");
                         setCurrTab(7);
                       }}
                     >
-                      Preview
+                      Template
                     </TabSelector>
                   </div>
                   <TabPanel
@@ -536,14 +536,14 @@ const App: NextPage = () => {
                       <div>
                         <label
                           className="text-md font-semibold text-gray-900"
-                          htmlFor="schoolCountry"
+                          htmlFor="experiencePosition"
                         >
                           Job Position
                         </label>
                         <input
                           className="input-normal"
-                          id="schoolCountry"
-                          name="ExperienceInfo.schoolCountry"
+                          id="experiencePosition"
+                          name="ExperienceInfo.position"
                           onChange={formik.handleChange}
                           value={formik.values.ExperienceInfo?.position}
                         />
@@ -1080,10 +1080,63 @@ const App: NextPage = () => {
                   </TabPanel>
                   <TabPanel
                     className="flex-1"
-                    hidden={selectedTab != "Preview"}
+                    hidden={selectedTab != "Template"}
                   >
-                    <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
-                      PREVIEW
+                    <div className="flex-1 grid gap-6 md:grid-cols-3 justify-items-stretch">
+                      <p className="text-2xl mb-3 col-span-3 font-semibold text-gray-900">
+                        Select Your Resume Template
+                      </p>
+                      {["Template 1", "Template 2", "Template 3"].map(
+                        (template, index) => (
+                          <label
+                            key={index}
+                            htmlFor={`templateType${index}`}
+                            className="text-md font-semibold text-gray-900 rounded-lg cursor-pointer mb-4"
+                          >
+                            <input
+                              type="radio"
+                              className="hidden rounded-lg"
+                              name="Templates.templateName"
+                              id={`templateType${index}`}
+                              value={template}
+                              onChange={formik.handleChange}
+                            />
+                            <Card>
+                              <div>TEMPLATE </div>
+                              <div className="flex items-center justify-center h-64 gap-6">
+                                {[
+                                  { color: "red", bgColor: "bg-red-500" },
+                                  { color: "blue", bgColor: "bg-blue-500" },
+                                  {
+                                    color: "green",
+                                    bgColor: "bg-green-500",
+                                  },
+                                ].map((theme, index) => (
+                                  <button
+                                    key={index}
+                                    onClick={() => {
+                                      formik.setFieldValue(
+                                        "Templates.templateColor",
+                                        theme.color
+                                      );
+                                    }}
+                                    className={`h-8 w-8 border-spacing-5 flex items-center justify-center ${
+                                      formik.values.Templates.templateColor ===
+                                      theme.color
+                                        ? "border-2 border-primary rounded-full"
+                                        : "rounded-full"
+                                    }`}
+                                  >
+                                    <div
+                                      className={`${theme.bgColor} p-3 rounded-full`}
+                                    ></div>
+                                  </button>
+                                ))}
+                              </div>
+                            </Card>
+                          </label>
+                        )
+                      )}
                     </div>
                   </TabPanel>
                   <div className="flex items-center justify-between">

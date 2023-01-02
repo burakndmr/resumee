@@ -9,6 +9,7 @@ export interface Resume {
   Skills: Skills;
   Languages: Languages;
   Projects: Projects;
+  Templates: Template;
 }
 
 export interface CreateInfo {
@@ -101,4 +102,11 @@ export interface Project {
   projectName: string;
   projectDescription: string;
   projectLink: string;
+}
+
+export interface Template {
+  sectionName: string;
+  templateName: string;
+  templateId: string;
+  templateColor: string
 }

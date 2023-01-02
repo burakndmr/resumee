@@ -84,9 +84,10 @@ const Index: React.FC<indexProps> = ({}) => {
       schoolCity: "",
       schoolCountry: "",
     },
-    experienceInfo: {
+    ExperienceInfo: {
       sectionName: "experienceInfo",
       companyName: "",
+      position: "",
       jobTitle: "",
       startDate: {
         day: "",
@@ -127,6 +128,12 @@ const Index: React.FC<indexProps> = ({}) => {
           projectLink: "",
         },
       ],
+    },
+    Templates: {
+      sectionName: "templates",
+      templateName: "",
+      templateId: "",
+      templateColor: "",
     },
   };
 

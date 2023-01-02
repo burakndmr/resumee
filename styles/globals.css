@@ -28,3 +28,15 @@
 .secondary-btn {
   @apply text-primary w-full rounded-xl font-light text-lg bg-white border-2 border-primary py-2 hover:text-white hover:bg-primary active:bg-primaryClick;
 }
+
+input:checked + label {
+  border-color: black;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+label:has(input:checked) {
+  border-color: black;
+  border: 2px solid rgb(255, 110, 57);
+  box-shadow: 0 10px 15px -3px rgb(255, 110, 57, 0.7),
+    0 4px 6px -2px rgb(251, 80, 18, 0.6);
+}
