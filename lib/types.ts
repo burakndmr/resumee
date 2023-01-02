@@ -8,7 +8,7 @@ export interface Resume {
   ExperienceInfo?: ExperienceInfo;
   Skills: Skills;
   Languages: Languages;
-  Projects?: Projects;
+  Projects: Projects;
 }
 
 export interface CreateInfo {

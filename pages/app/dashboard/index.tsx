@@ -118,6 +118,16 @@ const Index: React.FC<indexProps> = ({}) => {
         },
       ],
     },
+    Projects: {
+      sectionName: "projects",
+      projects: [
+        {
+          projectName: "",
+          projectDescription: "",
+          projectLink: "",
+        },
+      ],
+    },
   };
 
   let lastCreatedResume: Resume | undefined;

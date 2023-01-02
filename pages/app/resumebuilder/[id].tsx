@@ -44,6 +44,7 @@ import { FiTrash2 } from "react-icons/fi";
 // TODO => Make a resume preview section
 // TODO => Make a resume download section
 // TODO => Make three resume templates
+// TODO => Hidden scroll bar
 
 // ** => Add Skills Section
 // ** => Add Languages Section
@@ -978,8 +979,103 @@ const App: NextPage = () => {
                     className="flex-1"
                     hidden={selectedTab != "Projects"}
                   >
-                    <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
-                      PROJECTS
+                    <div className="flex-1">
+                      <FieldArray
+                        name="Projects.projects"
+                        render={(arrayHelpers) => (
+                          <div>
+                            {formik.values.Projects.projects.map(
+                              (project, index) => (
+                                <div
+                                  className="grid sm:grid-cols-5 md:grid-cols-9 gap-6 mb-6"
+                                  key={index}
+                                >
+                                  <div className="sm:col-span-2 md:col-span-4">
+                                    <label
+                                      className="text-md font-semibold text-gray-900"
+                                      htmlFor={`projectName${index}`}
+                                    >
+                                      Project Name
+                                    </label>
+                                    <input
+                                      className="input-normal"
+                                      id={`projectName${index}`}
+                                      name={`Projects.projects[${index}].projectName`}
+                                      onChange={formik.handleChange}
+                                      value={
+                                        formik.values.Projects.projects[index]
+                                          .projectName
+                                      }
+                                      type="text"
+                                    />
+                                  </div>
+                                  <div className="sm:col-span-2 md:col-span-4">
+                                    <label
+                                      className="text-md font-semibold text-gray-900"
+                                      htmlFor={`projectLink${index}`}
+                                    >
+                                      Project Link
+                                    </label>
+                                    <input
+                                      className="input-normal"
+                                      id={`projectLink${index}`}
+                                      name={`Projects.projects[${index}].projectLink`}
+                                      onChange={formik.handleChange}
+                                      value={
+                                        formik.values.Projects.projects[index]
+                                          .projectLink
+                                      }
+                                      type="text"
+                                    />
+                                  </div>
+                                  <button
+                                    className="bg-red-600 h-[42px] w-full sm:w-12 hover:bg-red-700 active:bg-red-800 rounded-md flex items-center justify-center self-end justify-self-center"
+                                    type="button"
+                                    disabled={
+                                      formik.values.Projects.projects.length < 2
+                                    }
+                                    onClick={() => arrayHelpers.remove(index)}
+                                  >
+                                    <FiTrash2 stroke="#fff" size={24} />
+                                  </button>
+                                  <div className="sm:col-span-2 md:col-span-9">
+                                    <label
+                                      className="text-md font-semibold text-gray-900"
+                                      htmlFor={`projectDescription${index}`}
+                                    >
+                                      Project Description
+                                    </label>
+                                    <textarea
+                                      className="input-normal"
+                                      id={`projectDescription${index}`}
+                                      name={`Projects.projects[${index}].projectDescription`}
+                                      onChange={formik.handleChange}
+                                      value={
+                                        formik.values.Projects.projects[index]
+                                          .projectDescription
+                                      }
+                                    />
+                                  </div>
+                                </div>
+                              )
+                            )}
+                            <button
+                              className="secondary-btn mb-4"
+                              type="button"
+                              onClick={() => {
+                                console.log("hello world");
+                                arrayHelpers.push({
+                                  projectName: "",
+                                  projectDescription: "",
+                                  projectLink: "",
+                                });
+                              }}
+                            >
+                              EKLE
+                            </button>
+                          </div>
+                        )}
+                      />
                     </div>
                   </TabPanel>
                   <TabPanel
