@@ -6,8 +6,8 @@ export interface Resume {
   profileInfo?: ProfileInfo;
   educationInfo?: EducationInfo;
   ExperienceInfo?: ExperienceInfo;
-  Skills?: Skills;
-  Languages?: Languages;
+  Skills: Skills;
+  Languages: Languages;
   Projects?: Projects;
 }
 

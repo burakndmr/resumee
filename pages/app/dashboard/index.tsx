@@ -104,12 +104,17 @@ const Index: React.FC<indexProps> = ({}) => {
       sectionName: "Skills",
       skills: [
         {
-          skillName: "skill1",
+          skillName: "",
           skillLevel: "",
         },
+      ],
+    },
+    Languages: {
+      sectionName: "languages",
+      languages: [
         {
-          skillName: "skill2",
-          skillLevel: "",
+          languageName: "",
+          languageLevel: "",
         },
       ],
     },

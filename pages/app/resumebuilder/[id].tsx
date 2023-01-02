@@ -40,13 +40,14 @@ import { FiTrash2 } from "react-icons/fi";
 // TODO => Add validation for each input
 // TODO => fix bug => focus color on input
 // TODO => Add dynamic progress bar
-// TODO => Add Social Media Links section
-// TODO => Add Skills Section
 // TODO => Add Projects Section
-// TODO => Add Languages Section
 // TODO => Make a resume preview section
 // TODO => Make a resume download section
 // TODO => Make three resume templates
+
+// ** => Add Skills Section
+// ** => Add Languages Section
+// ** => Add Social Media Links section
 
 const App: NextPage = () => {
   const router = useRouter();
@@ -88,9 +89,8 @@ const App: NextPage = () => {
     "Education Info",
     "Experience Info",
     "Social Media",
-    "Skills",
+    "Skills&Languages",
     "Projects",
-    "Languages",
     "Preview",
   ];
 
@@ -173,13 +173,13 @@ const App: NextPage = () => {
                       Social Media
                     </TabSelector>
                     <TabSelector
-                      isActive={selectedTab === "Skills"}
+                      isActive={selectedTab === "Skills&Languages"}
                       onClick={() => {
-                        setSelectedTab("Skills");
+                        setSelectedTab("Skills&Languages");
                         setCurrTab(4);
                       }}
                     >
-                      Skills
+                      Skills & Languages
                     </TabSelector>
 
                     <TabSelector
@@ -190,15 +190,6 @@ const App: NextPage = () => {
                       }}
                     >
                       Projects
-                    </TabSelector>
-                    <TabSelector
-                      isActive={selectedTab === "Languages"}
-                      onClick={() => {
-                        setSelectedTab("Languages");
-                        setCurrTab(6);
-                      }}
-                    >
-                      Languages
                     </TabSelector>
                     <TabSelector
                       isActive={selectedTab === "Preview"}
@@ -788,7 +779,7 @@ const App: NextPage = () => {
                           ))}
                           <button
                             className="secondary-btn mb-4"
-                            type="submit"
+                            type="button"
                             onClick={() => {
                               arrayHelpers.push({ name: "", url: "" });
                             }}
@@ -799,9 +790,188 @@ const App: NextPage = () => {
                       )}
                     />
                   </TabPanel>
-                  <TabPanel className="flex-1" hidden={selectedTab != "Skills"}>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Skills&Languages"}
+                  >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
-                      SKILLS
+                      <FieldArray
+                        name="Skills.skills"
+                        render={(arrayHelpers) => (
+                          <div>
+                            <p className="text-2xl font-semibold text-gray-900 mb-3">
+                              Skills
+                            </p>
+                            {formik.values.Skills?.skills.map(
+                              (skill, index) => (
+                                <div
+                                  className="grid sm:grid-cols-5 md:grid-cols-9 gap-6 mb-6"
+                                  key={index}
+                                >
+                                  <div className="sm:col-span-2 md:col-span-4">
+                                    <label
+                                      className="text-md font-semibold text-gray-900"
+                                      htmlFor={`skillName${index}`}
+                                    >
+                                      Skill Name
+                                    </label>
+                                    <input
+                                      className="input-normal"
+                                      id={`skillName${index}`}
+                                      name={`Skills.skills[${index}].skillName`}
+                                      onChange={formik.handleChange}
+                                      value={
+                                        formik.values.Skills?.skills[index]
+                                          .skillName
+                                      }
+                                      type="text"
+                                    />
+                                  </div>
+                                  <div className="sm:col-span-2 md:col-span-4">
+                                    <label
+                                      className="text-md font-semibold text-gray-900"
+                                      htmlFor={`skillLevel${index}`}
+                                    >
+                                      Skill Level
+                                    </label>
+                                    <select
+                                      className="input-normal"
+                                      id={`skillLevel${index}`}
+                                      name={`Skills.skills[${index}].skillLevel`}
+                                      onChange={formik.handleChange}
+                                      value={
+                                        formik.values.Skills?.skills[index]
+                                          .skillLevel
+                                      }
+                                    >
+                                      <option value="-">
+                                        I don&apos;t want to choose
+                                      </option>
+                                      <option value="Beginner">Beginner</option>
+                                      <option value="Intermediate">
+                                        Intermediate
+                                      </option>
+                                      <option value="Advanced">Advanced</option>
+                                      <option value="Expert">Expert</option>
+                                    </select>
+                                  </div>
+                                  <button
+                                    className="bg-red-600 h-[42px] w-full sm:w-12 hover:bg-red-700 active:bg-red-800 rounded-md flex items-center justify-center self-end justify-self-center"
+                                    type="button"
+                                    disabled={
+                                      formik.values.Skills?.skills.length < 2
+                                    }
+                                    onClick={() => arrayHelpers.remove(index)}
+                                  >
+                                    <FiTrash2 stroke="#fff" size={24} />
+                                  </button>
+                                </div>
+                              )
+                            )}
+                            <button
+                              className="secondary-btn mb-4"
+                              type="button"
+                              onClick={() => {
+                                arrayHelpers.push({
+                                  skillName: "",
+                                  SkillLevel: "",
+                                });
+                              }}
+                            >
+                              EKLE
+                            </button>
+                          </div>
+                        )}
+                      />
+                      <FieldArray
+                        name="Languages.languages"
+                        render={(arrayHelpers) => (
+                          <div>
+                            <p className="text-2xl font-semibold text-gray-900 mb-3">
+                              Languages
+                            </p>
+                            {formik.values.Languages.languages.map(
+                              (link, index) => (
+                                <div
+                                  className="grid sm:grid-cols-5 md:grid-cols-9 gap-6 mb-6"
+                                  key={index}
+                                >
+                                  <div className="sm:col-span-2 md:col-span-4">
+                                    <label
+                                      className="text-md font-semibold text-gray-900"
+                                      htmlFor={`languageName${index}`}
+                                    >
+                                      Language Name
+                                    </label>
+                                    <input
+                                      className="input-normal"
+                                      id={`languageName${index}`}
+                                      name={`Languages.languages[${index}].languageName`}
+                                      onChange={formik.handleChange}
+                                      value={
+                                        formik.values.Languages.languages[index]
+                                          .languageName
+                                      }
+                                      type="text"
+                                    />
+                                  </div>
+                                  <div className="sm:col-span-2 md:col-span-4">
+                                    <label
+                                      className="text-md font-semibold text-gray-900"
+                                      htmlFor={`langLevel${index}`}
+                                    >
+                                      Language Level
+                                    </label>
+                                    <select
+                                      className="input-normal"
+                                      id={`langLevel${index}`}
+                                      name={`Languages.languages[${index}].languageLevel`}
+                                      onChange={formik.handleChange}
+                                      value={
+                                        formik.values.Languages.languages[index]
+                                          .languageLevel
+                                      }
+                                    >
+                                      <option value="-">
+                                        I don&apos;t want to choose
+                                      </option>
+                                      <option value="Beginner">Beginner</option>
+                                      <option value="Intermediate">
+                                        Intermediate
+                                      </option>
+                                      <option value="Advanced">Advanced</option>
+                                      <option value="Native">Native</option>
+                                    </select>
+                                  </div>
+                                  <button
+                                    className="bg-red-600 h-[42px] w-full sm:w-12 hover:bg-red-700 active:bg-red-800 rounded-md flex items-center justify-center self-end justify-self-center"
+                                    type="button"
+                                    disabled={
+                                      formik.values.Languages.languages.length <
+                                      2
+                                    }
+                                    onClick={() => arrayHelpers.remove(index)}
+                                  >
+                                    <FiTrash2 stroke="#fff" size={24} />
+                                  </button>
+                                </div>
+                              )
+                            )}
+                            <button
+                              className="secondary-btn mb-4"
+                              type="button"
+                              onClick={() => {
+                                arrayHelpers.push({
+                                  languageName: "",
+                                  languageLevel: "",
+                                });
+                              }}
+                            >
+                              EKLE
+                            </button>
+                          </div>
+                        )}
+                      />
                     </div>
                   </TabPanel>
                   <TabPanel
@@ -810,14 +980,6 @@ const App: NextPage = () => {
                   >
                     <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
                       PROJECTS
-                    </div>
-                  </TabPanel>
-                  <TabPanel
-                    className="flex-1"
-                    hidden={selectedTab != "Languages"}
-                  >
-                    <div className="flex-1 grid gap-6 md:grid-cols-2 justify-items-stretch">
-                      LANGUAGES
                     </div>
                   </TabPanel>
                   <TabPanel
