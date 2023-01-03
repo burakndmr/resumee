@@ -27,6 +27,9 @@ module.exports = {
         73: "18.75rem",
         hero: "calc(100vh-60px)",
       },
+      aspectRatio: {
+        realA4: "1/1.4142",
+      },
     },
   },
   plugins: [require("flowbite/plugin")],

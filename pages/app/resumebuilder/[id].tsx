@@ -1,5 +1,7 @@
 // ------------------ NEXT - REACT ------------------
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
+import ReactToPrint from "react-to-print";
 
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -35,6 +37,7 @@ import {
 
 // ------------------ ICONS ------------------
 import { FiTrash2 } from "react-icons/fi";
+import ResumePreview from "../../../components/resumeCreator/cvBuilder/renderResume/ResumePreview";
 
 // TODO => Add placeholder for each input
 // TODO => Add validation for each input
@@ -93,6 +96,7 @@ const App: NextPage = () => {
     "Skills&Languages",
     "Projects",
     "Template",
+    "Download",
   ];
 
   const [currTab, setCurrTab] = useState(0);
@@ -113,6 +117,8 @@ const App: NextPage = () => {
   useEffect(() => {
     setSelectedTab(allTabs[currTab]);
   }, [currTab]);
+
+  let componentRef = useRef(null);
 
   return (
     <>
@@ -196,10 +202,19 @@ const App: NextPage = () => {
                       isActive={selectedTab === "Template"}
                       onClick={() => {
                         setSelectedTab("Template");
-                        setCurrTab(7);
+                        setCurrTab(6);
                       }}
                     >
                       Template
+                    </TabSelector>
+                    <TabSelector
+                      isActive={selectedTab === "Download"}
+                      onClick={() => {
+                        setSelectedTab("Download");
+                        setCurrTab(7);
+                      }}
+                    >
+                      Download
                     </TabSelector>
                   </div>
                   <TabPanel
@@ -1113,6 +1128,7 @@ const App: NextPage = () => {
                                   },
                                 ].map((theme, index) => (
                                   <button
+                                    type="button"
                                     key={index}
                                     onClick={() => {
                                       formik.setFieldValue(
@@ -1137,6 +1153,28 @@ const App: NextPage = () => {
                           </label>
                         )
                       )}
+                    </div>
+                  </TabPanel>
+                  <TabPanel
+                    className="flex-1"
+                    hidden={selectedTab != "Download"}
+                  >
+                    <div className="flex-1">
+                      <div className="p-4 mb-4 flex items-center justify-center flex-col">
+                        <ReactToPrint
+                          trigger={() => (
+                            <button type="button">DOWNLOAD</button>
+                          )}
+                          content={() => componentRef.current}
+                          // pageStyle=" { 210mm 297mm }"
+                        />
+                        <div
+                          ref={(el: any) => (componentRef.current = el)}
+                          className="w-full "
+                        >
+                          <ResumePreview data={formik.values} />
+                        </div>
+                      </div>
                     </div>
                   </TabPanel>
                   <div className="flex items-center justify-between">
