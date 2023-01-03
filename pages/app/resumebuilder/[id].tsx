@@ -863,12 +863,10 @@ const App: NextPage = () => {
                                       <option value="-">
                                         I don&apos;t want to choose
                                       </option>
-                                      <option value="Beginner">Beginner</option>
-                                      <option value="Intermediate">
-                                        Intermediate
-                                      </option>
-                                      <option value="Advanced">Advanced</option>
-                                      <option value="Expert">Expert</option>
+                                      <option value="1">Beginner</option>
+                                      <option value="2">Intermediate</option>
+                                      <option value="3">Advanced</option>
+                                      <option value="4">Expert</option>
                                     </select>
                                   </div>
                                   <button
@@ -951,12 +949,12 @@ const App: NextPage = () => {
                                       <option value="-">
                                         I don&apos;t want to choose
                                       </option>
-                                      <option value="Beginner">Beginner</option>
-                                      <option value="Intermediate">
+                                      <option value="1">Beginner</option>
+                                      <option value="2">
                                         Intermediate
                                       </option>
-                                      <option value="Advanced">Advanced</option>
-                                      <option value="Native">Native</option>
+                                      <option value="3">Advanced</option>
+                                      <option value="4">Native</option>
                                     </select>
                                   </div>
                                   <button
@@ -1166,7 +1164,7 @@ const App: NextPage = () => {
                             <button type="button">DOWNLOAD</button>
                           )}
                           content={() => componentRef.current}
-                          // pageStyle=" { 210mm 297mm }"
+                          pageStyle="@page { size: A3 }"
                         />
                         <div
                           ref={(el: any) => (componentRef.current = el)}

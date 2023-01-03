@@ -40,3 +40,9 @@ label:has(input:checked) {
   box-shadow: 0 10px 15px -3px rgb(255, 110, 57, 0.7),
     0 4px 6px -2px rgb(251, 80, 18, 0.6);
 }
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+}
