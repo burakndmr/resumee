@@ -46,11 +46,13 @@ import TemplateTwo from "../../../components/resumeCreator/cvBuilder/templates/T
 // TODO => Add placeholder for each input
 // TODO => Add validation for each input
 // TODO => fix bug => focus color on input
-// TODO => Add dynamic progress bar
 // TODO => Make a resume download section
 // TODO => Make three resume templates
 // TODO => Hidden scroll bar
+// TODO => Add X button
+// TODO => KENDİNDEN BAHSET İNPUTU
 
+// ** => Add dynamic progress bar
 // ** => Add Projects Section
 // ** => Make a resume Template section
 // ** => Add Skills Section
@@ -110,7 +112,9 @@ const App: NextPage = () => {
   const incrementTab = () => {
     if (currTab < allTabs.length - 1) {
       setCurrTab((prev) => prev + 1);
-      setProgress((prev) => prev + 12.5);
+      if (progress !== 100) {
+        setProgress((prev) => prev + 12.5);
+      }
     }
   };
 
