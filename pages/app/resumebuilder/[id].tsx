@@ -39,15 +39,19 @@ import {
 import { FiTrash2 } from "react-icons/fi";
 import ResumePreview from "../../../components/resumeCreator/cvBuilder/renderResume/ResumePreview";
 
+// --------------- TEMPLATE COMPONENTS ---------------
+import TemplateOne from "../../../components/resumeCreator/cvBuilder/templates/TemplateOne";
+import TemplateTwo from "../../../components/resumeCreator/cvBuilder/templates/TemplateTwo";
+
 // TODO => Add placeholder for each input
 // TODO => Add validation for each input
 // TODO => fix bug => focus color on input
 // TODO => Add dynamic progress bar
-// TODO => Add Projects Section
 // TODO => Make a resume download section
 // TODO => Make three resume templates
 // TODO => Hidden scroll bar
 
+// ** => Add Projects Section
 // ** => Make a resume Template section
 // ** => Add Skills Section
 // ** => Add Languages Section
@@ -86,7 +90,7 @@ const App: NextPage = () => {
     },
   });
 
-  const [progress, setProgress] = useState(20);
+  const [progress, setProgress] = useState(12.5);
 
   const allTabs = [
     "Basic Info",
@@ -106,12 +110,14 @@ const App: NextPage = () => {
   const incrementTab = () => {
     if (currTab < allTabs.length - 1) {
       setCurrTab((prev) => prev + 1);
+      setProgress((prev) => prev + 12.5);
     }
   };
 
   const decrementTab = () => {
     if (currTab > 0) {
       setCurrTab((prev) => prev - 1);
+      setProgress((prev) => prev - 12.5);
     }
   };
   useEffect(() => {
@@ -950,9 +956,7 @@ const App: NextPage = () => {
                                         I don&apos;t want to choose
                                       </option>
                                       <option value="1">Beginner</option>
-                                      <option value="2">
-                                        Intermediate
-                                      </option>
+                                      <option value="2">Intermediate</option>
                                       <option value="3">Advanced</option>
                                       <option value="4">Native</option>
                                     </select>
@@ -1170,7 +1174,19 @@ const App: NextPage = () => {
                           ref={(el: any) => (componentRef.current = el)}
                           className="w-full "
                         >
-                          <ResumePreview data={formik.values} />
+                          {
+                            // switch case
+                            formik.values.Templates.templateName ===
+                            "Template 1" ? (
+                              <TemplateOne data={formik.values} />
+                            ) : formik.values.Templates.templateName ===
+                              "Template 2" ? (
+                              <TemplateTwo data={formik.values} />
+                            ) : (
+                              <TemplateOne data={formik.values} />
+                            )
+                          }
+                          {/* <ResumePreview data={formik.values} /> */}
                         </div>
                       </div>
                     </div>

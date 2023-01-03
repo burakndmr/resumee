@@ -11,7 +11,7 @@ export const Progress: React.FC<ProgressProps> = ({ color, progress }) => {
       <div
         className={`h-4 ${
           color ? color : "bg-primary"
-        }  rounded-full dark:bg-blue-500`}
+        }  rounded-full dark:bg-blue-500 transition-all duration-500 ease-in-out`}
         style={{ width: `${progress}%` }}
       ></div>
     </div>
