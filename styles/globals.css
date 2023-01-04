@@ -29,6 +29,10 @@
   @apply text-primary w-full rounded-xl font-light text-lg bg-white border-2 border-primary py-2 hover:text-white hover:bg-primary active:bg-primaryClick;
 }
 
+input {
+  outline: none;
+}
+
 input:checked + label {
   border-color: black;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),

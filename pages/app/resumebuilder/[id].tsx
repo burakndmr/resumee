@@ -1123,31 +1123,49 @@ const App: NextPage = () => {
                     className="flex-1"
                     hidden={selectedTab != "Template"}
                   >
-                    <div className="flex-1 grid gap-6 md:grid-cols-3 justify-items-stretch">
-                      <p className="text-2xl mb-3 col-span-3 font-semibold text-gray-900">
-                        Select Your Resume Template
-                      </p>
-                      {["Template 1", "Template 2", "Template 3"].map(
-                        (template, index) => (
-                          <label
-                            key={index}
-                            htmlFor={`templateType${index}`}
-                            className="text-md font-semibold text-gray-900 rounded-lg cursor-pointer mb-4"
-                          >
-                            <input
-                              type="radio"
-                              className="hidden rounded-lg"
-                              name="Templates.templateName"
-                              id={`templateType${index}`}
-                              value={template}
-                              onChange={formik.handleChange}
-                            />
-                            <Card>
-                              <div>{template}</div>
-                            </Card>
-                          </label>
-                        )
-                      )}
+                    <p className="text-2xl mb-3 col-span-3 font-semibold text-gray-900">
+                      Select Your Resume Template
+                    </p>
+                    <div className="flex-1 flex flex-col md:flex-row items-start justify-center gap-4 ">
+                      {[
+                        {
+                          templateName: "Template 1",
+                          templateTitle: "Clear and Simple",
+                          templateDescription:
+                            "If you want to keep it simple, this is the template for you. It's clean and easy to read.",
+                        },
+                        {
+                          templateName: "Template 2",
+                          templateTitle: "Modern and Minimalist",
+                          templateDescription:
+                            "If you want a modern and minimalist resume, this is the template for you.",
+                        },
+                      ].map((template, index) => (
+                        <label
+                          key={index}
+                          htmlFor={`templateType${index}`}
+                          className="text-md font-semibold text-gray-900 rounded-lg cursor-pointer mb-4"
+                        >
+                          <input
+                            type="radio"
+                            className="hidden rounded-lg"
+                            name="Templates.templateName"
+                            id={`templateType${index}`}
+                            value={template.templateName}
+                            onChange={formik.handleChange}
+                          />
+                          <Card>
+                            <div className="flex items-center justify-center flex-col h-24 max-h-36">
+                              <h2 className="text-gray-900 mb-2 text-xl">
+                                {template.templateTitle}
+                              </h2>
+                              <p className="text-gray-700 font-light text-sm">
+                                {template.templateDescription}
+                              </p>
+                            </div>
+                          </Card>
+                        </label>
+                      ))}
                     </div>
                   </TabPanel>
                   <TabPanel
