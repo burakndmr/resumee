@@ -290,38 +290,55 @@ const App: NextPage = () => {
                           value={formik.values.mainInfo.jobTitle}
                         />
                       </div>
-
-                      <div>
-                        <label
-                          className="text-md font-semibold text-gray-900"
-                          htmlFor="email"
-                        >
-                          Email
-                        </label>
-                        <input
-                          className={
-                            formik.errors.mainInfo?.email &&
-                            formik.touched.mainInfo?.email
-                              ? "input-error"
-                              : "input-normal"
-                          }
-                          id="email"
-                          name="mainInfo.email"
-                          type="text"
-                          placeholder="johndoe@resumee.com"
-                          onChange={formik.handleChange}
-                          value={formik.values.mainInfo.email}
-                        />
+                      <div className="grid gap-6 md:grid-cols-2">
                         <div>
-                          {formik.errors.mainInfo?.email &&
-                          formik.touched.mainInfo?.email ? (
-                            <p className="text-sm text-red-600">
-                              {formik.errors.mainInfo?.email}
-                            </p>
-                          ) : null}
+                          <label
+                            className="text-md font-semibold text-gray-900"
+                            htmlFor="email"
+                          >
+                            Email
+                          </label>
+                          <input
+                            className={
+                              formik.errors.mainInfo?.email &&
+                              formik.touched.mainInfo?.email
+                                ? "input-error"
+                                : "input-normal"
+                            }
+                            id="email"
+                            name="mainInfo.email"
+                            type="text"
+                            placeholder="johndoe@resumee.com"
+                            onChange={formik.handleChange}
+                            value={formik.values.mainInfo.email}
+                          />
+                          <div>
+                            {formik.errors.mainInfo?.email &&
+                            formik.touched.mainInfo?.email ? (
+                              <p className="text-sm text-red-600">
+                                {formik.errors.mainInfo?.email}
+                              </p>
+                            ) : null}
+                          </div>
+                        </div>
+                        <div>
+                          <label
+                            className="text-md font-semibold text-gray-900"
+                            htmlFor="city"
+                          >
+                            City
+                          </label>
+                          <input
+                            className="input-normal"
+                            id="city"
+                            name="mainInfo.city"
+                            type="text"
+                            placeholder="Istanbul"
+                            onChange={formik.handleChange}
+                            value={formik.values.mainInfo.city}
+                          />
                         </div>
                       </div>
-
                       <div>
                         <label
                           className="text-md font-semibold text-gray-900"
@@ -1140,7 +1157,7 @@ const App: NextPage = () => {
                   >
                     <div className="flex-1">
                       <div className="p-4 mb-4 flex items-center justify-center flex-col">
-                        <div className="flex items-center justify-center h-64 gap-6">
+                        <div className="flex items-center justify-center h-12 gap-6">
                           {[
                             { color: "red", bgColor: "bg-red-500" },
                             { color: "blue", bgColor: "bg-blue-500" },
@@ -1173,7 +1190,9 @@ const App: NextPage = () => {
                         </div>
                         <ReactToPrint
                           trigger={() => (
-                            <button type="button">DOWNLOAD</button>
+                            <button className="primary-btn my-3" type="button">
+                              DOWNLOAD
+                            </button>
                           )}
                           content={() => componentRef.current}
                           pageStyle="@page { size: A3 }"
