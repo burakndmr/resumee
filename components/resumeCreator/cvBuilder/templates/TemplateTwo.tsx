@@ -9,9 +9,11 @@ type Props = {
 
 const TemplateTwo: React.FC<Props> = (data) => {
   const resumee: Resume = data.data;
-  console.log(data);
-  const date = new Date();
-  console.log(date);
+
+  const themeColors = {
+    bgColor: `bg-${resumee.Templates?.templateColor}-300`,
+    textColor: `text-${resumee.Templates?.templateColor}-900`,
+  };
 
   let startSchoolDate = `${resumee.educationInfo?.startDate.year}${
     resumee.educationInfo?.startDate.month.length === 1
@@ -34,7 +36,9 @@ const TemplateTwo: React.FC<Props> = (data) => {
   }`;
   return (
     <div className="aspect-realA4 scale-75 md:scale-75 lg:scale-95 xl:scale-100 box-border border-2 p-4">
-      <div className="h-64 bg-orange-300 flex items-center justify-center flex-col mb-24">
+      <div
+        className={`h-64 ${themeColors.bgColor} flex items-center justify-center flex-col mb-24`}
+      >
         <h2 className="text-4xl font-semibold">TEMPLATE-II</h2>
         <h2 className="text-4xl font-semibold">{resumee.mainInfo?.name}</h2>
         <h6 className="text-sm italic font-thin text-gray-800">
@@ -46,7 +50,9 @@ const TemplateTwo: React.FC<Props> = (data) => {
         <div className="flex justify-between items-start">
           <div className="w-72">
             <div>
-              <h1 className="text-xl font-semibold">Skills </h1>
+              <h1 className={`text-xl font-semibold ${themeColors.textColor}`}>
+                Skills
+              </h1>
               {resumee.Skills?.skills.map(
                 (skill, i) =>
                   skill.skillName !== "" && (
@@ -63,7 +69,9 @@ const TemplateTwo: React.FC<Props> = (data) => {
               )}
             </div>
             <div>
-              <h1 className="text-xl font-semibold">Education Info</h1>
+              <h1 className={`text-xl font-semibold ${themeColors.textColor}`}>
+                Education Info
+              </h1>
               <h1 className="text-sm ml-2 text-gray-900">
                 - {resumee.educationInfo?.schoolName}
               </h1>
@@ -85,16 +93,13 @@ const TemplateTwo: React.FC<Props> = (data) => {
               </div>
             </div>
             <div>
-              <h1 className="text-xl font-semibold">Social Media</h1>
+              <h1 className={`text-xl font-semibold ${themeColors.textColor}`}>
+                Social Media
+              </h1>
               <div className="flex items-center justify-start">
                 {resumee.mainInfo?.links[0].url !== "" &&
                   resumee.mainInfo?.links.map((link, i) => (
                     <div key={i} className="flex items-center justify-start">
-                      {/* <div>
-                        <h1 className="text-sm ml-2 text-gray-900">
-                          - {link.url}
-                        </h1>
-                      </div> */}
                       <div>
                         <a href="https://en.wikipedia.org/wiki/Next.js">
                           {link.name}
@@ -107,10 +112,18 @@ const TemplateTwo: React.FC<Props> = (data) => {
           </div>
           <div className="w-[1px] border border-gray-300 h-96 bg-gray-300"></div>
           <div className="w-72">
-            <h1 className="text-xl font-semibold">Basic Info</h1>
-            <h1 className="text-xl font-semibold">Language</h1>
-            <h1 className="text-xl font-semibold">Projects</h1>
-            <h1 className="text-xl font-semibold">Work Experience</h1>
+            <h1 className={`text-xl font-semibold ${themeColors.textColor}`}>
+              Basic Info
+            </h1>
+            <h1 className={`text-xl font-semibold ${themeColors.textColor}`}>
+              Language
+            </h1>
+            <h1 className={`text-xl font-semibold ${themeColors.textColor}`}>
+              Projects
+            </h1>
+            <h1 className={`text-xl font-semibold ${themeColors.textColor}`}>
+              Work Experience
+            </h1>
           </div>
         </div>
       </div>

@@ -42,6 +42,7 @@ import ResumePreview from "../../../components/resumeCreator/cvBuilder/renderRes
 // --------------- TEMPLATE COMPONENTS ---------------
 import TemplateOne from "../../../components/resumeCreator/cvBuilder/templates/TemplateOne";
 import TemplateTwo from "../../../components/resumeCreator/cvBuilder/templates/TemplateTwo";
+import TemplateThree from "../../../components/resumeCreator/cvBuilder/templates/TemplateThree";
 
 // TODO => Add placeholder for each input
 // TODO => Add validation for each input
@@ -51,6 +52,9 @@ import TemplateTwo from "../../../components/resumeCreator/cvBuilder/templates/T
 // TODO => Hidden scroll bar
 // TODO => Add X button
 // TODO => KENDİNDEN BAHSET İNPUTU
+
+// TODO => Replace color picker in template screen => download screen
+// TODO => Resumee preview color changable
 
 // ** => Add dynamic progress bar
 // ** => Add Projects Section
@@ -1123,38 +1127,7 @@ const App: NextPage = () => {
                               onChange={formik.handleChange}
                             />
                             <Card>
-                              <div>TEMPLATE </div>
-                              <div className="flex items-center justify-center h-64 gap-6">
-                                {[
-                                  { color: "red", bgColor: "bg-red-500" },
-                                  { color: "blue", bgColor: "bg-blue-500" },
-                                  {
-                                    color: "green",
-                                    bgColor: "bg-green-500",
-                                  },
-                                ].map((theme, index) => (
-                                  <button
-                                    type="button"
-                                    key={index}
-                                    onClick={() => {
-                                      formik.setFieldValue(
-                                        "Templates.templateColor",
-                                        theme.color
-                                      );
-                                    }}
-                                    className={`h-8 w-8 border-spacing-5 flex items-center justify-center ${
-                                      formik.values.Templates.templateColor ===
-                                      theme.color
-                                        ? "border-2 border-primary rounded-full"
-                                        : "rounded-full"
-                                    }`}
-                                  >
-                                    <div
-                                      className={`${theme.bgColor} p-3 rounded-full`}
-                                    ></div>
-                                  </button>
-                                ))}
-                              </div>
+                              <div>{template}</div>
                             </Card>
                           </label>
                         )
@@ -1167,6 +1140,37 @@ const App: NextPage = () => {
                   >
                     <div className="flex-1">
                       <div className="p-4 mb-4 flex items-center justify-center flex-col">
+                        <div className="flex items-center justify-center h-64 gap-6">
+                          {[
+                            { color: "red", bgColor: "bg-red-500" },
+                            { color: "blue", bgColor: "bg-blue-500" },
+                            {
+                              color: "green",
+                              bgColor: "bg-green-500",
+                            },
+                          ].map((theme, index) => (
+                            <button
+                              type="submit"
+                              key={index}
+                              onClick={() => {
+                                formik.setFieldValue(
+                                  "Templates.templateColor",
+                                  theme.color
+                                );
+                              }}
+                              className={`h-8 w-8 border-spacing-5 flex items-center justify-center ${
+                                formik.values.Templates.templateColor ===
+                                theme.color
+                                  ? "border-2 border-primary rounded-full"
+                                  : "rounded-full"
+                              }`}
+                            >
+                              <div
+                                className={`${theme.bgColor} p-3 rounded-full`}
+                              ></div>
+                            </button>
+                          ))}
+                        </div>
                         <ReactToPrint
                           trigger={() => (
                             <button type="button">DOWNLOAD</button>
@@ -1178,19 +1182,18 @@ const App: NextPage = () => {
                           ref={(el: any) => (componentRef.current = el)}
                           className="w-full "
                         >
-                          {
-                            // switch case
-                            formik.values.Templates.templateName ===
-                            "Template 1" ? (
-                              <TemplateOne data={formik.values} />
-                            ) : formik.values.Templates.templateName ===
-                              "Template 2" ? (
-                              <TemplateTwo data={formik.values} />
-                            ) : (
-                              <TemplateOne data={formik.values} />
-                            )
-                          }
-                          {/* <ResumePreview data={formik.values} /> */}
+                          {formik.values.Templates.templateName ===
+                          "Template 1" ? (
+                            <TemplateOne data={formik.values} />
+                          ) : formik.values.Templates.templateName ===
+                            "Template 2" ? (
+                            <TemplateTwo data={formik.values} />
+                          ) : formik.values.Templates.templateName ===
+                            "Template 3" ? (
+                            <TemplateThree data={formik.values} />
+                          ) : (
+                            <TemplateOne data={formik.values} />
+                          )}
                         </div>
                       </div>
                     </div>

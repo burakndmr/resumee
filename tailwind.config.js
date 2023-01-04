@@ -5,6 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
+  safelist: [
+    "bg",
+    "border",
+    "text",
+    {
+      pattern: /(bg|border|text)-(red|blue|green)-(300)/,
+    },
+  ],
   theme: {
     fontFamily: {
       sans: ["Poppins", "sans-serif"],

@@ -7,7 +7,7 @@ type Props = {
   data: Resume;
 };
 
-const TemplateOne: React.FC<Props> = (data) => {
+const TemplateThree: React.FC<Props> = (data) => {
   const resumee: Resume = data.data;
 
   const themeColors = {
@@ -39,7 +39,7 @@ const TemplateOne: React.FC<Props> = (data) => {
       <div
         className={`h-64 ${themeColors.bgColor} flex items-center justify-center flex-col mb-24`}
       >
-        <h2 className="text-4xl font-semibold">TEMPLATE-I</h2>
+        <h2 className="text-4xl font-semibold">TEMPLATE-III</h2>
         <h2 className="text-4xl font-semibold">{resumee.mainInfo?.name}</h2>
         <h6 className="text-sm italic font-thin text-gray-800">
           {resumee.mainInfo?.jobTitle}
@@ -131,4 +131,4 @@ const TemplateOne: React.FC<Props> = (data) => {
   );
 };
 
-export default TemplateOne;
+export default TemplateThree;
