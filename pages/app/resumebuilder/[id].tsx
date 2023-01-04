@@ -37,7 +37,6 @@ import {
 
 // ------------------ ICONS ------------------
 import { FiTrash2 } from "react-icons/fi";
-import ResumePreview from "../../../components/resumeCreator/cvBuilder/renderResume/ResumePreview";
 
 // --------------- TEMPLATE COMPONENTS ---------------
 import TemplateOne from "../../../components/resumeCreator/cvBuilder/templates/TemplateOne";
