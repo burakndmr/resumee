@@ -12,7 +12,8 @@ const TemplateOne: React.FC<Props> = (data) => {
 
   const themeColors = {
     bgColor: `bg-${resumee.Templates?.templateColor}-300`,
-    experienceColor: `bg-${resumee.Templates?.templateColor}-400`,
+    experienceColor: `bg-${resumee.Templates?.templateColor}-600`,
+    lineColor: `bg-${resumee.Templates?.templateColor}-500`,
     textColor: `text-${resumee.Templates?.templateColor}-900`,
     borderColor: `border-${resumee.Templates?.templateColor}-300`,
   };
@@ -93,7 +94,7 @@ const TemplateOne: React.FC<Props> = (data) => {
                               level !== "-" && (
                                 <div
                                   key={i}
-                                  className={`w-8 h-1 mr-1 ${themeColors.bgColor}`}
+                                  className={`w-8 h-1 mr-1 ${themeColors.lineColor}`}
                                 ></div>
                               )
                           )}
@@ -129,7 +130,7 @@ const TemplateOne: React.FC<Props> = (data) => {
                                 level !== "-" && (
                                   <div
                                     key={i}
-                                    className={`w-8 h-1 mr-1 ${themeColors.bgColor}`}
+                                    className={`w-8 h-1 mr-1 ${themeColors.lineColor}`}
                                   ></div>
                                 )
                             )}
