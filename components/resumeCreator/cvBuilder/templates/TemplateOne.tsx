@@ -73,7 +73,7 @@ const TemplateOne: React.FC<Props> = (data) => {
         />
         <div className="flex justify-between items-start">
           <div className="w-80">
-            {resumee.mainInfo?.email !== "" && (
+            {resumee.Skills.skills[0].skillName !== "" && (
               <div className="mb-4">
                 <h1
                   className={`text-2xl mb-2 font-semibold ${themeColors.textColor}`}
