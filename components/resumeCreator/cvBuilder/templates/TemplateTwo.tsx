@@ -62,7 +62,7 @@ const TemplateTwo: React.FC<Props> = (data) => {
                       </h1>
                       {skill.skillLevel !== "-" &&
                         Array.from({ length: Number(skill.skillLevel) }).map(
-                          (level, i) => <div key={i}>Çizgi</div>
+                          (level, i) => level !=="-" && <div key={i}>Çizgi</div>
                         )}
                     </div>
                   )
