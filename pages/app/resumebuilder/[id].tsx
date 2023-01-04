@@ -1164,6 +1164,22 @@ const App: NextPage = () => {
                               color: "green",
                               bgColor: "bg-green-500",
                             },
+                            {
+                              color: "orange",
+                              bgColor: "bg-orange-500",
+                            },
+                            {
+                              color: "teal",
+                              bgColor: "bg-teal-500",
+                            },
+                            {
+                              color: "yellow",
+                              bgColor: "bg-yellow-500",
+                            },
+                            {
+                              color: "purple",
+                              bgColor: "bg-purple-500",
+                            },
                           ].map((theme, index) => (
                             <button
                               type="submit"
