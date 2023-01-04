@@ -48,13 +48,12 @@ import TemplateThree from "../../../components/resumeCreator/cvBuilder/templates
 // TODO => fix bug => focus color on input
 // TODO => Make a resume download section
 // TODO => Make three resume templates
-// TODO => Hidden scroll bar
 // TODO => Add X button
 // TODO => KENDİNDEN BAHSET İNPUTU
+// TODO => Hidden scroll bar
 
-// TODO => Replace color picker in template screen => download screen
-// TODO => Resumee preview color changable
-
+// ** => Replace color picker in template screen => download screen
+// ** => Resumee preview color changable
 // ** => Add dynamic progress bar
 // ** => Add Projects Section
 // ** => Make a resume Template section
@@ -1251,29 +1250,37 @@ const App: NextPage = () => {
                     </div>
                   </TabPanel>
                   <div className="flex items-center justify-between">
-                    <button
-                      type="button"
-                      className="secondary-btn hidden md:inline-block w-full p-5 md:w-auto"
-                      onClick={() => {
-                        selectedTab === "Main Info"
-                          ? Router.push("/app/dashboard")
-                          : decrementTab();
-                      }}
-                    >
-                      Back
-                    </button>
-                    <button
-                      type="submit"
-                      className="primary-btn w-full p-5 md:w-auto "
-                      onClick={() => {
-                        incrementTab();
-                        formik.dirty && formik.isValid
-                          ? () => Router.push("/app/dashboard")
-                          : () => console.log("not ready");
-                      }}
-                    >
-                      Next
-                    </button>
+                    {selectedTab !== "Basic Info" ? (
+                      <button
+                        type="button"
+                        className="secondary-btn hidden md:inline-block w-full p-5 md:w-auto"
+                        onClick={() => {
+                          selectedTab === "Basic Info"
+                            ? Router.push("/app/dashboard")
+                            : decrementTab();
+                        }}
+                      >
+                        Back
+                      </button>
+                    ) : (
+                      <div></div>
+                    )}
+                    {selectedTab !== "Download" ? (
+                      <button
+                        type="submit"
+                        className="primary-btn w-full p-5 md:w-auto "
+                        onClick={() => {
+                          incrementTab();
+                          formik.dirty && formik.isValid
+                            ? () => Router.push("/app/dashboard")
+                            : () => console.log("not ready");
+                        }}
+                      >
+                        Next
+                      </button>
+                    ) : (
+                      <div></div>
+                    )}
                   </div>
                 </form>
               </FormikProvider>
