@@ -94,8 +94,6 @@ const App: NextPage = () => {
     },
   });
 
-  const [progress, setProgress] = useState(12.5);
-
   const allTabs = [
     "Basic Info",
     "Education Info",
@@ -106,28 +104,27 @@ const App: NextPage = () => {
     "Template",
     "Download",
   ];
-
+  const tabPercentRate = 100 / allTabs.length;
   const [currTab, setCurrTab] = useState(0);
+  const [progress, setProgress] = useState(tabPercentRate);
 
   const [selectedTab, setSelectedTab] = useTabs(allTabs);
 
   const incrementTab = () => {
     if (currTab < allTabs.length - 1) {
       setCurrTab((prev) => prev + 1);
-      if (progress !== 100) {
-        setProgress((prev) => prev + 12.5);
-      }
     }
   };
 
   const decrementTab = () => {
     if (currTab > 0) {
       setCurrTab((prev) => prev - 1);
-      setProgress((prev) => prev - 12.5);
     }
   };
+
   useEffect(() => {
     setSelectedTab(allTabs[currTab]);
+    setProgress((prev) => (currTab + 1) * tabPercentRate);
   }, [currTab]);
 
   let componentRef = useRef(null);
@@ -153,81 +150,18 @@ const App: NextPage = () => {
                   onSubmit={formik.handleSubmit}
                 >
                   <div className="w-full border-b-[1px] border-gray-200 flex w-full overflow-x-auto mb-4">
-                    <TabSelector
-                      isActive={selectedTab === "Basic Info"}
-                      onClick={() => {
-                        setSelectedTab("Basic Info");
-                        setCurrTab(0);
-                      }}
-                    >
-                      Basic Info
-                    </TabSelector>
-
-                    <TabSelector
-                      isActive={selectedTab === "Education Info"}
-                      onClick={() => {
-                        setSelectedTab("Education Info");
-                        setCurrTab(1);
-                      }}
-                    >
-                      Education Info
-                    </TabSelector>
-
-                    <TabSelector
-                      isActive={selectedTab === "Experience Info"}
-                      onClick={() => {
-                        setSelectedTab("Experience Info");
-                        setCurrTab(2);
-                      }}
-                    >
-                      Experience Info
-                    </TabSelector>
-                    <TabSelector
-                      isActive={selectedTab === "Social Media"}
-                      onClick={() => {
-                        setSelectedTab("Social Media");
-                        setCurrTab(3);
-                      }}
-                    >
-                      Social Media
-                    </TabSelector>
-                    <TabSelector
-                      isActive={selectedTab === "Skills&Languages"}
-                      onClick={() => {
-                        setSelectedTab("Skills&Languages");
-                        setCurrTab(4);
-                      }}
-                    >
-                      Skills & Languages
-                    </TabSelector>
-
-                    <TabSelector
-                      isActive={selectedTab === "Projects"}
-                      onClick={() => {
-                        setSelectedTab("Projects");
-                        setCurrTab(5);
-                      }}
-                    >
-                      Projects
-                    </TabSelector>
-                    <TabSelector
-                      isActive={selectedTab === "Template"}
-                      onClick={() => {
-                        setSelectedTab("Template");
-                        setCurrTab(6);
-                      }}
-                    >
-                      Template
-                    </TabSelector>
-                    <TabSelector
-                      isActive={selectedTab === "Download"}
-                      onClick={() => {
-                        setSelectedTab("Download");
-                        setCurrTab(7);
-                      }}
-                    >
-                      Download
-                    </TabSelector>
+                    {allTabs.map((e, index) => (
+                      <TabSelector
+                        key={index}
+                        isActive={selectedTab === e}
+                        onClick={() => {
+                          setSelectedTab(e);
+                          setCurrTab(index);
+                        }}
+                      >
+                        {e}
+                      </TabSelector>
+                    ))}
                   </div>
                   <TabPanel
                     className="flex-1"
