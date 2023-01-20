@@ -9,6 +9,8 @@ import { motion, useAnimation } from "framer-motion";
 
 import { auth } from "../../../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Card } from "flowbite-react";
+import { getImageSize } from "next/dist/server/image-optimizer";
 
 interface HeaderProps {}
 
@@ -61,7 +63,7 @@ export const Header: React.FC<HeaderProps> = () => {
             </a>
           </Link>
         </motion.div>
-        {!user && (
+        {!user ? (
           <motion.div ref={headerRef} animate={animation} className="opacity-0">
             <Link href="/auth/Login">
               <a className="text-gray-500 font-medium text-lg primary-btn px-3">
@@ -69,6 +71,15 @@ export const Header: React.FC<HeaderProps> = () => {
               </a>
             </Link>
           </motion.div>
+        ) : (
+          <Link href="/auth/Profile">
+            <div className="flex items-center justify-center gap-4">
+              <h1>{user.displayName}</h1>
+              {user.photoURL !== null ? (
+                <img className="rounded-full w-16" src={user.photoURL} />
+              ) : null}
+            </div>
+          </Link>
         )}
       </nav>
     </motion.header>

@@ -1,6 +1,9 @@
 // ------------------ NEXT - REACT ------------------
 import React, { useEffect, useState, useRef } from "react";
 
+import { auth, db } from "../../../utils/firebase";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+
 import ReactToPrint from "react-to-print";
 
 import type { NextPage } from "next";
@@ -42,6 +45,7 @@ import { FiTrash2 } from "react-icons/fi";
 import TemplateOne from "../../../components/resumeCreator/cvBuilder/templates/TemplateOne";
 import TemplateTwo from "../../../components/resumeCreator/cvBuilder/templates/TemplateTwo";
 import TemplateThree from "../../../components/resumeCreator/cvBuilder/templates/TemplateThree";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 // TODO => Add placeholder for each input
 // TODO => Add validation for each input
@@ -85,12 +89,20 @@ const App: NextPage = () => {
     }),
   });
 
+  const [user, loading] = useAuthState(auth);
+
+  const updateResumeDB = async (values: Resume) => {
+    const resumeRef = doc(db, "resumes", router.query.id as string);
+    setDoc(resumeRef, { data: JSON.stringify(values) }, { merge: true });
+  };
+
   const formik = useFormik<Resume>({
     initialValues: selectedResumeArr[0],
     validationSchema: formSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
       dispatch(updateResume(values));
+      updateResumeDB(values);
     },
   });
 

@@ -35,12 +35,13 @@ const Login: React.FC<LoginProps> = () => {
     }
   }, [user]);
 
-  return ( 
+  return (
     <div>
       <MainLayout>
         <Card className="mt-32 max-w-xl mx-auto">
           <div className="flex flex-col">
             <h1 className="font-semibold text-3xl text-gray-900">Login</h1>
+            <input type="text" className="input-normal" placeholder="Email" />
             <button
               onClick={googleLogin}
               className="flex items-center relative justify-center bg-gray-700 hover:bg-gray-800 rounded py-3 px-5 mt-3"

@@ -9,6 +9,8 @@ import { Resume } from "../../../lib/types";
 import { useDispatch } from "react-redux";
 import { deleteResume } from "../../../slices/resumeActions/resumeActionSlice";
 import moment from "moment";
+import { doc, deleteDoc } from "firebase/firestore";
+import { auth, db } from "../../../utils/firebase";
 
 interface ResumeeProps {
   resume: Resume;
@@ -16,6 +18,11 @@ interface ResumeeProps {
 
 export const Resumee: React.FC<ResumeeProps> = ({ resume }) => {
   const dispatch = useDispatch();
+
+  const deleteResumeHandler = () => {
+    deleteDoc(doc(db, "resumes", resume.id));
+    dispatch(deleteResume(resume.id));
+  };
 
   return (
     <div key={resume.id} className="flex justify-center sm:justify-start gap-3">
@@ -34,9 +41,7 @@ export const Resumee: React.FC<ResumeeProps> = ({ resume }) => {
           {resume.createInfo.isUpdated ? "Updated " : "Created "}
           {moment(resume.createInfo.date).format("DD MMMM, HH:mm")}
         </p>
-        <button onClick={() => dispatch(deleteResume(resume.id))}>
-          DELETE_RESUME
-        </button>
+        <button onClick={() => deleteResumeHandler()}>DELETE_RESUME</button>
       </div>
     </div>
   );
