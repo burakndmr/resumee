@@ -7,9 +7,13 @@ import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 
+import { auth } from "../../../utils/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
+  const [user, loading] = useAuthState(auth);
   const animation = useAnimation();
 
   const [headerRef, headerInView] = useInView({
@@ -57,13 +61,15 @@ export const Header: React.FC<HeaderProps> = () => {
             </a>
           </Link>
         </motion.div>
-        <motion.div ref={headerRef} animate={animation} className="opacity-0">
-          <Link href="/auth/Login">
-            <a className="text-gray-500 font-medium text-lg primary-btn px-3">
-              Login
-            </a>
-          </Link>
-        </motion.div>
+        {!user && (
+          <motion.div ref={headerRef} animate={animation} className="opacity-0">
+            <Link href="/auth/Login">
+              <a className="text-gray-500 font-medium text-lg primary-btn px-3">
+                Login
+              </a>
+            </Link>
+          </motion.div>
+        )}
       </nav>
     </motion.header>
   );

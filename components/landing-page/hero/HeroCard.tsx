@@ -9,9 +9,13 @@ import { motion, useAnimation } from "framer-motion";
 // IMPORT COMPONENTS
 import { Button } from "../button/Button";
 
+import { auth } from "../../../utils/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 interface HeroCardProps {}
 
 export const HeroCard: React.FC<HeroCardProps> = ({}) => {
+  const [user, loading] = useAuthState(auth);
   const animation = useAnimation();
 
   const [ref, inView] = useInView({
@@ -52,9 +56,15 @@ export const HeroCard: React.FC<HeroCardProps> = ({}) => {
       </p>
 
       <Button>
-        <Link href="/app/dashboard">
-          <a className="text-white text-lg font-semibold p-5">Create CV</a>
-        </Link>
+        {user ? (
+          <Link href="/app/dashboard">
+            <a className="text-white text-lg font-semibold p-5">Create CV</a>
+          </Link>
+        ) : (
+          <Link href="/auth/login">
+            <a className="text-white text-lg font-semibold p-5">Login</a>
+          </Link>
+        )}
       </Button>
     </motion.div>
   );

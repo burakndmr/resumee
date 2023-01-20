@@ -1,5 +1,5 @@
-import React from "react";
-import Router, { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
 import { MainLayout } from "../../components/landing-page/layout/MainLayout";
 import { Card } from "flowbite-react";
@@ -7,6 +7,7 @@ import { Card } from "flowbite-react";
 import { FcGoogle } from "react-icons/fc";
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth } from "../../utils/firebase";
 
@@ -14,6 +15,7 @@ interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
   const route = useRouter();
+  const [user, loading] = useAuthState(auth);
 
   const googleProvider = new GoogleAuthProvider();
   const googleLogin = async () => {
@@ -25,7 +27,15 @@ const Login: React.FC<LoginProps> = () => {
     }
   };
 
-  return (
+  useEffect(() => {
+    if (user) {
+      route.push("/app/dashboard");
+    } else {
+      console.log("login");
+    }
+  }, [user]);
+
+  return ( 
     <div>
       <MainLayout>
         <Card className="mt-32 max-w-xl mx-auto">
