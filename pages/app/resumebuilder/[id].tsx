@@ -12,7 +12,7 @@ import Router from "next/router";
 import { Resume } from "../../../lib/types";
 
 // ----------------- FLOWBITE -----------------
-import { Alert, Card, Tabs, Flowbite, Spinner } from "flowbite-react";
+import { Card, Flowbite, Spinner } from "flowbite-react";
 
 // ------------------ CUSTOM COMPS ------------------
 import { Progress } from "../../../components/resumeCreator/cvBuilder/progress/Progress";
