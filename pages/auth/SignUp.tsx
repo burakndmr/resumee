@@ -9,7 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import {
   signInWithPopup,
   GoogleAuthProvider,
-  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -17,9 +17,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../utils/firebase";
 import Link from "next/link";
 
-interface LoginProps {}
+interface SignUpProps {}
 
-const Login: React.FC<LoginProps> = () => {
+const SignUp: React.FC<SignUpProps> = () => {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
 
@@ -40,7 +40,7 @@ const Login: React.FC<LoginProps> = () => {
 
   const onLogin = (e: any) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -74,7 +74,7 @@ const Login: React.FC<LoginProps> = () => {
               className="flex items-center relative justify-center bg-gray-700 hover:bg-gray-800 rounded-lg py-3 px-5 mt-3"
             >
               <FcGoogle className=" absolute left-4 text-3xl" />
-              <p className="text-white">Login with Google</p>
+              <p className="text-white">Sign Up with Google</p>
             </button>
             <form>
               <div className="flex flex-col items-start justify-center">
@@ -134,9 +134,9 @@ const Login: React.FC<LoginProps> = () => {
               </div>
             </form>
             <p className="text-sm mt-3 text-center">
-              No account yet?{" "}
-              <Link href={"/auth/SignUp"}>
-                <span className="cursor-pointer text-primary">Sign up</span>
+              Already have an account?{" "}
+              <Link href={"/auth/Login"}>
+                <span className="cursor-pointer text-primary">Login</span>
               </Link>
             </p>
           </div>
@@ -146,4 +146,4 @@ const Login: React.FC<LoginProps> = () => {
   );
 };
 
-export default Login;
+export default SignUp;

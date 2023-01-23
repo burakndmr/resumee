@@ -61,7 +61,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({}) => {
             <a className="text-white text-lg font-semibold p-5">Create CV</a>
           </Link>
         ) : (
-          <Link href="/auth/login">
+          <Link href="/auth/Login">
             <a className="text-white text-lg font-semibold p-5">Login</a>
           </Link>
         )}

@@ -12,6 +12,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Card } from "flowbite-react";
 import { getImageSize } from "next/dist/server/image-optimizer";
 
+import noProfilePic from "../../../public/dashboard/default-avatar.png";
+
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
@@ -74,10 +76,14 @@ export const Header: React.FC<HeaderProps> = () => {
         ) : (
           <Link href="/auth/Profile">
             <div className="flex items-center justify-center gap-4">
-              <h1>{user.displayName}</h1>
+              <h1>
+                {user.displayName === null ? user.email : user.displayName}
+              </h1>
               {user.photoURL !== null ? (
                 <img className="rounded-full w-16" src={user.photoURL} />
-              ) : null}
+              ) : (
+                <img className="rounded-full w-16" src={noProfilePic} />
+              )}
             </div>
           </Link>
         )}
