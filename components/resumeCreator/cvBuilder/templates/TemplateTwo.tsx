@@ -60,7 +60,7 @@ const TemplateTwo: React.FC<Props> = (data) => {
   return (
     <div className="aspect-realA4 scale-75 md:scale-75 lg:scale-95 xl:scale-100 box-border border-2 px-20">
       <div className={`flex items-start justify-start flex-col mt-28`}>
-        <h2 className="text-5xl font-bold leading-10">
+        <h2 className="text-5xl font-bold leading-10 my-4">
           {resumee.mainInfo?.name}
         </h2>
         <h6 className="text-lg font-thin text-gray-800">
