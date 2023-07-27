@@ -21,14 +21,6 @@ import { Footer } from "../components/landing-page/footer/Footer";
 const Home: NextPage = () => {
   return (
     <div>
-      <Head>
-        <title>resumee | Create your CV</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <MainLayout>
         <Header />
         <Hero />
