@@ -49,11 +49,16 @@ export const Header: React.FC<HeaderProps> = () => {
         <motion.div
           ref={headerRef}
           animate={animation}
-          className="font-extrabold opacity-0 text-4xl"
+          className="flex items-center justify-center gap-4"
         >
-          <Link href="/">
+          <Link className="font-extrabold opacity-0 text-4xl" href="/">
             <a>
               <Image src="/logo.svg" alt="logo" height={50} width={177} />
+            </a>
+          </Link>
+          <Link href={"/new"}>
+            <a className="bg-primary/20 rounded-full px-3 py-1 text-primary">
+              Beta
             </a>
           </Link>
         </motion.div>
