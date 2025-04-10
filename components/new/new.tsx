@@ -41,44 +41,31 @@ export default function NewVersion() {
   const padNumber = (num: number) => String(num).padStart(2, "0");
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-900 via-red-600 to-yellow-400 animate-gradient bg-[length:400%_400%]">
-      <div className="text-center">
-        <div className="flex items-baseline justify-center gap-4 text-white/90">
-          <div className="flex flex-col items-center">
-            <span className="text-8xl font-light tracking-tight">
-              {padNumber(timeLeft.days)}
-            </span>
-            <span className="text-sm font-light tracking-widest mt-2 text-white/60 uppercase">
-              Days
-            </span>
-          </div>
-          <span className="text-6xl font-extralight mb-8">:</span>
-          <div className="flex flex-col items-center">
-            <span className="text-8xl font-light tracking-tight">
-              {padNumber(timeLeft.hours)}
-            </span>
-            <span className="text-sm font-light tracking-widest mt-2 text-white/60 uppercase">
-              Hours
-            </span>
-          </div>
-          <span className="text-6xl font-extralight mb-8">:</span>
-          <div className="flex flex-col items-center">
-            <span className="text-8xl font-light tracking-tight">
-              {padNumber(timeLeft.minutes)}
-            </span>
-            <span className="text-sm font-light tracking-widest mt-2 text-white/60 uppercase">
-              Minutes
-            </span>
-          </div>
-          <span className="text-6xl font-extralight mb-8">:</span>
-          <div className="flex flex-col items-center">
-            <span className="text-8xl font-light tracking-tight">
-              {padNumber(timeLeft.seconds)}
-            </span>
-            <span className="text-sm font-light tracking-widest mt-2 text-white/60 uppercase">
-              Seconds
-            </span>
-          </div>
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-900 via-red-600 to-yellow-400 animate-gradient bg-[length:400%_400%] p-4 sm:p-6 md:p-8 lg:p-12">
+      <div className="text-center w-full max-w-7xl mx-auto">
+        <div className="flex flex-wrap items-baseline justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 text-white/90">
+          {[
+            { label: "Days", value: timeLeft.days },
+            { label: "Hours", value: timeLeft.hours },
+            { label: "Minutes", value: timeLeft.minutes },
+            { label: "Seconds", value: timeLeft.seconds },
+          ].map((unit, index) => (
+            <React.Fragment key={unit.label}>
+              {index !== 0 && (
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extralight mb-4 sm:mb-6 md:mb-8">
+                  :
+                </span>
+              )}
+              <div className="flex flex-col items-center min-w-[60px] sm:min-w-[70px] md:min-w-[80px] lg:min-w-[100px]">
+                <span className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-light tracking-tight">
+                  {padNumber(unit.value)}
+                </span>
+                <span className="text-[10px] sm:text-xs md:text-sm lg:text-base font-light tracking-widest mt-1 sm:mt-2 text-white/60 uppercase">
+                  {unit.label}
+                </span>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </div>
