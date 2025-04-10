@@ -17,17 +17,19 @@ import { FeaturesSection } from "../components/landing-page/section-features/Fea
 import { Hero } from "../components/landing-page/hero/Hero";
 import { FeaturesInfoSection } from "../components/landing-page/section-features-info/FeaturesInfoSection";
 import { Footer } from "../components/landing-page/footer/Footer";
+import NewVersion from "../components/new/new";
 
 const Home: NextPage = () => {
   return (
     <div>
-      <MainLayout>
+      {/* <MainLayout>
         <Header />
         <Hero />
       </MainLayout>
       <FeaturesSection />
       <FeaturesInfoSection />
-      <Footer />
+      <Footer /> */}
+      <NewVersion />
     </div>
   );
 };

@@ -10,7 +10,8 @@ module.exports = {
     "border",
     "text",
     {
-      pattern: /(bg|border|text)-(red|blue|green|yellow|orange|teal|purple)-(300|500)/,
+      pattern:
+        /(bg|border|text)-(red|blue|green|yellow|orange|teal|purple)-(300|500)/,
     },
   ],
   theme: {
@@ -37,6 +38,16 @@ module.exports = {
       },
       aspectRatio: {
         realA4: "1/1.4142",
+      },
+      animation: {
+        gradient: "gradient 15s ease infinite",
+      },
+      keyframes: {
+        gradient: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
       },
     },
   },
