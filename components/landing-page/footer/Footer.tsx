@@ -53,7 +53,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
             <div className="flex items-center justify-center gap-5">
               <Link href="https://github.com/burakndmr">
                 <a>
-                  <Image src="/landingPage/github.svg" height={24} width={24} />
+                  <Image src="/landingPage/github.svg" alt="github" height={24} width={24} />
                 </a>
               </Link>
               <Link href="https://www.instagram.com/burak.dmrr00/">
