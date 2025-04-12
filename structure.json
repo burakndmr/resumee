@@ -1,0 +1,57 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "resumeName": "resume1",
+      "mainInfo": {
+        "sectionName": "mainInfo",
+        "name": "John",
+        "phone": "1234567890",
+        "city": "New York",
+        "jobTitle": "Software Engineer",
+        "email": "mail@mail.com",
+        "links": [
+          {
+            "name": "LinkedIn",
+            "url": "https://www.linkedin.com"
+          },
+          {
+            "name": "Github",
+            "url": "222"
+          }
+        ]
+      },
+      "profileInfo": {
+        "sectionName": "profileInfo",
+        "profileDescription": "profile1 description"
+      },
+      "educationInfo": {
+        "sectionName": "profileInfo",
+        "educations": [
+          {
+            "schoolName": "school1",
+            "degree": "degree1",
+            "fieldOfStudy": "fieldOfStudy1",
+            "startDate": "startDate1",
+            "endDate": "endDate1",
+            "schoolCity": "schoolCity1",
+            "schoolCountry": "schoolCountry1"
+          }
+        ]
+      },
+      "Skills": {
+        "sectionName": "Skills",
+        "skills": [
+          {
+            "skillName": "skill1",
+            "skillLevel": "skillLevel1"
+          },
+          {
+            "skillName": "skill2",
+            "skillLevel": "skillLevel2"
+          }
+        ]
+      }
+    }
+  ]
+}
