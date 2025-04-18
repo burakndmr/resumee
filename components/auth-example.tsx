@@ -1,13 +1,8 @@
-import { auth } from "@/lib/auth";
-import { authClient } from "@/lib/auth-client";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
+import { getSession } from "@/app/actions/auth/session/action";
 import SignOutButton from "./sign-out-button";
 
 export async function AuthExample() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const session = await getSession();
   if (!session) {
     return <div>Not authenticated</div>;
   }
