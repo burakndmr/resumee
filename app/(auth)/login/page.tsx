@@ -5,7 +5,7 @@ import { signInWithGoogle } from "@/app/actions/auth/login/google/action";
 export default function Page() {
   return (
     <>
-      <div onClick={signInWithGithub}>
+      <div onClick={async () => await signInWithGithub("Github")}>
         <button>Login with Github</button>
       </div>
       <div onClick={signInWithGoogle}>

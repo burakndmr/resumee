@@ -10,6 +10,8 @@ export async function AuthExample() {
     <div>
       <h1>
         Welcome {session.user.name}
+        <br />
+        <pre>{JSON.stringify(session, null, 2)}</pre>
         <SignOutButton />
       </h1>
     </div>
