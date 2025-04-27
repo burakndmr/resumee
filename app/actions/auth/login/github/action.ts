@@ -22,6 +22,9 @@ export const signInWithGithub = async (username?: string) => {
       },
     });
   }
-
-  redirect(`/`);
+  if (username) {
+    redirect(`/${username}`);
+  } else {
+    redirect(`/`);
+  }
 };

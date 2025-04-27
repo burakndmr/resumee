@@ -9,16 +9,19 @@ datasource db {
 }
 
 model User {
-  id            String    @id
-  email         String    @unique
-  name          String?
-  emailVerified Boolean
-  image         String?
-  createdAt     DateTime
-  updatedAt     DateTime
-  url           String?   @unique
-  accounts      Account[]
-  sessions      Session[]
+  id             String           @id
+  email          String           @unique
+  name           String?
+  emailVerified  Boolean
+  image          String?
+  createdAt      DateTime
+  updatedAt      DateTime
+  url            String?          @unique
+  accounts       Account[]
+  sessions       Session[]
+  UserCustomUrl  UserCustomUrl[]
+  UserDefinedUrl UserDefinedUrl[]
+  SocialLink     SocialLink[]
 
   @@map("user")
 }
@@ -65,4 +68,47 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+// social links for production
+
+model SocialLink {
+  id     String @id @default(cuid())
+  url    String
+  label  String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  name   String
+
+  @@unique([userId, url])
+  @@map("social_links")
+}
+
+enum DefinedUrlType {
+  INSTAGRAM
+  YOUTUBE
+  LINKEDIN
+  TWITTER
+}
+
+model UserDefinedUrl {
+  id     String         @id @default(cuid())
+  type   DefinedUrlType
+  url    String
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  label  String
+
+  @@unique([userId, type]) // Her tipten en fazla bir tane
+  @@map("user_defined_urls")
+}
+
+model UserCustomUrl {
+  id     String @id @default(cuid())
+  label  String
+  url    String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  @@map("user_custom_urls")
 }

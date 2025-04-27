@@ -164,6 +164,29 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SocialLinkScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  label: 'label',
+  userId: 'userId',
+  name: 'name'
+};
+
+exports.Prisma.UserDefinedUrlScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  url: 'url',
+  userId: 'userId',
+  label: 'label'
+};
+
+exports.Prisma.UserCustomUrlScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  url: 'url',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -178,13 +201,21 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.DefinedUrlType = exports.$Enums.DefinedUrlType = {
+  INSTAGRAM: 'INSTAGRAM',
+  YOUTUBE: 'YOUTUBE',
+  LINKEDIN: 'LINKEDIN',
+  TWITTER: 'TWITTER'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  SocialLink: 'SocialLink',
+  UserDefinedUrl: 'UserDefinedUrl',
+  UserCustomUrl: 'UserCustomUrl'
 };
 
 /**

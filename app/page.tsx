@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getSession } from "./actions/auth/session/action";
 import { addUrlToUser } from "./actions/auth/login/github/actions";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 export default async function Home() {
   const session = await getSession();
   const cookieStore = await cookies();
@@ -12,6 +13,10 @@ export default async function Home() {
 
   if (username) {
     await addUrlToUser(username.value);
+  }
+
+  if (session) {
+    redirect(`/${session.user.url}`);
   }
 
   return (

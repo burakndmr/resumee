@@ -33,6 +33,40 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  * 
  */
 export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
+/**
+ * Model SocialLink
+ * 
+ */
+export type SocialLink = $Result.DefaultSelection<Prisma.$SocialLinkPayload>
+/**
+ * Model UserDefinedUrl
+ * 
+ */
+export type UserDefinedUrl = $Result.DefaultSelection<Prisma.$UserDefinedUrlPayload>
+/**
+ * Model UserCustomUrl
+ * 
+ */
+export type UserCustomUrl = $Result.DefaultSelection<Prisma.$UserCustomUrlPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const DefinedUrlType: {
+  INSTAGRAM: 'INSTAGRAM',
+  YOUTUBE: 'YOUTUBE',
+  LINKEDIN: 'LINKEDIN',
+  TWITTER: 'TWITTER'
+};
+
+export type DefinedUrlType = (typeof DefinedUrlType)[keyof typeof DefinedUrlType]
+
+}
+
+export type DefinedUrlType = $Enums.DefinedUrlType
+
+export const DefinedUrlType: typeof $Enums.DefinedUrlType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +232,36 @@ export class PrismaClient<
     * ```
     */
   get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.socialLink`: Exposes CRUD operations for the **SocialLink** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SocialLinks
+    * const socialLinks = await prisma.socialLink.findMany()
+    * ```
+    */
+  get socialLink(): Prisma.SocialLinkDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userDefinedUrl`: Exposes CRUD operations for the **UserDefinedUrl** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserDefinedUrls
+    * const userDefinedUrls = await prisma.userDefinedUrl.findMany()
+    * ```
+    */
+  get userDefinedUrl(): Prisma.UserDefinedUrlDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userCustomUrl`: Exposes CRUD operations for the **UserCustomUrl** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserCustomUrls
+    * const userCustomUrls = await prisma.userCustomUrl.findMany()
+    * ```
+    */
+  get userCustomUrl(): Prisma.UserCustomUrlDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +705,10 @@ export namespace Prisma {
     User: 'User',
     Session: 'Session',
     Account: 'Account',
-    Verification: 'Verification'
+    Verification: 'Verification',
+    SocialLink: 'SocialLink',
+    UserDefinedUrl: 'UserDefinedUrl',
+    UserCustomUrl: 'UserCustomUrl'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +727,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification"
+      modelProps: "user" | "session" | "account" | "verification" | "socialLink" | "userDefinedUrl" | "userCustomUrl"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +1027,228 @@ export namespace Prisma {
           }
         }
       }
+      SocialLink: {
+        payload: Prisma.$SocialLinkPayload<ExtArgs>
+        fields: Prisma.SocialLinkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SocialLinkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SocialLinkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>
+          }
+          findFirst: {
+            args: Prisma.SocialLinkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SocialLinkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>
+          }
+          findMany: {
+            args: Prisma.SocialLinkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>[]
+          }
+          create: {
+            args: Prisma.SocialLinkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>
+          }
+          createMany: {
+            args: Prisma.SocialLinkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SocialLinkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>[]
+          }
+          delete: {
+            args: Prisma.SocialLinkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>
+          }
+          update: {
+            args: Prisma.SocialLinkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>
+          }
+          deleteMany: {
+            args: Prisma.SocialLinkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SocialLinkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SocialLinkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>[]
+          }
+          upsert: {
+            args: Prisma.SocialLinkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SocialLinkPayload>
+          }
+          aggregate: {
+            args: Prisma.SocialLinkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSocialLink>
+          }
+          groupBy: {
+            args: Prisma.SocialLinkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SocialLinkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SocialLinkCountArgs<ExtArgs>
+            result: $Utils.Optional<SocialLinkCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserDefinedUrl: {
+        payload: Prisma.$UserDefinedUrlPayload<ExtArgs>
+        fields: Prisma.UserDefinedUrlFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserDefinedUrlFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserDefinedUrlFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>
+          }
+          findFirst: {
+            args: Prisma.UserDefinedUrlFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserDefinedUrlFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>
+          }
+          findMany: {
+            args: Prisma.UserDefinedUrlFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>[]
+          }
+          create: {
+            args: Prisma.UserDefinedUrlCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>
+          }
+          createMany: {
+            args: Prisma.UserDefinedUrlCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserDefinedUrlCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>[]
+          }
+          delete: {
+            args: Prisma.UserDefinedUrlDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>
+          }
+          update: {
+            args: Prisma.UserDefinedUrlUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserDefinedUrlDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserDefinedUrlUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserDefinedUrlUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserDefinedUrlUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserDefinedUrlPayload>
+          }
+          aggregate: {
+            args: Prisma.UserDefinedUrlAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserDefinedUrl>
+          }
+          groupBy: {
+            args: Prisma.UserDefinedUrlGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserDefinedUrlGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserDefinedUrlCountArgs<ExtArgs>
+            result: $Utils.Optional<UserDefinedUrlCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserCustomUrl: {
+        payload: Prisma.$UserCustomUrlPayload<ExtArgs>
+        fields: Prisma.UserCustomUrlFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserCustomUrlFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserCustomUrlFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>
+          }
+          findFirst: {
+            args: Prisma.UserCustomUrlFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserCustomUrlFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>
+          }
+          findMany: {
+            args: Prisma.UserCustomUrlFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>[]
+          }
+          create: {
+            args: Prisma.UserCustomUrlCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>
+          }
+          createMany: {
+            args: Prisma.UserCustomUrlCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserCustomUrlCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>[]
+          }
+          delete: {
+            args: Prisma.UserCustomUrlDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>
+          }
+          update: {
+            args: Prisma.UserCustomUrlUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserCustomUrlDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserCustomUrlUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserCustomUrlUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserCustomUrlUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserCustomUrlPayload>
+          }
+          aggregate: {
+            args: Prisma.UserCustomUrlAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserCustomUrl>
+          }
+          groupBy: {
+            args: Prisma.UserCustomUrlGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserCustomUrlGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserCustomUrlCountArgs<ExtArgs>
+            result: $Utils.Optional<UserCustomUrlCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1337,9 @@ export namespace Prisma {
     session?: SessionOmit
     account?: AccountOmit
     verification?: VerificationOmit
+    socialLink?: SocialLinkOmit
+    userDefinedUrl?: UserDefinedUrlOmit
+    userCustomUrl?: UserCustomUrlOmit
   }
 
   /* Types for Logging */
@@ -1144,11 +1436,17 @@ export namespace Prisma {
   export type UserCountOutputType = {
     accounts: number
     sessions: number
+    UserCustomUrl: number
+    UserDefinedUrl: number
+    SocialLink: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    UserCustomUrl?: boolean | UserCountOutputTypeCountUserCustomUrlArgs
+    UserDefinedUrl?: boolean | UserCountOutputTypeCountUserDefinedUrlArgs
+    SocialLink?: boolean | UserCountOutputTypeCountSocialLinkArgs
   }
 
   // Custom InputTypes
@@ -1174,6 +1472,27 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUserCustomUrlArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserCustomUrlWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUserDefinedUrlArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserDefinedUrlWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSocialLinkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SocialLinkWhereInput
   }
 
 
@@ -1371,6 +1690,9 @@ export namespace Prisma {
     url?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    UserCustomUrl?: boolean | User$UserCustomUrlArgs<ExtArgs>
+    UserDefinedUrl?: boolean | User$UserDefinedUrlArgs<ExtArgs>
+    SocialLink?: boolean | User$SocialLinkArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1411,6 +1733,9 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
+    UserCustomUrl?: boolean | User$UserCustomUrlArgs<ExtArgs>
+    UserDefinedUrl?: boolean | User$UserDefinedUrlArgs<ExtArgs>
+    SocialLink?: boolean | User$SocialLinkArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1421,6 +1746,9 @@ export namespace Prisma {
     objects: {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
+      UserCustomUrl: Prisma.$UserCustomUrlPayload<ExtArgs>[]
+      UserDefinedUrl: Prisma.$UserDefinedUrlPayload<ExtArgs>[]
+      SocialLink: Prisma.$SocialLinkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1827,6 +2155,9 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    UserCustomUrl<T extends User$UserCustomUrlArgs<ExtArgs> = {}>(args?: Subset<T, User$UserCustomUrlArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    UserDefinedUrl<T extends User$UserDefinedUrlArgs<ExtArgs> = {}>(args?: Subset<T, User$UserDefinedUrlArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    SocialLink<T extends User$SocialLinkArgs<ExtArgs> = {}>(args?: Subset<T, User$SocialLinkArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2297,6 +2628,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.UserCustomUrl
+   */
+  export type User$UserCustomUrlArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    where?: UserCustomUrlWhereInput
+    orderBy?: UserCustomUrlOrderByWithRelationInput | UserCustomUrlOrderByWithRelationInput[]
+    cursor?: UserCustomUrlWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserCustomUrlScalarFieldEnum | UserCustomUrlScalarFieldEnum[]
+  }
+
+  /**
+   * User.UserDefinedUrl
+   */
+  export type User$UserDefinedUrlArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    where?: UserDefinedUrlWhereInput
+    orderBy?: UserDefinedUrlOrderByWithRelationInput | UserDefinedUrlOrderByWithRelationInput[]
+    cursor?: UserDefinedUrlWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserDefinedUrlScalarFieldEnum | UserDefinedUrlScalarFieldEnum[]
+  }
+
+  /**
+   * User.SocialLink
+   */
+  export type User$SocialLinkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    where?: SocialLinkWhereInput
+    orderBy?: SocialLinkOrderByWithRelationInput | SocialLinkOrderByWithRelationInput[]
+    cursor?: SocialLinkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SocialLinkScalarFieldEnum | SocialLinkScalarFieldEnum[]
   }
 
   /**
@@ -5586,6 +5989,3167 @@ export namespace Prisma {
 
 
   /**
+   * Model SocialLink
+   */
+
+  export type AggregateSocialLink = {
+    _count: SocialLinkCountAggregateOutputType | null
+    _min: SocialLinkMinAggregateOutputType | null
+    _max: SocialLinkMaxAggregateOutputType | null
+  }
+
+  export type SocialLinkMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    label: string | null
+    userId: string | null
+    name: string | null
+  }
+
+  export type SocialLinkMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    label: string | null
+    userId: string | null
+    name: string | null
+  }
+
+  export type SocialLinkCountAggregateOutputType = {
+    id: number
+    url: number
+    label: number
+    userId: number
+    name: number
+    _all: number
+  }
+
+
+  export type SocialLinkMinAggregateInputType = {
+    id?: true
+    url?: true
+    label?: true
+    userId?: true
+    name?: true
+  }
+
+  export type SocialLinkMaxAggregateInputType = {
+    id?: true
+    url?: true
+    label?: true
+    userId?: true
+    name?: true
+  }
+
+  export type SocialLinkCountAggregateInputType = {
+    id?: true
+    url?: true
+    label?: true
+    userId?: true
+    name?: true
+    _all?: true
+  }
+
+  export type SocialLinkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SocialLink to aggregate.
+     */
+    where?: SocialLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SocialLinks to fetch.
+     */
+    orderBy?: SocialLinkOrderByWithRelationInput | SocialLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SocialLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SocialLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SocialLinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SocialLinks
+    **/
+    _count?: true | SocialLinkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SocialLinkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SocialLinkMaxAggregateInputType
+  }
+
+  export type GetSocialLinkAggregateType<T extends SocialLinkAggregateArgs> = {
+        [P in keyof T & keyof AggregateSocialLink]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSocialLink[P]>
+      : GetScalarType<T[P], AggregateSocialLink[P]>
+  }
+
+
+
+
+  export type SocialLinkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SocialLinkWhereInput
+    orderBy?: SocialLinkOrderByWithAggregationInput | SocialLinkOrderByWithAggregationInput[]
+    by: SocialLinkScalarFieldEnum[] | SocialLinkScalarFieldEnum
+    having?: SocialLinkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SocialLinkCountAggregateInputType | true
+    _min?: SocialLinkMinAggregateInputType
+    _max?: SocialLinkMaxAggregateInputType
+  }
+
+  export type SocialLinkGroupByOutputType = {
+    id: string
+    url: string
+    label: string
+    userId: string
+    name: string
+    _count: SocialLinkCountAggregateOutputType | null
+    _min: SocialLinkMinAggregateOutputType | null
+    _max: SocialLinkMaxAggregateOutputType | null
+  }
+
+  type GetSocialLinkGroupByPayload<T extends SocialLinkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SocialLinkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SocialLinkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SocialLinkGroupByOutputType[P]>
+            : GetScalarType<T[P], SocialLinkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SocialLinkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    label?: boolean
+    userId?: boolean
+    name?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["socialLink"]>
+
+  export type SocialLinkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    label?: boolean
+    userId?: boolean
+    name?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["socialLink"]>
+
+  export type SocialLinkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    label?: boolean
+    userId?: boolean
+    name?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["socialLink"]>
+
+  export type SocialLinkSelectScalar = {
+    id?: boolean
+    url?: boolean
+    label?: boolean
+    userId?: boolean
+    name?: boolean
+  }
+
+  export type SocialLinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "label" | "userId" | "name", ExtArgs["result"]["socialLink"]>
+  export type SocialLinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SocialLinkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SocialLinkIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $SocialLinkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SocialLink"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      label: string
+      userId: string
+      name: string
+    }, ExtArgs["result"]["socialLink"]>
+    composites: {}
+  }
+
+  type SocialLinkGetPayload<S extends boolean | null | undefined | SocialLinkDefaultArgs> = $Result.GetResult<Prisma.$SocialLinkPayload, S>
+
+  type SocialLinkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SocialLinkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SocialLinkCountAggregateInputType | true
+    }
+
+  export interface SocialLinkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SocialLink'], meta: { name: 'SocialLink' } }
+    /**
+     * Find zero or one SocialLink that matches the filter.
+     * @param {SocialLinkFindUniqueArgs} args - Arguments to find a SocialLink
+     * @example
+     * // Get one SocialLink
+     * const socialLink = await prisma.socialLink.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SocialLinkFindUniqueArgs>(args: SelectSubset<T, SocialLinkFindUniqueArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SocialLink that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SocialLinkFindUniqueOrThrowArgs} args - Arguments to find a SocialLink
+     * @example
+     * // Get one SocialLink
+     * const socialLink = await prisma.socialLink.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SocialLinkFindUniqueOrThrowArgs>(args: SelectSubset<T, SocialLinkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SocialLink that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SocialLinkFindFirstArgs} args - Arguments to find a SocialLink
+     * @example
+     * // Get one SocialLink
+     * const socialLink = await prisma.socialLink.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SocialLinkFindFirstArgs>(args?: SelectSubset<T, SocialLinkFindFirstArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SocialLink that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SocialLinkFindFirstOrThrowArgs} args - Arguments to find a SocialLink
+     * @example
+     * // Get one SocialLink
+     * const socialLink = await prisma.socialLink.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SocialLinkFindFirstOrThrowArgs>(args?: SelectSubset<T, SocialLinkFindFirstOrThrowArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SocialLinks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SocialLinkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SocialLinks
+     * const socialLinks = await prisma.socialLink.findMany()
+     * 
+     * // Get first 10 SocialLinks
+     * const socialLinks = await prisma.socialLink.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const socialLinkWithIdOnly = await prisma.socialLink.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SocialLinkFindManyArgs>(args?: SelectSubset<T, SocialLinkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SocialLink.
+     * @param {SocialLinkCreateArgs} args - Arguments to create a SocialLink.
+     * @example
+     * // Create one SocialLink
+     * const SocialLink = await prisma.socialLink.create({
+     *   data: {
+     *     // ... data to create a SocialLink
+     *   }
+     * })
+     * 
+     */
+    create<T extends SocialLinkCreateArgs>(args: SelectSubset<T, SocialLinkCreateArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SocialLinks.
+     * @param {SocialLinkCreateManyArgs} args - Arguments to create many SocialLinks.
+     * @example
+     * // Create many SocialLinks
+     * const socialLink = await prisma.socialLink.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SocialLinkCreateManyArgs>(args?: SelectSubset<T, SocialLinkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SocialLinks and returns the data saved in the database.
+     * @param {SocialLinkCreateManyAndReturnArgs} args - Arguments to create many SocialLinks.
+     * @example
+     * // Create many SocialLinks
+     * const socialLink = await prisma.socialLink.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SocialLinks and only return the `id`
+     * const socialLinkWithIdOnly = await prisma.socialLink.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SocialLinkCreateManyAndReturnArgs>(args?: SelectSubset<T, SocialLinkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SocialLink.
+     * @param {SocialLinkDeleteArgs} args - Arguments to delete one SocialLink.
+     * @example
+     * // Delete one SocialLink
+     * const SocialLink = await prisma.socialLink.delete({
+     *   where: {
+     *     // ... filter to delete one SocialLink
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SocialLinkDeleteArgs>(args: SelectSubset<T, SocialLinkDeleteArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SocialLink.
+     * @param {SocialLinkUpdateArgs} args - Arguments to update one SocialLink.
+     * @example
+     * // Update one SocialLink
+     * const socialLink = await prisma.socialLink.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SocialLinkUpdateArgs>(args: SelectSubset<T, SocialLinkUpdateArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SocialLinks.
+     * @param {SocialLinkDeleteManyArgs} args - Arguments to filter SocialLinks to delete.
+     * @example
+     * // Delete a few SocialLinks
+     * const { count } = await prisma.socialLink.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SocialLinkDeleteManyArgs>(args?: SelectSubset<T, SocialLinkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SocialLinks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SocialLinkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SocialLinks
+     * const socialLink = await prisma.socialLink.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SocialLinkUpdateManyArgs>(args: SelectSubset<T, SocialLinkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SocialLinks and returns the data updated in the database.
+     * @param {SocialLinkUpdateManyAndReturnArgs} args - Arguments to update many SocialLinks.
+     * @example
+     * // Update many SocialLinks
+     * const socialLink = await prisma.socialLink.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SocialLinks and only return the `id`
+     * const socialLinkWithIdOnly = await prisma.socialLink.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SocialLinkUpdateManyAndReturnArgs>(args: SelectSubset<T, SocialLinkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SocialLink.
+     * @param {SocialLinkUpsertArgs} args - Arguments to update or create a SocialLink.
+     * @example
+     * // Update or create a SocialLink
+     * const socialLink = await prisma.socialLink.upsert({
+     *   create: {
+     *     // ... data to create a SocialLink
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SocialLink we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SocialLinkUpsertArgs>(args: SelectSubset<T, SocialLinkUpsertArgs<ExtArgs>>): Prisma__SocialLinkClient<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SocialLinks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SocialLinkCountArgs} args - Arguments to filter SocialLinks to count.
+     * @example
+     * // Count the number of SocialLinks
+     * const count = await prisma.socialLink.count({
+     *   where: {
+     *     // ... the filter for the SocialLinks we want to count
+     *   }
+     * })
+    **/
+    count<T extends SocialLinkCountArgs>(
+      args?: Subset<T, SocialLinkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SocialLinkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SocialLink.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SocialLinkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SocialLinkAggregateArgs>(args: Subset<T, SocialLinkAggregateArgs>): Prisma.PrismaPromise<GetSocialLinkAggregateType<T>>
+
+    /**
+     * Group by SocialLink.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SocialLinkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SocialLinkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SocialLinkGroupByArgs['orderBy'] }
+        : { orderBy?: SocialLinkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SocialLinkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSocialLinkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SocialLink model
+   */
+  readonly fields: SocialLinkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SocialLink.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SocialLinkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SocialLink model
+   */
+  interface SocialLinkFieldRefs {
+    readonly id: FieldRef<"SocialLink", 'String'>
+    readonly url: FieldRef<"SocialLink", 'String'>
+    readonly label: FieldRef<"SocialLink", 'String'>
+    readonly userId: FieldRef<"SocialLink", 'String'>
+    readonly name: FieldRef<"SocialLink", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SocialLink findUnique
+   */
+  export type SocialLinkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which SocialLink to fetch.
+     */
+    where: SocialLinkWhereUniqueInput
+  }
+
+  /**
+   * SocialLink findUniqueOrThrow
+   */
+  export type SocialLinkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which SocialLink to fetch.
+     */
+    where: SocialLinkWhereUniqueInput
+  }
+
+  /**
+   * SocialLink findFirst
+   */
+  export type SocialLinkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which SocialLink to fetch.
+     */
+    where?: SocialLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SocialLinks to fetch.
+     */
+    orderBy?: SocialLinkOrderByWithRelationInput | SocialLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SocialLinks.
+     */
+    cursor?: SocialLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SocialLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SocialLinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SocialLinks.
+     */
+    distinct?: SocialLinkScalarFieldEnum | SocialLinkScalarFieldEnum[]
+  }
+
+  /**
+   * SocialLink findFirstOrThrow
+   */
+  export type SocialLinkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which SocialLink to fetch.
+     */
+    where?: SocialLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SocialLinks to fetch.
+     */
+    orderBy?: SocialLinkOrderByWithRelationInput | SocialLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SocialLinks.
+     */
+    cursor?: SocialLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SocialLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SocialLinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SocialLinks.
+     */
+    distinct?: SocialLinkScalarFieldEnum | SocialLinkScalarFieldEnum[]
+  }
+
+  /**
+   * SocialLink findMany
+   */
+  export type SocialLinkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * Filter, which SocialLinks to fetch.
+     */
+    where?: SocialLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SocialLinks to fetch.
+     */
+    orderBy?: SocialLinkOrderByWithRelationInput | SocialLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SocialLinks.
+     */
+    cursor?: SocialLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SocialLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SocialLinks.
+     */
+    skip?: number
+    distinct?: SocialLinkScalarFieldEnum | SocialLinkScalarFieldEnum[]
+  }
+
+  /**
+   * SocialLink create
+   */
+  export type SocialLinkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SocialLink.
+     */
+    data: XOR<SocialLinkCreateInput, SocialLinkUncheckedCreateInput>
+  }
+
+  /**
+   * SocialLink createMany
+   */
+  export type SocialLinkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SocialLinks.
+     */
+    data: SocialLinkCreateManyInput | SocialLinkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SocialLink createManyAndReturn
+   */
+  export type SocialLinkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * The data used to create many SocialLinks.
+     */
+    data: SocialLinkCreateManyInput | SocialLinkCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SocialLink update
+   */
+  export type SocialLinkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SocialLink.
+     */
+    data: XOR<SocialLinkUpdateInput, SocialLinkUncheckedUpdateInput>
+    /**
+     * Choose, which SocialLink to update.
+     */
+    where: SocialLinkWhereUniqueInput
+  }
+
+  /**
+   * SocialLink updateMany
+   */
+  export type SocialLinkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SocialLinks.
+     */
+    data: XOR<SocialLinkUpdateManyMutationInput, SocialLinkUncheckedUpdateManyInput>
+    /**
+     * Filter which SocialLinks to update
+     */
+    where?: SocialLinkWhereInput
+    /**
+     * Limit how many SocialLinks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SocialLink updateManyAndReturn
+   */
+  export type SocialLinkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * The data used to update SocialLinks.
+     */
+    data: XOR<SocialLinkUpdateManyMutationInput, SocialLinkUncheckedUpdateManyInput>
+    /**
+     * Filter which SocialLinks to update
+     */
+    where?: SocialLinkWhereInput
+    /**
+     * Limit how many SocialLinks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SocialLink upsert
+   */
+  export type SocialLinkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SocialLink to update in case it exists.
+     */
+    where: SocialLinkWhereUniqueInput
+    /**
+     * In case the SocialLink found by the `where` argument doesn't exist, create a new SocialLink with this data.
+     */
+    create: XOR<SocialLinkCreateInput, SocialLinkUncheckedCreateInput>
+    /**
+     * In case the SocialLink was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SocialLinkUpdateInput, SocialLinkUncheckedUpdateInput>
+  }
+
+  /**
+   * SocialLink delete
+   */
+  export type SocialLinkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+    /**
+     * Filter which SocialLink to delete.
+     */
+    where: SocialLinkWhereUniqueInput
+  }
+
+  /**
+   * SocialLink deleteMany
+   */
+  export type SocialLinkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SocialLinks to delete
+     */
+    where?: SocialLinkWhereInput
+    /**
+     * Limit how many SocialLinks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SocialLink without action
+   */
+  export type SocialLinkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SocialLink
+     */
+    select?: SocialLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SocialLink
+     */
+    omit?: SocialLinkOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SocialLinkInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserDefinedUrl
+   */
+
+  export type AggregateUserDefinedUrl = {
+    _count: UserDefinedUrlCountAggregateOutputType | null
+    _min: UserDefinedUrlMinAggregateOutputType | null
+    _max: UserDefinedUrlMaxAggregateOutputType | null
+  }
+
+  export type UserDefinedUrlMinAggregateOutputType = {
+    id: string | null
+    type: $Enums.DefinedUrlType | null
+    url: string | null
+    userId: string | null
+    label: string | null
+  }
+
+  export type UserDefinedUrlMaxAggregateOutputType = {
+    id: string | null
+    type: $Enums.DefinedUrlType | null
+    url: string | null
+    userId: string | null
+    label: string | null
+  }
+
+  export type UserDefinedUrlCountAggregateOutputType = {
+    id: number
+    type: number
+    url: number
+    userId: number
+    label: number
+    _all: number
+  }
+
+
+  export type UserDefinedUrlMinAggregateInputType = {
+    id?: true
+    type?: true
+    url?: true
+    userId?: true
+    label?: true
+  }
+
+  export type UserDefinedUrlMaxAggregateInputType = {
+    id?: true
+    type?: true
+    url?: true
+    userId?: true
+    label?: true
+  }
+
+  export type UserDefinedUrlCountAggregateInputType = {
+    id?: true
+    type?: true
+    url?: true
+    userId?: true
+    label?: true
+    _all?: true
+  }
+
+  export type UserDefinedUrlAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserDefinedUrl to aggregate.
+     */
+    where?: UserDefinedUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserDefinedUrls to fetch.
+     */
+    orderBy?: UserDefinedUrlOrderByWithRelationInput | UserDefinedUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserDefinedUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserDefinedUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserDefinedUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserDefinedUrls
+    **/
+    _count?: true | UserDefinedUrlCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserDefinedUrlMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserDefinedUrlMaxAggregateInputType
+  }
+
+  export type GetUserDefinedUrlAggregateType<T extends UserDefinedUrlAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserDefinedUrl]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserDefinedUrl[P]>
+      : GetScalarType<T[P], AggregateUserDefinedUrl[P]>
+  }
+
+
+
+
+  export type UserDefinedUrlGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserDefinedUrlWhereInput
+    orderBy?: UserDefinedUrlOrderByWithAggregationInput | UserDefinedUrlOrderByWithAggregationInput[]
+    by: UserDefinedUrlScalarFieldEnum[] | UserDefinedUrlScalarFieldEnum
+    having?: UserDefinedUrlScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserDefinedUrlCountAggregateInputType | true
+    _min?: UserDefinedUrlMinAggregateInputType
+    _max?: UserDefinedUrlMaxAggregateInputType
+  }
+
+  export type UserDefinedUrlGroupByOutputType = {
+    id: string
+    type: $Enums.DefinedUrlType
+    url: string
+    userId: string
+    label: string
+    _count: UserDefinedUrlCountAggregateOutputType | null
+    _min: UserDefinedUrlMinAggregateOutputType | null
+    _max: UserDefinedUrlMaxAggregateOutputType | null
+  }
+
+  type GetUserDefinedUrlGroupByPayload<T extends UserDefinedUrlGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserDefinedUrlGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserDefinedUrlGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserDefinedUrlGroupByOutputType[P]>
+            : GetScalarType<T[P], UserDefinedUrlGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserDefinedUrlSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    userId?: boolean
+    label?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userDefinedUrl"]>
+
+  export type UserDefinedUrlSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    userId?: boolean
+    label?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userDefinedUrl"]>
+
+  export type UserDefinedUrlSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    userId?: boolean
+    label?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userDefinedUrl"]>
+
+  export type UserDefinedUrlSelectScalar = {
+    id?: boolean
+    type?: boolean
+    url?: boolean
+    userId?: boolean
+    label?: boolean
+  }
+
+  export type UserDefinedUrlOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "url" | "userId" | "label", ExtArgs["result"]["userDefinedUrl"]>
+  export type UserDefinedUrlInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserDefinedUrlIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserDefinedUrlIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UserDefinedUrlPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserDefinedUrl"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: $Enums.DefinedUrlType
+      url: string
+      userId: string
+      label: string
+    }, ExtArgs["result"]["userDefinedUrl"]>
+    composites: {}
+  }
+
+  type UserDefinedUrlGetPayload<S extends boolean | null | undefined | UserDefinedUrlDefaultArgs> = $Result.GetResult<Prisma.$UserDefinedUrlPayload, S>
+
+  type UserDefinedUrlCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserDefinedUrlFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserDefinedUrlCountAggregateInputType | true
+    }
+
+  export interface UserDefinedUrlDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserDefinedUrl'], meta: { name: 'UserDefinedUrl' } }
+    /**
+     * Find zero or one UserDefinedUrl that matches the filter.
+     * @param {UserDefinedUrlFindUniqueArgs} args - Arguments to find a UserDefinedUrl
+     * @example
+     * // Get one UserDefinedUrl
+     * const userDefinedUrl = await prisma.userDefinedUrl.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserDefinedUrlFindUniqueArgs>(args: SelectSubset<T, UserDefinedUrlFindUniqueArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserDefinedUrl that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserDefinedUrlFindUniqueOrThrowArgs} args - Arguments to find a UserDefinedUrl
+     * @example
+     * // Get one UserDefinedUrl
+     * const userDefinedUrl = await prisma.userDefinedUrl.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserDefinedUrlFindUniqueOrThrowArgs>(args: SelectSubset<T, UserDefinedUrlFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserDefinedUrl that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserDefinedUrlFindFirstArgs} args - Arguments to find a UserDefinedUrl
+     * @example
+     * // Get one UserDefinedUrl
+     * const userDefinedUrl = await prisma.userDefinedUrl.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserDefinedUrlFindFirstArgs>(args?: SelectSubset<T, UserDefinedUrlFindFirstArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserDefinedUrl that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserDefinedUrlFindFirstOrThrowArgs} args - Arguments to find a UserDefinedUrl
+     * @example
+     * // Get one UserDefinedUrl
+     * const userDefinedUrl = await prisma.userDefinedUrl.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserDefinedUrlFindFirstOrThrowArgs>(args?: SelectSubset<T, UserDefinedUrlFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserDefinedUrls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserDefinedUrlFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserDefinedUrls
+     * const userDefinedUrls = await prisma.userDefinedUrl.findMany()
+     * 
+     * // Get first 10 UserDefinedUrls
+     * const userDefinedUrls = await prisma.userDefinedUrl.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userDefinedUrlWithIdOnly = await prisma.userDefinedUrl.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserDefinedUrlFindManyArgs>(args?: SelectSubset<T, UserDefinedUrlFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserDefinedUrl.
+     * @param {UserDefinedUrlCreateArgs} args - Arguments to create a UserDefinedUrl.
+     * @example
+     * // Create one UserDefinedUrl
+     * const UserDefinedUrl = await prisma.userDefinedUrl.create({
+     *   data: {
+     *     // ... data to create a UserDefinedUrl
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserDefinedUrlCreateArgs>(args: SelectSubset<T, UserDefinedUrlCreateArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserDefinedUrls.
+     * @param {UserDefinedUrlCreateManyArgs} args - Arguments to create many UserDefinedUrls.
+     * @example
+     * // Create many UserDefinedUrls
+     * const userDefinedUrl = await prisma.userDefinedUrl.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserDefinedUrlCreateManyArgs>(args?: SelectSubset<T, UserDefinedUrlCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserDefinedUrls and returns the data saved in the database.
+     * @param {UserDefinedUrlCreateManyAndReturnArgs} args - Arguments to create many UserDefinedUrls.
+     * @example
+     * // Create many UserDefinedUrls
+     * const userDefinedUrl = await prisma.userDefinedUrl.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserDefinedUrls and only return the `id`
+     * const userDefinedUrlWithIdOnly = await prisma.userDefinedUrl.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserDefinedUrlCreateManyAndReturnArgs>(args?: SelectSubset<T, UserDefinedUrlCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserDefinedUrl.
+     * @param {UserDefinedUrlDeleteArgs} args - Arguments to delete one UserDefinedUrl.
+     * @example
+     * // Delete one UserDefinedUrl
+     * const UserDefinedUrl = await prisma.userDefinedUrl.delete({
+     *   where: {
+     *     // ... filter to delete one UserDefinedUrl
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserDefinedUrlDeleteArgs>(args: SelectSubset<T, UserDefinedUrlDeleteArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserDefinedUrl.
+     * @param {UserDefinedUrlUpdateArgs} args - Arguments to update one UserDefinedUrl.
+     * @example
+     * // Update one UserDefinedUrl
+     * const userDefinedUrl = await prisma.userDefinedUrl.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserDefinedUrlUpdateArgs>(args: SelectSubset<T, UserDefinedUrlUpdateArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserDefinedUrls.
+     * @param {UserDefinedUrlDeleteManyArgs} args - Arguments to filter UserDefinedUrls to delete.
+     * @example
+     * // Delete a few UserDefinedUrls
+     * const { count } = await prisma.userDefinedUrl.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserDefinedUrlDeleteManyArgs>(args?: SelectSubset<T, UserDefinedUrlDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserDefinedUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserDefinedUrlUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserDefinedUrls
+     * const userDefinedUrl = await prisma.userDefinedUrl.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserDefinedUrlUpdateManyArgs>(args: SelectSubset<T, UserDefinedUrlUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserDefinedUrls and returns the data updated in the database.
+     * @param {UserDefinedUrlUpdateManyAndReturnArgs} args - Arguments to update many UserDefinedUrls.
+     * @example
+     * // Update many UserDefinedUrls
+     * const userDefinedUrl = await prisma.userDefinedUrl.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserDefinedUrls and only return the `id`
+     * const userDefinedUrlWithIdOnly = await prisma.userDefinedUrl.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserDefinedUrlUpdateManyAndReturnArgs>(args: SelectSubset<T, UserDefinedUrlUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserDefinedUrl.
+     * @param {UserDefinedUrlUpsertArgs} args - Arguments to update or create a UserDefinedUrl.
+     * @example
+     * // Update or create a UserDefinedUrl
+     * const userDefinedUrl = await prisma.userDefinedUrl.upsert({
+     *   create: {
+     *     // ... data to create a UserDefinedUrl
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserDefinedUrl we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserDefinedUrlUpsertArgs>(args: SelectSubset<T, UserDefinedUrlUpsertArgs<ExtArgs>>): Prisma__UserDefinedUrlClient<$Result.GetResult<Prisma.$UserDefinedUrlPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserDefinedUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserDefinedUrlCountArgs} args - Arguments to filter UserDefinedUrls to count.
+     * @example
+     * // Count the number of UserDefinedUrls
+     * const count = await prisma.userDefinedUrl.count({
+     *   where: {
+     *     // ... the filter for the UserDefinedUrls we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserDefinedUrlCountArgs>(
+      args?: Subset<T, UserDefinedUrlCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserDefinedUrlCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserDefinedUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserDefinedUrlAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserDefinedUrlAggregateArgs>(args: Subset<T, UserDefinedUrlAggregateArgs>): Prisma.PrismaPromise<GetUserDefinedUrlAggregateType<T>>
+
+    /**
+     * Group by UserDefinedUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserDefinedUrlGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserDefinedUrlGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserDefinedUrlGroupByArgs['orderBy'] }
+        : { orderBy?: UserDefinedUrlGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserDefinedUrlGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserDefinedUrlGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserDefinedUrl model
+   */
+  readonly fields: UserDefinedUrlFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserDefinedUrl.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserDefinedUrlClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserDefinedUrl model
+   */
+  interface UserDefinedUrlFieldRefs {
+    readonly id: FieldRef<"UserDefinedUrl", 'String'>
+    readonly type: FieldRef<"UserDefinedUrl", 'DefinedUrlType'>
+    readonly url: FieldRef<"UserDefinedUrl", 'String'>
+    readonly userId: FieldRef<"UserDefinedUrl", 'String'>
+    readonly label: FieldRef<"UserDefinedUrl", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserDefinedUrl findUnique
+   */
+  export type UserDefinedUrlFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserDefinedUrl to fetch.
+     */
+    where: UserDefinedUrlWhereUniqueInput
+  }
+
+  /**
+   * UserDefinedUrl findUniqueOrThrow
+   */
+  export type UserDefinedUrlFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserDefinedUrl to fetch.
+     */
+    where: UserDefinedUrlWhereUniqueInput
+  }
+
+  /**
+   * UserDefinedUrl findFirst
+   */
+  export type UserDefinedUrlFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserDefinedUrl to fetch.
+     */
+    where?: UserDefinedUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserDefinedUrls to fetch.
+     */
+    orderBy?: UserDefinedUrlOrderByWithRelationInput | UserDefinedUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserDefinedUrls.
+     */
+    cursor?: UserDefinedUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserDefinedUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserDefinedUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserDefinedUrls.
+     */
+    distinct?: UserDefinedUrlScalarFieldEnum | UserDefinedUrlScalarFieldEnum[]
+  }
+
+  /**
+   * UserDefinedUrl findFirstOrThrow
+   */
+  export type UserDefinedUrlFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserDefinedUrl to fetch.
+     */
+    where?: UserDefinedUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserDefinedUrls to fetch.
+     */
+    orderBy?: UserDefinedUrlOrderByWithRelationInput | UserDefinedUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserDefinedUrls.
+     */
+    cursor?: UserDefinedUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserDefinedUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserDefinedUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserDefinedUrls.
+     */
+    distinct?: UserDefinedUrlScalarFieldEnum | UserDefinedUrlScalarFieldEnum[]
+  }
+
+  /**
+   * UserDefinedUrl findMany
+   */
+  export type UserDefinedUrlFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserDefinedUrls to fetch.
+     */
+    where?: UserDefinedUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserDefinedUrls to fetch.
+     */
+    orderBy?: UserDefinedUrlOrderByWithRelationInput | UserDefinedUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserDefinedUrls.
+     */
+    cursor?: UserDefinedUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserDefinedUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserDefinedUrls.
+     */
+    skip?: number
+    distinct?: UserDefinedUrlScalarFieldEnum | UserDefinedUrlScalarFieldEnum[]
+  }
+
+  /**
+   * UserDefinedUrl create
+   */
+  export type UserDefinedUrlCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserDefinedUrl.
+     */
+    data: XOR<UserDefinedUrlCreateInput, UserDefinedUrlUncheckedCreateInput>
+  }
+
+  /**
+   * UserDefinedUrl createMany
+   */
+  export type UserDefinedUrlCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserDefinedUrls.
+     */
+    data: UserDefinedUrlCreateManyInput | UserDefinedUrlCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserDefinedUrl createManyAndReturn
+   */
+  export type UserDefinedUrlCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserDefinedUrls.
+     */
+    data: UserDefinedUrlCreateManyInput | UserDefinedUrlCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserDefinedUrl update
+   */
+  export type UserDefinedUrlUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserDefinedUrl.
+     */
+    data: XOR<UserDefinedUrlUpdateInput, UserDefinedUrlUncheckedUpdateInput>
+    /**
+     * Choose, which UserDefinedUrl to update.
+     */
+    where: UserDefinedUrlWhereUniqueInput
+  }
+
+  /**
+   * UserDefinedUrl updateMany
+   */
+  export type UserDefinedUrlUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserDefinedUrls.
+     */
+    data: XOR<UserDefinedUrlUpdateManyMutationInput, UserDefinedUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which UserDefinedUrls to update
+     */
+    where?: UserDefinedUrlWhereInput
+    /**
+     * Limit how many UserDefinedUrls to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserDefinedUrl updateManyAndReturn
+   */
+  export type UserDefinedUrlUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * The data used to update UserDefinedUrls.
+     */
+    data: XOR<UserDefinedUrlUpdateManyMutationInput, UserDefinedUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which UserDefinedUrls to update
+     */
+    where?: UserDefinedUrlWhereInput
+    /**
+     * Limit how many UserDefinedUrls to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserDefinedUrl upsert
+   */
+  export type UserDefinedUrlUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserDefinedUrl to update in case it exists.
+     */
+    where: UserDefinedUrlWhereUniqueInput
+    /**
+     * In case the UserDefinedUrl found by the `where` argument doesn't exist, create a new UserDefinedUrl with this data.
+     */
+    create: XOR<UserDefinedUrlCreateInput, UserDefinedUrlUncheckedCreateInput>
+    /**
+     * In case the UserDefinedUrl was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserDefinedUrlUpdateInput, UserDefinedUrlUncheckedUpdateInput>
+  }
+
+  /**
+   * UserDefinedUrl delete
+   */
+  export type UserDefinedUrlDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+    /**
+     * Filter which UserDefinedUrl to delete.
+     */
+    where: UserDefinedUrlWhereUniqueInput
+  }
+
+  /**
+   * UserDefinedUrl deleteMany
+   */
+  export type UserDefinedUrlDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserDefinedUrls to delete
+     */
+    where?: UserDefinedUrlWhereInput
+    /**
+     * Limit how many UserDefinedUrls to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserDefinedUrl without action
+   */
+  export type UserDefinedUrlDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserDefinedUrl
+     */
+    select?: UserDefinedUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserDefinedUrl
+     */
+    omit?: UserDefinedUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserDefinedUrlInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserCustomUrl
+   */
+
+  export type AggregateUserCustomUrl = {
+    _count: UserCustomUrlCountAggregateOutputType | null
+    _min: UserCustomUrlMinAggregateOutputType | null
+    _max: UserCustomUrlMaxAggregateOutputType | null
+  }
+
+  export type UserCustomUrlMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    url: string | null
+    userId: string | null
+  }
+
+  export type UserCustomUrlMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    url: string | null
+    userId: string | null
+  }
+
+  export type UserCustomUrlCountAggregateOutputType = {
+    id: number
+    label: number
+    url: number
+    userId: number
+    _all: number
+  }
+
+
+  export type UserCustomUrlMinAggregateInputType = {
+    id?: true
+    label?: true
+    url?: true
+    userId?: true
+  }
+
+  export type UserCustomUrlMaxAggregateInputType = {
+    id?: true
+    label?: true
+    url?: true
+    userId?: true
+  }
+
+  export type UserCustomUrlCountAggregateInputType = {
+    id?: true
+    label?: true
+    url?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type UserCustomUrlAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserCustomUrl to aggregate.
+     */
+    where?: UserCustomUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCustomUrls to fetch.
+     */
+    orderBy?: UserCustomUrlOrderByWithRelationInput | UserCustomUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserCustomUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCustomUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCustomUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserCustomUrls
+    **/
+    _count?: true | UserCustomUrlCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserCustomUrlMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserCustomUrlMaxAggregateInputType
+  }
+
+  export type GetUserCustomUrlAggregateType<T extends UserCustomUrlAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserCustomUrl]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserCustomUrl[P]>
+      : GetScalarType<T[P], AggregateUserCustomUrl[P]>
+  }
+
+
+
+
+  export type UserCustomUrlGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserCustomUrlWhereInput
+    orderBy?: UserCustomUrlOrderByWithAggregationInput | UserCustomUrlOrderByWithAggregationInput[]
+    by: UserCustomUrlScalarFieldEnum[] | UserCustomUrlScalarFieldEnum
+    having?: UserCustomUrlScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserCustomUrlCountAggregateInputType | true
+    _min?: UserCustomUrlMinAggregateInputType
+    _max?: UserCustomUrlMaxAggregateInputType
+  }
+
+  export type UserCustomUrlGroupByOutputType = {
+    id: string
+    label: string
+    url: string
+    userId: string
+    _count: UserCustomUrlCountAggregateOutputType | null
+    _min: UserCustomUrlMinAggregateOutputType | null
+    _max: UserCustomUrlMaxAggregateOutputType | null
+  }
+
+  type GetUserCustomUrlGroupByPayload<T extends UserCustomUrlGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserCustomUrlGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserCustomUrlGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserCustomUrlGroupByOutputType[P]>
+            : GetScalarType<T[P], UserCustomUrlGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserCustomUrlSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userCustomUrl"]>
+
+  export type UserCustomUrlSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userCustomUrl"]>
+
+  export type UserCustomUrlSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userCustomUrl"]>
+
+  export type UserCustomUrlSelectScalar = {
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    userId?: boolean
+  }
+
+  export type UserCustomUrlOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "url" | "userId", ExtArgs["result"]["userCustomUrl"]>
+  export type UserCustomUrlInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserCustomUrlIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserCustomUrlIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UserCustomUrlPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserCustomUrl"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      url: string
+      userId: string
+    }, ExtArgs["result"]["userCustomUrl"]>
+    composites: {}
+  }
+
+  type UserCustomUrlGetPayload<S extends boolean | null | undefined | UserCustomUrlDefaultArgs> = $Result.GetResult<Prisma.$UserCustomUrlPayload, S>
+
+  type UserCustomUrlCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserCustomUrlFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserCustomUrlCountAggregateInputType | true
+    }
+
+  export interface UserCustomUrlDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserCustomUrl'], meta: { name: 'UserCustomUrl' } }
+    /**
+     * Find zero or one UserCustomUrl that matches the filter.
+     * @param {UserCustomUrlFindUniqueArgs} args - Arguments to find a UserCustomUrl
+     * @example
+     * // Get one UserCustomUrl
+     * const userCustomUrl = await prisma.userCustomUrl.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserCustomUrlFindUniqueArgs>(args: SelectSubset<T, UserCustomUrlFindUniqueArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserCustomUrl that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserCustomUrlFindUniqueOrThrowArgs} args - Arguments to find a UserCustomUrl
+     * @example
+     * // Get one UserCustomUrl
+     * const userCustomUrl = await prisma.userCustomUrl.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserCustomUrlFindUniqueOrThrowArgs>(args: SelectSubset<T, UserCustomUrlFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserCustomUrl that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCustomUrlFindFirstArgs} args - Arguments to find a UserCustomUrl
+     * @example
+     * // Get one UserCustomUrl
+     * const userCustomUrl = await prisma.userCustomUrl.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserCustomUrlFindFirstArgs>(args?: SelectSubset<T, UserCustomUrlFindFirstArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserCustomUrl that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCustomUrlFindFirstOrThrowArgs} args - Arguments to find a UserCustomUrl
+     * @example
+     * // Get one UserCustomUrl
+     * const userCustomUrl = await prisma.userCustomUrl.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserCustomUrlFindFirstOrThrowArgs>(args?: SelectSubset<T, UserCustomUrlFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserCustomUrls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCustomUrlFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserCustomUrls
+     * const userCustomUrls = await prisma.userCustomUrl.findMany()
+     * 
+     * // Get first 10 UserCustomUrls
+     * const userCustomUrls = await prisma.userCustomUrl.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userCustomUrlWithIdOnly = await prisma.userCustomUrl.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserCustomUrlFindManyArgs>(args?: SelectSubset<T, UserCustomUrlFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserCustomUrl.
+     * @param {UserCustomUrlCreateArgs} args - Arguments to create a UserCustomUrl.
+     * @example
+     * // Create one UserCustomUrl
+     * const UserCustomUrl = await prisma.userCustomUrl.create({
+     *   data: {
+     *     // ... data to create a UserCustomUrl
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserCustomUrlCreateArgs>(args: SelectSubset<T, UserCustomUrlCreateArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserCustomUrls.
+     * @param {UserCustomUrlCreateManyArgs} args - Arguments to create many UserCustomUrls.
+     * @example
+     * // Create many UserCustomUrls
+     * const userCustomUrl = await prisma.userCustomUrl.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserCustomUrlCreateManyArgs>(args?: SelectSubset<T, UserCustomUrlCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserCustomUrls and returns the data saved in the database.
+     * @param {UserCustomUrlCreateManyAndReturnArgs} args - Arguments to create many UserCustomUrls.
+     * @example
+     * // Create many UserCustomUrls
+     * const userCustomUrl = await prisma.userCustomUrl.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserCustomUrls and only return the `id`
+     * const userCustomUrlWithIdOnly = await prisma.userCustomUrl.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserCustomUrlCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCustomUrlCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserCustomUrl.
+     * @param {UserCustomUrlDeleteArgs} args - Arguments to delete one UserCustomUrl.
+     * @example
+     * // Delete one UserCustomUrl
+     * const UserCustomUrl = await prisma.userCustomUrl.delete({
+     *   where: {
+     *     // ... filter to delete one UserCustomUrl
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserCustomUrlDeleteArgs>(args: SelectSubset<T, UserCustomUrlDeleteArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserCustomUrl.
+     * @param {UserCustomUrlUpdateArgs} args - Arguments to update one UserCustomUrl.
+     * @example
+     * // Update one UserCustomUrl
+     * const userCustomUrl = await prisma.userCustomUrl.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserCustomUrlUpdateArgs>(args: SelectSubset<T, UserCustomUrlUpdateArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserCustomUrls.
+     * @param {UserCustomUrlDeleteManyArgs} args - Arguments to filter UserCustomUrls to delete.
+     * @example
+     * // Delete a few UserCustomUrls
+     * const { count } = await prisma.userCustomUrl.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserCustomUrlDeleteManyArgs>(args?: SelectSubset<T, UserCustomUrlDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserCustomUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCustomUrlUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserCustomUrls
+     * const userCustomUrl = await prisma.userCustomUrl.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserCustomUrlUpdateManyArgs>(args: SelectSubset<T, UserCustomUrlUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserCustomUrls and returns the data updated in the database.
+     * @param {UserCustomUrlUpdateManyAndReturnArgs} args - Arguments to update many UserCustomUrls.
+     * @example
+     * // Update many UserCustomUrls
+     * const userCustomUrl = await prisma.userCustomUrl.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserCustomUrls and only return the `id`
+     * const userCustomUrlWithIdOnly = await prisma.userCustomUrl.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserCustomUrlUpdateManyAndReturnArgs>(args: SelectSubset<T, UserCustomUrlUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserCustomUrl.
+     * @param {UserCustomUrlUpsertArgs} args - Arguments to update or create a UserCustomUrl.
+     * @example
+     * // Update or create a UserCustomUrl
+     * const userCustomUrl = await prisma.userCustomUrl.upsert({
+     *   create: {
+     *     // ... data to create a UserCustomUrl
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserCustomUrl we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserCustomUrlUpsertArgs>(args: SelectSubset<T, UserCustomUrlUpsertArgs<ExtArgs>>): Prisma__UserCustomUrlClient<$Result.GetResult<Prisma.$UserCustomUrlPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserCustomUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCustomUrlCountArgs} args - Arguments to filter UserCustomUrls to count.
+     * @example
+     * // Count the number of UserCustomUrls
+     * const count = await prisma.userCustomUrl.count({
+     *   where: {
+     *     // ... the filter for the UserCustomUrls we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserCustomUrlCountArgs>(
+      args?: Subset<T, UserCustomUrlCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserCustomUrlCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserCustomUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCustomUrlAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserCustomUrlAggregateArgs>(args: Subset<T, UserCustomUrlAggregateArgs>): Prisma.PrismaPromise<GetUserCustomUrlAggregateType<T>>
+
+    /**
+     * Group by UserCustomUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCustomUrlGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserCustomUrlGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserCustomUrlGroupByArgs['orderBy'] }
+        : { orderBy?: UserCustomUrlGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserCustomUrlGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserCustomUrlGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserCustomUrl model
+   */
+  readonly fields: UserCustomUrlFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserCustomUrl.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserCustomUrlClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserCustomUrl model
+   */
+  interface UserCustomUrlFieldRefs {
+    readonly id: FieldRef<"UserCustomUrl", 'String'>
+    readonly label: FieldRef<"UserCustomUrl", 'String'>
+    readonly url: FieldRef<"UserCustomUrl", 'String'>
+    readonly userId: FieldRef<"UserCustomUrl", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserCustomUrl findUnique
+   */
+  export type UserCustomUrlFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserCustomUrl to fetch.
+     */
+    where: UserCustomUrlWhereUniqueInput
+  }
+
+  /**
+   * UserCustomUrl findUniqueOrThrow
+   */
+  export type UserCustomUrlFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserCustomUrl to fetch.
+     */
+    where: UserCustomUrlWhereUniqueInput
+  }
+
+  /**
+   * UserCustomUrl findFirst
+   */
+  export type UserCustomUrlFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserCustomUrl to fetch.
+     */
+    where?: UserCustomUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCustomUrls to fetch.
+     */
+    orderBy?: UserCustomUrlOrderByWithRelationInput | UserCustomUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserCustomUrls.
+     */
+    cursor?: UserCustomUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCustomUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCustomUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserCustomUrls.
+     */
+    distinct?: UserCustomUrlScalarFieldEnum | UserCustomUrlScalarFieldEnum[]
+  }
+
+  /**
+   * UserCustomUrl findFirstOrThrow
+   */
+  export type UserCustomUrlFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserCustomUrl to fetch.
+     */
+    where?: UserCustomUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCustomUrls to fetch.
+     */
+    orderBy?: UserCustomUrlOrderByWithRelationInput | UserCustomUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserCustomUrls.
+     */
+    cursor?: UserCustomUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCustomUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCustomUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserCustomUrls.
+     */
+    distinct?: UserCustomUrlScalarFieldEnum | UserCustomUrlScalarFieldEnum[]
+  }
+
+  /**
+   * UserCustomUrl findMany
+   */
+  export type UserCustomUrlFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which UserCustomUrls to fetch.
+     */
+    where?: UserCustomUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserCustomUrls to fetch.
+     */
+    orderBy?: UserCustomUrlOrderByWithRelationInput | UserCustomUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserCustomUrls.
+     */
+    cursor?: UserCustomUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserCustomUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserCustomUrls.
+     */
+    skip?: number
+    distinct?: UserCustomUrlScalarFieldEnum | UserCustomUrlScalarFieldEnum[]
+  }
+
+  /**
+   * UserCustomUrl create
+   */
+  export type UserCustomUrlCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserCustomUrl.
+     */
+    data: XOR<UserCustomUrlCreateInput, UserCustomUrlUncheckedCreateInput>
+  }
+
+  /**
+   * UserCustomUrl createMany
+   */
+  export type UserCustomUrlCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserCustomUrls.
+     */
+    data: UserCustomUrlCreateManyInput | UserCustomUrlCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserCustomUrl createManyAndReturn
+   */
+  export type UserCustomUrlCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserCustomUrls.
+     */
+    data: UserCustomUrlCreateManyInput | UserCustomUrlCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserCustomUrl update
+   */
+  export type UserCustomUrlUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserCustomUrl.
+     */
+    data: XOR<UserCustomUrlUpdateInput, UserCustomUrlUncheckedUpdateInput>
+    /**
+     * Choose, which UserCustomUrl to update.
+     */
+    where: UserCustomUrlWhereUniqueInput
+  }
+
+  /**
+   * UserCustomUrl updateMany
+   */
+  export type UserCustomUrlUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserCustomUrls.
+     */
+    data: XOR<UserCustomUrlUpdateManyMutationInput, UserCustomUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which UserCustomUrls to update
+     */
+    where?: UserCustomUrlWhereInput
+    /**
+     * Limit how many UserCustomUrls to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserCustomUrl updateManyAndReturn
+   */
+  export type UserCustomUrlUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * The data used to update UserCustomUrls.
+     */
+    data: XOR<UserCustomUrlUpdateManyMutationInput, UserCustomUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which UserCustomUrls to update
+     */
+    where?: UserCustomUrlWhereInput
+    /**
+     * Limit how many UserCustomUrls to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserCustomUrl upsert
+   */
+  export type UserCustomUrlUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserCustomUrl to update in case it exists.
+     */
+    where: UserCustomUrlWhereUniqueInput
+    /**
+     * In case the UserCustomUrl found by the `where` argument doesn't exist, create a new UserCustomUrl with this data.
+     */
+    create: XOR<UserCustomUrlCreateInput, UserCustomUrlUncheckedCreateInput>
+    /**
+     * In case the UserCustomUrl was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserCustomUrlUpdateInput, UserCustomUrlUncheckedUpdateInput>
+  }
+
+  /**
+   * UserCustomUrl delete
+   */
+  export type UserCustomUrlDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+    /**
+     * Filter which UserCustomUrl to delete.
+     */
+    where: UserCustomUrlWhereUniqueInput
+  }
+
+  /**
+   * UserCustomUrl deleteMany
+   */
+  export type UserCustomUrlDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserCustomUrls to delete
+     */
+    where?: UserCustomUrlWhereInput
+    /**
+     * Limit how many UserCustomUrls to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserCustomUrl without action
+   */
+  export type UserCustomUrlDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCustomUrl
+     */
+    select?: UserCustomUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCustomUrl
+     */
+    omit?: UserCustomUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCustomUrlInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5658,6 +9222,38 @@ export namespace Prisma {
   export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+  export const SocialLinkScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    label: 'label',
+    userId: 'userId',
+    name: 'name'
+  };
+
+  export type SocialLinkScalarFieldEnum = (typeof SocialLinkScalarFieldEnum)[keyof typeof SocialLinkScalarFieldEnum]
+
+
+  export const UserDefinedUrlScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    url: 'url',
+    userId: 'userId',
+    label: 'label'
+  };
+
+  export type UserDefinedUrlScalarFieldEnum = (typeof UserDefinedUrlScalarFieldEnum)[keyof typeof UserDefinedUrlScalarFieldEnum]
+
+
+  export const UserCustomUrlScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    url: 'url',
+    userId: 'userId'
+  };
+
+  export type UserCustomUrlScalarFieldEnum = (typeof UserCustomUrlScalarFieldEnum)[keyof typeof UserCustomUrlScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5723,6 +9319,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DefinedUrlType'
+   */
+  export type EnumDefinedUrlTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DefinedUrlType'>
+    
+
+
+  /**
+   * Reference to a field of type 'DefinedUrlType[]'
+   */
+  export type ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DefinedUrlType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -5753,6 +9363,9 @@ export namespace Prisma {
     url?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    UserCustomUrl?: UserCustomUrlListRelationFilter
+    UserDefinedUrl?: UserDefinedUrlListRelationFilter
+    SocialLink?: SocialLinkListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5766,6 +9379,9 @@ export namespace Prisma {
     url?: SortOrderInput | SortOrder
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
+    UserCustomUrl?: UserCustomUrlOrderByRelationAggregateInput
+    UserDefinedUrl?: UserDefinedUrlOrderByRelationAggregateInput
+    SocialLink?: SocialLinkOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5782,6 +9398,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
+    UserCustomUrl?: UserCustomUrlListRelationFilter
+    UserDefinedUrl?: UserDefinedUrlListRelationFilter
+    SocialLink?: SocialLinkListRelationFilter
   }, "id" | "email" | "url">
 
   export type UserOrderByWithAggregationInput = {
@@ -6034,6 +9653,168 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Verification"> | Date | string | null
   }
 
+  export type SocialLinkWhereInput = {
+    AND?: SocialLinkWhereInput | SocialLinkWhereInput[]
+    OR?: SocialLinkWhereInput[]
+    NOT?: SocialLinkWhereInput | SocialLinkWhereInput[]
+    id?: StringFilter<"SocialLink"> | string
+    url?: StringFilter<"SocialLink"> | string
+    label?: StringFilter<"SocialLink"> | string
+    userId?: StringFilter<"SocialLink"> | string
+    name?: StringFilter<"SocialLink"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type SocialLinkOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    label?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type SocialLinkWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_url?: SocialLinkUserIdUrlCompoundUniqueInput
+    AND?: SocialLinkWhereInput | SocialLinkWhereInput[]
+    OR?: SocialLinkWhereInput[]
+    NOT?: SocialLinkWhereInput | SocialLinkWhereInput[]
+    url?: StringFilter<"SocialLink"> | string
+    label?: StringFilter<"SocialLink"> | string
+    userId?: StringFilter<"SocialLink"> | string
+    name?: StringFilter<"SocialLink"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_url">
+
+  export type SocialLinkOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    label?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+    _count?: SocialLinkCountOrderByAggregateInput
+    _max?: SocialLinkMaxOrderByAggregateInput
+    _min?: SocialLinkMinOrderByAggregateInput
+  }
+
+  export type SocialLinkScalarWhereWithAggregatesInput = {
+    AND?: SocialLinkScalarWhereWithAggregatesInput | SocialLinkScalarWhereWithAggregatesInput[]
+    OR?: SocialLinkScalarWhereWithAggregatesInput[]
+    NOT?: SocialLinkScalarWhereWithAggregatesInput | SocialLinkScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SocialLink"> | string
+    url?: StringWithAggregatesFilter<"SocialLink"> | string
+    label?: StringWithAggregatesFilter<"SocialLink"> | string
+    userId?: StringWithAggregatesFilter<"SocialLink"> | string
+    name?: StringWithAggregatesFilter<"SocialLink"> | string
+  }
+
+  export type UserDefinedUrlWhereInput = {
+    AND?: UserDefinedUrlWhereInput | UserDefinedUrlWhereInput[]
+    OR?: UserDefinedUrlWhereInput[]
+    NOT?: UserDefinedUrlWhereInput | UserDefinedUrlWhereInput[]
+    id?: StringFilter<"UserDefinedUrl"> | string
+    type?: EnumDefinedUrlTypeFilter<"UserDefinedUrl"> | $Enums.DefinedUrlType
+    url?: StringFilter<"UserDefinedUrl"> | string
+    userId?: StringFilter<"UserDefinedUrl"> | string
+    label?: StringFilter<"UserDefinedUrl"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type UserDefinedUrlOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    label?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UserDefinedUrlWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_type?: UserDefinedUrlUserIdTypeCompoundUniqueInput
+    AND?: UserDefinedUrlWhereInput | UserDefinedUrlWhereInput[]
+    OR?: UserDefinedUrlWhereInput[]
+    NOT?: UserDefinedUrlWhereInput | UserDefinedUrlWhereInput[]
+    type?: EnumDefinedUrlTypeFilter<"UserDefinedUrl"> | $Enums.DefinedUrlType
+    url?: StringFilter<"UserDefinedUrl"> | string
+    userId?: StringFilter<"UserDefinedUrl"> | string
+    label?: StringFilter<"UserDefinedUrl"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_type">
+
+  export type UserDefinedUrlOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    label?: SortOrder
+    _count?: UserDefinedUrlCountOrderByAggregateInput
+    _max?: UserDefinedUrlMaxOrderByAggregateInput
+    _min?: UserDefinedUrlMinOrderByAggregateInput
+  }
+
+  export type UserDefinedUrlScalarWhereWithAggregatesInput = {
+    AND?: UserDefinedUrlScalarWhereWithAggregatesInput | UserDefinedUrlScalarWhereWithAggregatesInput[]
+    OR?: UserDefinedUrlScalarWhereWithAggregatesInput[]
+    NOT?: UserDefinedUrlScalarWhereWithAggregatesInput | UserDefinedUrlScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserDefinedUrl"> | string
+    type?: EnumDefinedUrlTypeWithAggregatesFilter<"UserDefinedUrl"> | $Enums.DefinedUrlType
+    url?: StringWithAggregatesFilter<"UserDefinedUrl"> | string
+    userId?: StringWithAggregatesFilter<"UserDefinedUrl"> | string
+    label?: StringWithAggregatesFilter<"UserDefinedUrl"> | string
+  }
+
+  export type UserCustomUrlWhereInput = {
+    AND?: UserCustomUrlWhereInput | UserCustomUrlWhereInput[]
+    OR?: UserCustomUrlWhereInput[]
+    NOT?: UserCustomUrlWhereInput | UserCustomUrlWhereInput[]
+    id?: StringFilter<"UserCustomUrl"> | string
+    label?: StringFilter<"UserCustomUrl"> | string
+    url?: StringFilter<"UserCustomUrl"> | string
+    userId?: StringFilter<"UserCustomUrl"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type UserCustomUrlOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UserCustomUrlWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: UserCustomUrlWhereInput | UserCustomUrlWhereInput[]
+    OR?: UserCustomUrlWhereInput[]
+    NOT?: UserCustomUrlWhereInput | UserCustomUrlWhereInput[]
+    label?: StringFilter<"UserCustomUrl"> | string
+    url?: StringFilter<"UserCustomUrl"> | string
+    userId?: StringFilter<"UserCustomUrl"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type UserCustomUrlOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    _count?: UserCustomUrlCountOrderByAggregateInput
+    _max?: UserCustomUrlMaxOrderByAggregateInput
+    _min?: UserCustomUrlMinOrderByAggregateInput
+  }
+
+  export type UserCustomUrlScalarWhereWithAggregatesInput = {
+    AND?: UserCustomUrlScalarWhereWithAggregatesInput | UserCustomUrlScalarWhereWithAggregatesInput[]
+    OR?: UserCustomUrlScalarWhereWithAggregatesInput[]
+    NOT?: UserCustomUrlScalarWhereWithAggregatesInput | UserCustomUrlScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserCustomUrl"> | string
+    label?: StringWithAggregatesFilter<"UserCustomUrl"> | string
+    url?: StringWithAggregatesFilter<"UserCustomUrl"> | string
+    userId?: StringWithAggregatesFilter<"UserCustomUrl"> | string
+  }
+
   export type UserCreateInput = {
     id: string
     email: string
@@ -6045,6 +9826,9 @@ export namespace Prisma {
     url?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6058,6 +9842,9 @@ export namespace Prisma {
     url?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlUncheckedCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6071,6 +9858,9 @@ export namespace Prisma {
     url?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6084,6 +9874,9 @@ export namespace Prisma {
     url?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUncheckedUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6369,6 +10162,164 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type SocialLinkCreateInput = {
+    id?: string
+    url: string
+    label: string
+    name: string
+    user: UserCreateNestedOneWithoutSocialLinkInput
+  }
+
+  export type SocialLinkUncheckedCreateInput = {
+    id?: string
+    url: string
+    label: string
+    userId: string
+    name: string
+  }
+
+  export type SocialLinkUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutSocialLinkNestedInput
+  }
+
+  export type SocialLinkUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SocialLinkCreateManyInput = {
+    id?: string
+    url: string
+    label: string
+    userId: string
+    name: string
+  }
+
+  export type SocialLinkUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SocialLinkUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserDefinedUrlCreateInput = {
+    id?: string
+    type: $Enums.DefinedUrlType
+    url: string
+    label: string
+    user: UserCreateNestedOneWithoutUserDefinedUrlInput
+  }
+
+  export type UserDefinedUrlUncheckedCreateInput = {
+    id?: string
+    type: $Enums.DefinedUrlType
+    url: string
+    userId: string
+    label: string
+  }
+
+  export type UserDefinedUrlUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumDefinedUrlTypeFieldUpdateOperationsInput | $Enums.DefinedUrlType
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutUserDefinedUrlNestedInput
+  }
+
+  export type UserDefinedUrlUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumDefinedUrlTypeFieldUpdateOperationsInput | $Enums.DefinedUrlType
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserDefinedUrlCreateManyInput = {
+    id?: string
+    type: $Enums.DefinedUrlType
+    url: string
+    userId: string
+    label: string
+  }
+
+  export type UserDefinedUrlUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumDefinedUrlTypeFieldUpdateOperationsInput | $Enums.DefinedUrlType
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserDefinedUrlUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumDefinedUrlTypeFieldUpdateOperationsInput | $Enums.DefinedUrlType
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCustomUrlCreateInput = {
+    id?: string
+    label: string
+    url: string
+    user: UserCreateNestedOneWithoutUserCustomUrlInput
+  }
+
+  export type UserCustomUrlUncheckedCreateInput = {
+    id?: string
+    label: string
+    url: string
+    userId: string
+  }
+
+  export type UserCustomUrlUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutUserCustomUrlNestedInput
+  }
+
+  export type UserCustomUrlUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCustomUrlCreateManyInput = {
+    id?: string
+    label: string
+    url: string
+    userId: string
+  }
+
+  export type UserCustomUrlUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCustomUrlUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -6427,6 +10378,24 @@ export namespace Prisma {
     none?: SessionWhereInput
   }
 
+  export type UserCustomUrlListRelationFilter = {
+    every?: UserCustomUrlWhereInput
+    some?: UserCustomUrlWhereInput
+    none?: UserCustomUrlWhereInput
+  }
+
+  export type UserDefinedUrlListRelationFilter = {
+    every?: UserDefinedUrlWhereInput
+    some?: UserDefinedUrlWhereInput
+    none?: UserDefinedUrlWhereInput
+  }
+
+  export type SocialLinkListRelationFilter = {
+    every?: SocialLinkWhereInput
+    some?: SocialLinkWhereInput
+    none?: SocialLinkWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -6437,6 +10406,18 @@ export namespace Prisma {
   }
 
   export type SessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserCustomUrlOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserDefinedUrlOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SocialLinkOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6669,6 +10650,102 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type SocialLinkUserIdUrlCompoundUniqueInput = {
+    userId: string
+    url: string
+  }
+
+  export type SocialLinkCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    label?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+  }
+
+  export type SocialLinkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    label?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+  }
+
+  export type SocialLinkMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    label?: SortOrder
+    userId?: SortOrder
+    name?: SortOrder
+  }
+
+  export type EnumDefinedUrlTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.DefinedUrlType | EnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumDefinedUrlTypeFilter<$PrismaModel> | $Enums.DefinedUrlType
+  }
+
+  export type UserDefinedUrlUserIdTypeCompoundUniqueInput = {
+    userId: string
+    type: $Enums.DefinedUrlType
+  }
+
+  export type UserDefinedUrlCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    label?: SortOrder
+  }
+
+  export type UserDefinedUrlMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    label?: SortOrder
+  }
+
+  export type UserDefinedUrlMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    label?: SortOrder
+  }
+
+  export type EnumDefinedUrlTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DefinedUrlType | EnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumDefinedUrlTypeWithAggregatesFilter<$PrismaModel> | $Enums.DefinedUrlType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDefinedUrlTypeFilter<$PrismaModel>
+    _max?: NestedEnumDefinedUrlTypeFilter<$PrismaModel>
+  }
+
+  export type UserCustomUrlCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type UserCustomUrlMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type UserCustomUrlMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -6683,6 +10760,27 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
+  export type UserCustomUrlCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserCustomUrlCreateWithoutUserInput, UserCustomUrlUncheckedCreateWithoutUserInput> | UserCustomUrlCreateWithoutUserInput[] | UserCustomUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserCustomUrlCreateOrConnectWithoutUserInput | UserCustomUrlCreateOrConnectWithoutUserInput[]
+    createMany?: UserCustomUrlCreateManyUserInputEnvelope
+    connect?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+  }
+
+  export type UserDefinedUrlCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserDefinedUrlCreateWithoutUserInput, UserDefinedUrlUncheckedCreateWithoutUserInput> | UserDefinedUrlCreateWithoutUserInput[] | UserDefinedUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserDefinedUrlCreateOrConnectWithoutUserInput | UserDefinedUrlCreateOrConnectWithoutUserInput[]
+    createMany?: UserDefinedUrlCreateManyUserInputEnvelope
+    connect?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+  }
+
+  export type SocialLinkCreateNestedManyWithoutUserInput = {
+    create?: XOR<SocialLinkCreateWithoutUserInput, SocialLinkUncheckedCreateWithoutUserInput> | SocialLinkCreateWithoutUserInput[] | SocialLinkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SocialLinkCreateOrConnectWithoutUserInput | SocialLinkCreateOrConnectWithoutUserInput[]
+    createMany?: SocialLinkCreateManyUserInputEnvelope
+    connect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -6695,6 +10793,27 @@ export namespace Prisma {
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  }
+
+  export type UserCustomUrlUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserCustomUrlCreateWithoutUserInput, UserCustomUrlUncheckedCreateWithoutUserInput> | UserCustomUrlCreateWithoutUserInput[] | UserCustomUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserCustomUrlCreateOrConnectWithoutUserInput | UserCustomUrlCreateOrConnectWithoutUserInput[]
+    createMany?: UserCustomUrlCreateManyUserInputEnvelope
+    connect?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+  }
+
+  export type UserDefinedUrlUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserDefinedUrlCreateWithoutUserInput, UserDefinedUrlUncheckedCreateWithoutUserInput> | UserDefinedUrlCreateWithoutUserInput[] | UserDefinedUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserDefinedUrlCreateOrConnectWithoutUserInput | UserDefinedUrlCreateOrConnectWithoutUserInput[]
+    createMany?: UserDefinedUrlCreateManyUserInputEnvelope
+    connect?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+  }
+
+  export type SocialLinkUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SocialLinkCreateWithoutUserInput, SocialLinkUncheckedCreateWithoutUserInput> | SocialLinkCreateWithoutUserInput[] | SocialLinkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SocialLinkCreateOrConnectWithoutUserInput | SocialLinkCreateOrConnectWithoutUserInput[]
+    createMany?: SocialLinkCreateManyUserInputEnvelope
+    connect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6741,6 +10860,48 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
+  export type UserCustomUrlUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserCustomUrlCreateWithoutUserInput, UserCustomUrlUncheckedCreateWithoutUserInput> | UserCustomUrlCreateWithoutUserInput[] | UserCustomUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserCustomUrlCreateOrConnectWithoutUserInput | UserCustomUrlCreateOrConnectWithoutUserInput[]
+    upsert?: UserCustomUrlUpsertWithWhereUniqueWithoutUserInput | UserCustomUrlUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserCustomUrlCreateManyUserInputEnvelope
+    set?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    disconnect?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    delete?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    connect?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    update?: UserCustomUrlUpdateWithWhereUniqueWithoutUserInput | UserCustomUrlUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserCustomUrlUpdateManyWithWhereWithoutUserInput | UserCustomUrlUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserCustomUrlScalarWhereInput | UserCustomUrlScalarWhereInput[]
+  }
+
+  export type UserDefinedUrlUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserDefinedUrlCreateWithoutUserInput, UserDefinedUrlUncheckedCreateWithoutUserInput> | UserDefinedUrlCreateWithoutUserInput[] | UserDefinedUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserDefinedUrlCreateOrConnectWithoutUserInput | UserDefinedUrlCreateOrConnectWithoutUserInput[]
+    upsert?: UserDefinedUrlUpsertWithWhereUniqueWithoutUserInput | UserDefinedUrlUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserDefinedUrlCreateManyUserInputEnvelope
+    set?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    disconnect?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    delete?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    connect?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    update?: UserDefinedUrlUpdateWithWhereUniqueWithoutUserInput | UserDefinedUrlUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserDefinedUrlUpdateManyWithWhereWithoutUserInput | UserDefinedUrlUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserDefinedUrlScalarWhereInput | UserDefinedUrlScalarWhereInput[]
+  }
+
+  export type SocialLinkUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SocialLinkCreateWithoutUserInput, SocialLinkUncheckedCreateWithoutUserInput> | SocialLinkCreateWithoutUserInput[] | SocialLinkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SocialLinkCreateOrConnectWithoutUserInput | SocialLinkCreateOrConnectWithoutUserInput[]
+    upsert?: SocialLinkUpsertWithWhereUniqueWithoutUserInput | SocialLinkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SocialLinkCreateManyUserInputEnvelope
+    set?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    disconnect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    delete?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    connect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    update?: SocialLinkUpdateWithWhereUniqueWithoutUserInput | SocialLinkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SocialLinkUpdateManyWithWhereWithoutUserInput | SocialLinkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SocialLinkScalarWhereInput | SocialLinkScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -6767,6 +10928,48 @@ export namespace Prisma {
     update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
+  }
+
+  export type UserCustomUrlUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserCustomUrlCreateWithoutUserInput, UserCustomUrlUncheckedCreateWithoutUserInput> | UserCustomUrlCreateWithoutUserInput[] | UserCustomUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserCustomUrlCreateOrConnectWithoutUserInput | UserCustomUrlCreateOrConnectWithoutUserInput[]
+    upsert?: UserCustomUrlUpsertWithWhereUniqueWithoutUserInput | UserCustomUrlUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserCustomUrlCreateManyUserInputEnvelope
+    set?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    disconnect?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    delete?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    connect?: UserCustomUrlWhereUniqueInput | UserCustomUrlWhereUniqueInput[]
+    update?: UserCustomUrlUpdateWithWhereUniqueWithoutUserInput | UserCustomUrlUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserCustomUrlUpdateManyWithWhereWithoutUserInput | UserCustomUrlUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserCustomUrlScalarWhereInput | UserCustomUrlScalarWhereInput[]
+  }
+
+  export type UserDefinedUrlUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserDefinedUrlCreateWithoutUserInput, UserDefinedUrlUncheckedCreateWithoutUserInput> | UserDefinedUrlCreateWithoutUserInput[] | UserDefinedUrlUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserDefinedUrlCreateOrConnectWithoutUserInput | UserDefinedUrlCreateOrConnectWithoutUserInput[]
+    upsert?: UserDefinedUrlUpsertWithWhereUniqueWithoutUserInput | UserDefinedUrlUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserDefinedUrlCreateManyUserInputEnvelope
+    set?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    disconnect?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    delete?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    connect?: UserDefinedUrlWhereUniqueInput | UserDefinedUrlWhereUniqueInput[]
+    update?: UserDefinedUrlUpdateWithWhereUniqueWithoutUserInput | UserDefinedUrlUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserDefinedUrlUpdateManyWithWhereWithoutUserInput | UserDefinedUrlUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserDefinedUrlScalarWhereInput | UserDefinedUrlScalarWhereInput[]
+  }
+
+  export type SocialLinkUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SocialLinkCreateWithoutUserInput, SocialLinkUncheckedCreateWithoutUserInput> | SocialLinkCreateWithoutUserInput[] | SocialLinkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SocialLinkCreateOrConnectWithoutUserInput | SocialLinkCreateOrConnectWithoutUserInput[]
+    upsert?: SocialLinkUpsertWithWhereUniqueWithoutUserInput | SocialLinkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SocialLinkCreateManyUserInputEnvelope
+    set?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    disconnect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    delete?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    connect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+    update?: SocialLinkUpdateWithWhereUniqueWithoutUserInput | SocialLinkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SocialLinkUpdateManyWithWhereWithoutUserInput | SocialLinkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SocialLinkScalarWhereInput | SocialLinkScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -6799,6 +11002,52 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAccountsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
+  }
+
+  export type UserCreateNestedOneWithoutSocialLinkInput = {
+    create?: XOR<UserCreateWithoutSocialLinkInput, UserUncheckedCreateWithoutSocialLinkInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSocialLinkInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutSocialLinkNestedInput = {
+    create?: XOR<UserCreateWithoutSocialLinkInput, UserUncheckedCreateWithoutSocialLinkInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSocialLinkInput
+    upsert?: UserUpsertWithoutSocialLinkInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSocialLinkInput, UserUpdateWithoutSocialLinkInput>, UserUncheckedUpdateWithoutSocialLinkInput>
+  }
+
+  export type UserCreateNestedOneWithoutUserDefinedUrlInput = {
+    create?: XOR<UserCreateWithoutUserDefinedUrlInput, UserUncheckedCreateWithoutUserDefinedUrlInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserDefinedUrlInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumDefinedUrlTypeFieldUpdateOperationsInput = {
+    set?: $Enums.DefinedUrlType
+  }
+
+  export type UserUpdateOneRequiredWithoutUserDefinedUrlNestedInput = {
+    create?: XOR<UserCreateWithoutUserDefinedUrlInput, UserUncheckedCreateWithoutUserDefinedUrlInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserDefinedUrlInput
+    upsert?: UserUpsertWithoutUserDefinedUrlInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserDefinedUrlInput, UserUpdateWithoutUserDefinedUrlInput>, UserUncheckedUpdateWithoutUserDefinedUrlInput>
+  }
+
+  export type UserCreateNestedOneWithoutUserCustomUrlInput = {
+    create?: XOR<UserCreateWithoutUserCustomUrlInput, UserUncheckedCreateWithoutUserCustomUrlInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserCustomUrlInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutUserCustomUrlNestedInput = {
+    create?: XOR<UserCreateWithoutUserCustomUrlInput, UserUncheckedCreateWithoutUserCustomUrlInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserCustomUrlInput
+    upsert?: UserUpsertWithoutUserCustomUrlInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserCustomUrlInput, UserUpdateWithoutUserCustomUrlInput>, UserUncheckedUpdateWithoutUserCustomUrlInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6948,6 +11197,23 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumDefinedUrlTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.DefinedUrlType | EnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumDefinedUrlTypeFilter<$PrismaModel> | $Enums.DefinedUrlType
+  }
+
+  export type NestedEnumDefinedUrlTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DefinedUrlType | EnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.DefinedUrlType[] | ListEnumDefinedUrlTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumDefinedUrlTypeWithAggregatesFilter<$PrismaModel> | $Enums.DefinedUrlType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumDefinedUrlTypeFilter<$PrismaModel>
+    _max?: NestedEnumDefinedUrlTypeFilter<$PrismaModel>
+  }
+
   export type AccountCreateWithoutUserInput = {
     id: string
     accountId: string
@@ -7018,6 +11284,76 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserCustomUrlCreateWithoutUserInput = {
+    id?: string
+    label: string
+    url: string
+  }
+
+  export type UserCustomUrlUncheckedCreateWithoutUserInput = {
+    id?: string
+    label: string
+    url: string
+  }
+
+  export type UserCustomUrlCreateOrConnectWithoutUserInput = {
+    where: UserCustomUrlWhereUniqueInput
+    create: XOR<UserCustomUrlCreateWithoutUserInput, UserCustomUrlUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserCustomUrlCreateManyUserInputEnvelope = {
+    data: UserCustomUrlCreateManyUserInput | UserCustomUrlCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserDefinedUrlCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.DefinedUrlType
+    url: string
+    label: string
+  }
+
+  export type UserDefinedUrlUncheckedCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.DefinedUrlType
+    url: string
+    label: string
+  }
+
+  export type UserDefinedUrlCreateOrConnectWithoutUserInput = {
+    where: UserDefinedUrlWhereUniqueInput
+    create: XOR<UserDefinedUrlCreateWithoutUserInput, UserDefinedUrlUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserDefinedUrlCreateManyUserInputEnvelope = {
+    data: UserDefinedUrlCreateManyUserInput | UserDefinedUrlCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SocialLinkCreateWithoutUserInput = {
+    id?: string
+    url: string
+    label: string
+    name: string
+  }
+
+  export type SocialLinkUncheckedCreateWithoutUserInput = {
+    id?: string
+    url: string
+    label: string
+    name: string
+  }
+
+  export type SocialLinkCreateOrConnectWithoutUserInput = {
+    where: SocialLinkWhereUniqueInput
+    create: XOR<SocialLinkCreateWithoutUserInput, SocialLinkUncheckedCreateWithoutUserInput>
+  }
+
+  export type SocialLinkCreateManyUserInputEnvelope = {
+    data: SocialLinkCreateManyUserInput | SocialLinkCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -7083,6 +11419,86 @@ export namespace Prisma {
     userId?: StringFilter<"Session"> | string
   }
 
+  export type UserCustomUrlUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserCustomUrlWhereUniqueInput
+    update: XOR<UserCustomUrlUpdateWithoutUserInput, UserCustomUrlUncheckedUpdateWithoutUserInput>
+    create: XOR<UserCustomUrlCreateWithoutUserInput, UserCustomUrlUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserCustomUrlUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserCustomUrlWhereUniqueInput
+    data: XOR<UserCustomUrlUpdateWithoutUserInput, UserCustomUrlUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserCustomUrlUpdateManyWithWhereWithoutUserInput = {
+    where: UserCustomUrlScalarWhereInput
+    data: XOR<UserCustomUrlUpdateManyMutationInput, UserCustomUrlUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserCustomUrlScalarWhereInput = {
+    AND?: UserCustomUrlScalarWhereInput | UserCustomUrlScalarWhereInput[]
+    OR?: UserCustomUrlScalarWhereInput[]
+    NOT?: UserCustomUrlScalarWhereInput | UserCustomUrlScalarWhereInput[]
+    id?: StringFilter<"UserCustomUrl"> | string
+    label?: StringFilter<"UserCustomUrl"> | string
+    url?: StringFilter<"UserCustomUrl"> | string
+    userId?: StringFilter<"UserCustomUrl"> | string
+  }
+
+  export type UserDefinedUrlUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserDefinedUrlWhereUniqueInput
+    update: XOR<UserDefinedUrlUpdateWithoutUserInput, UserDefinedUrlUncheckedUpdateWithoutUserInput>
+    create: XOR<UserDefinedUrlCreateWithoutUserInput, UserDefinedUrlUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserDefinedUrlUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserDefinedUrlWhereUniqueInput
+    data: XOR<UserDefinedUrlUpdateWithoutUserInput, UserDefinedUrlUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserDefinedUrlUpdateManyWithWhereWithoutUserInput = {
+    where: UserDefinedUrlScalarWhereInput
+    data: XOR<UserDefinedUrlUpdateManyMutationInput, UserDefinedUrlUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserDefinedUrlScalarWhereInput = {
+    AND?: UserDefinedUrlScalarWhereInput | UserDefinedUrlScalarWhereInput[]
+    OR?: UserDefinedUrlScalarWhereInput[]
+    NOT?: UserDefinedUrlScalarWhereInput | UserDefinedUrlScalarWhereInput[]
+    id?: StringFilter<"UserDefinedUrl"> | string
+    type?: EnumDefinedUrlTypeFilter<"UserDefinedUrl"> | $Enums.DefinedUrlType
+    url?: StringFilter<"UserDefinedUrl"> | string
+    userId?: StringFilter<"UserDefinedUrl"> | string
+    label?: StringFilter<"UserDefinedUrl"> | string
+  }
+
+  export type SocialLinkUpsertWithWhereUniqueWithoutUserInput = {
+    where: SocialLinkWhereUniqueInput
+    update: XOR<SocialLinkUpdateWithoutUserInput, SocialLinkUncheckedUpdateWithoutUserInput>
+    create: XOR<SocialLinkCreateWithoutUserInput, SocialLinkUncheckedCreateWithoutUserInput>
+  }
+
+  export type SocialLinkUpdateWithWhereUniqueWithoutUserInput = {
+    where: SocialLinkWhereUniqueInput
+    data: XOR<SocialLinkUpdateWithoutUserInput, SocialLinkUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SocialLinkUpdateManyWithWhereWithoutUserInput = {
+    where: SocialLinkScalarWhereInput
+    data: XOR<SocialLinkUpdateManyMutationInput, SocialLinkUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SocialLinkScalarWhereInput = {
+    AND?: SocialLinkScalarWhereInput | SocialLinkScalarWhereInput[]
+    OR?: SocialLinkScalarWhereInput[]
+    NOT?: SocialLinkScalarWhereInput | SocialLinkScalarWhereInput[]
+    id?: StringFilter<"SocialLink"> | string
+    url?: StringFilter<"SocialLink"> | string
+    label?: StringFilter<"SocialLink"> | string
+    userId?: StringFilter<"SocialLink"> | string
+    name?: StringFilter<"SocialLink"> | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id: string
     email: string
@@ -7093,6 +11509,9 @@ export namespace Prisma {
     updatedAt: Date | string
     url?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -7105,6 +11524,9 @@ export namespace Prisma {
     updatedAt: Date | string
     url?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlUncheckedCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -7133,6 +11555,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -7145,6 +11570,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUncheckedUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -7157,6 +11585,9 @@ export namespace Prisma {
     updatedAt: Date | string
     url?: string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -7169,6 +11600,9 @@ export namespace Prisma {
     updatedAt: Date | string
     url?: string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlUncheckedCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -7197,6 +11631,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -7209,6 +11646,237 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUncheckedUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutSocialLinkInput = {
+    id: string
+    email: string
+    name?: string | null
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    url?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutSocialLinkInput = {
+    id: string
+    email: string
+    name?: string | null
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    url?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlUncheckedCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutSocialLinkInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSocialLinkInput, UserUncheckedCreateWithoutSocialLinkInput>
+  }
+
+  export type UserUpsertWithoutSocialLinkInput = {
+    update: XOR<UserUpdateWithoutSocialLinkInput, UserUncheckedUpdateWithoutSocialLinkInput>
+    create: XOR<UserCreateWithoutSocialLinkInput, UserUncheckedCreateWithoutSocialLinkInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSocialLinkInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSocialLinkInput, UserUncheckedUpdateWithoutSocialLinkInput>
+  }
+
+  export type UserUpdateWithoutSocialLinkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSocialLinkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUncheckedUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutUserDefinedUrlInput = {
+    id: string
+    email: string
+    name?: string | null
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    url?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutUserDefinedUrlInput = {
+    id: string
+    email: string
+    name?: string | null
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    url?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    UserCustomUrl?: UserCustomUrlUncheckedCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutUserDefinedUrlInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUserDefinedUrlInput, UserUncheckedCreateWithoutUserDefinedUrlInput>
+  }
+
+  export type UserUpsertWithoutUserDefinedUrlInput = {
+    update: XOR<UserUpdateWithoutUserDefinedUrlInput, UserUncheckedUpdateWithoutUserDefinedUrlInput>
+    create: XOR<UserCreateWithoutUserDefinedUrlInput, UserUncheckedCreateWithoutUserDefinedUrlInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUserDefinedUrlInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUserDefinedUrlInput, UserUncheckedUpdateWithoutUserDefinedUrlInput>
+  }
+
+  export type UserUpdateWithoutUserDefinedUrlInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutUserDefinedUrlInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    UserCustomUrl?: UserCustomUrlUncheckedUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutUserCustomUrlInput = {
+    id: string
+    email: string
+    name?: string | null
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    url?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutUserCustomUrlInput = {
+    id: string
+    email: string
+    name?: string | null
+    emailVerified: boolean
+    image?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
+    url?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedCreateNestedManyWithoutUserInput
+    SocialLink?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutUserCustomUrlInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUserCustomUrlInput, UserUncheckedCreateWithoutUserCustomUrlInput>
+  }
+
+  export type UserUpsertWithoutUserCustomUrlInput = {
+    update: XOR<UserUpdateWithoutUserCustomUrlInput, UserUncheckedUpdateWithoutUserCustomUrlInput>
+    create: XOR<UserCreateWithoutUserCustomUrlInput, UserUncheckedCreateWithoutUserCustomUrlInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUserCustomUrlInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUserCustomUrlInput, UserUncheckedUpdateWithoutUserCustomUrlInput>
+  }
+
+  export type UserUpdateWithoutUserCustomUrlInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutUserCustomUrlInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    UserDefinedUrl?: UserDefinedUrlUncheckedUpdateManyWithoutUserNestedInput
+    SocialLink?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -7234,6 +11902,26 @@ export namespace Prisma {
     updatedAt: Date | string
     ipAddress?: string | null
     userAgent?: string | null
+  }
+
+  export type UserCustomUrlCreateManyUserInput = {
+    id?: string
+    label: string
+    url: string
+  }
+
+  export type UserDefinedUrlCreateManyUserInput = {
+    id?: string
+    type: $Enums.DefinedUrlType
+    url: string
+    label: string
+  }
+
+  export type SocialLinkCreateManyUserInput = {
+    id?: string
+    url: string
+    label: string
+    name: string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -7309,6 +11997,66 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserCustomUrlUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCustomUrlUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserCustomUrlUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserDefinedUrlUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumDefinedUrlTypeFieldUpdateOperationsInput | $Enums.DefinedUrlType
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserDefinedUrlUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumDefinedUrlTypeFieldUpdateOperationsInput | $Enums.DefinedUrlType
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserDefinedUrlUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumDefinedUrlTypeFieldUpdateOperationsInput | $Enums.DefinedUrlType
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SocialLinkUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SocialLinkUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SocialLinkUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
 

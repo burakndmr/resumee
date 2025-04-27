@@ -21,6 +21,7 @@ model User {
   sessions       Session[]
   UserCustomUrl  UserCustomUrl[]
   UserDefinedUrl UserDefinedUrl[]
+  SocialLink     SocialLink[]
 
   @@map("user")
 }
@@ -67,6 +68,20 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+// social links for production
+
+model SocialLink {
+  id     String @id @default(cuid())
+  url    String
+  label  String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  name   String
+
+  @@unique([userId, url], name: "userId_url")
+  @@map("social_links")
 }
 
 enum DefinedUrlType {
